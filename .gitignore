@@ -1,0 +1,26 @@
+# Ignore all class files inside workflow/ and subdirectories
+/workflow/**/*.class
+
+# Optional: Ignore logs, temp, and backup files inside workflow/
+workflow/**/*.log
+workflow/**/*.tmp
+workflow/**/*.bak
+workflow/**/*.swp
+
+# Ignore IDE/project settings
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+nbproject/
+build/
+target/
+out/
+
+# OS-specific
+.DS_Store
+Thumbs.db
