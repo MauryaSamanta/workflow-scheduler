@@ -7,12 +7,25 @@ public class WorkflowParser {
     static class Job {
     String id;
     double runtime;
+    double mi;
+     double subDeadline;
     List<String> children = new ArrayList<>();
     List<String> parents = new ArrayList<>();
+     double startTime;
+    double endTime;
+    VMData assignedVM;
 
-    public Job(String id, double runtime) {
+    public Job(String id, double runtime, double mi) {
         this.id = id;
         this.runtime = runtime;
+        this.mi=mi;
+        subDeadline=0.0;
+
+    }
+
+    @Override
+    public String toString() {
+        return "Job{id='" + id + "', mi=" + mi + ", parents=" + parents + ", children=" + children + "}";
     }
 }
 
@@ -47,6 +60,8 @@ static class ScheduledJob {
 }
 
     public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int userDeadline=sc.nextInt();
         try {
             File xmlFile = new File("Montage_50.xml"); // Replace with your file
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -66,7 +81,16 @@ static class ScheduledJob {
                 jobIds.add(job.getAttribute("id"));
                 String jobId = job.getAttribute("id");
                  double runtime = Double.parseDouble(job.getAttribute("runtime"));
-                Job newJob = new Job(jobId, runtime);
+                 double mi=0;
+                 switch (job.getAttribute("name")) {
+    case "mProject": mi = 5000; break;
+    case "mDiffFit": mi = 8000; break;
+    case "mConcatFit": mi = 2000; break;
+    case "mBgModel": mi = 3000; break;
+    default: mi = 40000;
+}
+
+                Job newJob = new Job(jobId, runtime,mi);
                 taskMap.put(jobId, newJob);
             }
 
@@ -85,35 +109,50 @@ static class ScheduledJob {
                 }
             }
 
+//             for (Map.Entry<String, Job> entry : taskMap.entrySet()) {
+//     Job task = entry.getValue();
+//     System.out.println(task); // or task.getId(), task.getMi(), etc.
+// }
+
+
             List<String>sortedJobs = topologicalSort(taskMap);
 
-            Map<String,Double>UpwardRanks= calculateUpwardRanks(sortedJobs, taskMap);
+           Map<String,Double>UpwardRanks= calculateUpwardRanks(sortedJobs, taskMap);
+            double entryRank=0.0;
+           for(Map.Entry<String,Double>entry:UpwardRanks.entrySet()){
+            double rank=entry.getValue();
+            entryRank=Math.max(rank,entryRank);
+           
+           }
+           System.out.println("entryRank="+entryRank);
 
-            List<VM>vms=VM.getDefaultVMs(5); // Create 5 VMs
-            List<ScheduledTask> schedule = scheduleJobs(sortedJobs, taskMap, vms);
-            // // Output the schedule job-wise
-            // for (ScheduledTask task : schedule) {
-            //     System.out.println("Job ID: " + task.jobId + ", VM ID: " + task.vmId + 
-            //                        ",  Time: " + task.startTime + "----> " + task.endTime);
-            // }
-            //output the schedule VM-wise
-            HashMap<String,List<ScheduledJob>>VMwiseJobs=new HashMap<>();
-          
-            for(ScheduledTask task: schedule){
-                if(!VMwiseJobs.containsKey(task.vmId)){
-                    VMwiseJobs.put(task.vmId, new ArrayList<>());
-                }
-                VMwiseJobs.get(task.vmId).add(new ScheduledJob(task.jobId, task.startTime, task.endTime));
-            }
 
-            for (Map.Entry<String, List<ScheduledJob>> entry : VMwiseJobs.entrySet()) {
-                String vmId = entry.getKey();
-                List<ScheduledJob> jobs = entry.getValue();
-                System.out.println("VM ID: " + vmId);
-                for (ScheduledJob job : jobs) {
-                    System.out.println("  Job ID: " + job.jobId.substring(5) + ", Time: " + job.startTime + "----> " + job.endTime+"\n"+"Parents ="+ taskMap.get(job.jobId).parents);
-                }
+           for( Map.Entry<String,Job>entry:taskMap.entrySet()){
+            Job current=entry.getValue();
+            current.subDeadline = (UpwardRanks.get(current.id) / entryRank) * userDeadline;
+
+           }
+
+           List<Job>UpwardRankSortedJobs=sortUpwardRanks(sortedJobs, UpwardRanks, taskMap);
+           HashMap<VMData,Double>vmAvail=new HashMap<>();
+           List<VMData>vms=VMData.parseCSV("cleaned_vm_data.csv"); 
+            for(VMData vm:vms){
+                vmAvail.put(vm,0.0);
             }
+            List<Job>scheduledjob=scheduledJobs( UpwardRankSortedJobs,vms,
+                                     vmAvail, taskMap);
+
+            for (Job scheduled : scheduledjob) {
+    System.out.println("Task ID: " + scheduled.id);
+    System.out.println("Parents: " + scheduled.parents);
+    System.out.println("Start Time: " + scheduled.startTime);
+    System.out.println("End Time: " + scheduled.endTime);
+    System.out.println("Assigned VM: " + (scheduled.assignedVM != null ? scheduled.assignedVM.id : "None"));
+    System.out.println("-----------");
+}
+
+            
+           
 
            
            
@@ -125,7 +164,7 @@ static class ScheduledJob {
         }
     }
 
-    //writing a function to convert it to topological sort
+//     //writing a function to convert it to topological sort
     public static List<String> topologicalSort(Map<String, Job> taskMap) {
         List<String> sortedList = new ArrayList<>();
         Set<String> visited = new HashSet<>();
@@ -177,48 +216,120 @@ static class ScheduledJob {
     return upwardRanks;
 }
 
-    //scheduler function
-    public static List<ScheduledTask> scheduleJobs(List<String> sortedJobs, Map<String, Job> taskMap, List<VM> vms) {
-    List<ScheduledTask> schedule = new ArrayList<>();
-    Map<String, ScheduledTask> taskExecution = new HashMap<>();
+    public static List<Job> sortUpwardRanks(List<String> sortedJobs, Map<String, Double> UpwardRanks, Map<String,Job>jobMap) {
+    // Sort job IDs by descending upward rank
+    sortedJobs.sort((a, b) -> Double.compare(UpwardRanks.get(b), UpwardRanks.get(a)));
 
+    // Create and return list of Job objects in that order
+    List<Job> sortedJobObjects = new ArrayList<>();
     for (String jobId : sortedJobs) {
-        Job job = taskMap.get(jobId);
+        sortedJobObjects.add(jobMap.get(jobId));
+    }
+    return sortedJobObjects;
+}
 
-        double bestEFT = Double.MAX_VALUE;
-        VM bestVM = null;
-        double bestStartTime = 0;
+//scheduler function using IC-PCP algorithm
 
-        for (VM vm : vms) {
-            // Compute Earliest Start Time (EST)
-            double est = vm.availableAt;
+    public static List<Job> scheduledJobs(List<Job> UpwardRankSortedJobs, List<VMData> vms,
+                                      HashMap<VMData, Double> vmAvailability, Map<String, Job> taskMap) {
+    List<Job> schedule = new ArrayList<>();
+    double totalCost = 0.0;
 
-            for (String parentId : job.parents) {
-                ScheduledTask parentTask = taskExecution.get(parentId);
-                double commTime = parentTask.vmId.equals(vm.id) ? 0.0 : 1.0;
-                est = Math.max(est, parentTask.endTime + commTime);
+    for (Job task : UpwardRankSortedJobs) {
+        double minCost = Double.MAX_VALUE;
+        VMData bestVM = null;
+        double bestEST = 0.0;
+        double bestEFT = 0.0;
+
+        for (VMData vm : vms) {
+            double avail = vmAvailability.getOrDefault(vm, 0.0);
+            double est = avail;
+
+            // Calculate EST based on parent dependencies
+            for (String parentId : task.parents) {
+                Job parentJob = taskMap.get(parentId);
+                if (parentJob == null || parentJob.endTime == 0.0) continue;
+
+                double parentEnd = parentJob.endTime;
+                double commTime = (parentJob.assignedVM == vm) ? 0.0 : 1.0;
+                est = Math.max(est, parentEnd + commTime);
             }
 
-            double eft = est + job.runtime;
+            double runtime = task.mi / vm.mips;
+            double eft = est + runtime;
 
-            if (eft < bestEFT) {
-                bestEFT = eft;
-                bestStartTime = est;
-                bestVM = vm;
+            if (eft <= task.subDeadline) {
+                double cost = (runtime / 3600.0) * vm.cost;
+                if (cost < minCost) {
+                    minCost = cost;
+                    bestVM = vm;
+                    bestEST = est;
+                    bestEFT = eft;
+                }
             }
         }
 
-        // Assign task to best VM
-        ScheduledTask scheduled = new ScheduledTask(jobId, bestVM.id, bestStartTime, bestEFT);
-        taskExecution.put(jobId, scheduled);
-        schedule.add(scheduled);
-
-        // Update VM availability
-        bestVM.availableAt = bestEFT;
+        // Final assignment if any valid VM was found
+        if (bestVM != null) {
+            task.assignedVM = bestVM;
+            task.startTime = bestEST;
+            task.endTime = bestEFT;
+            vmAvailability.put(bestVM, bestEFT);
+            totalCost += minCost;
+            schedule.add(task);
+        } else {
+            System.err.println("Deadline constraint cannot be met for task: " + task.id);
+        }
     }
+
+  System.out.println("Total optimized cost: $" + String.format("%.6f", totalCost));
 
     return schedule;
 }
+
+
+//     //scheduler function
+//     public static List<ScheduledTask> scheduleJobs(List<String> sortedJobs, Map<String, Job> taskMap, List<VM> vms) {
+//     List<ScheduledTask> schedule = new ArrayList<>();
+//     Map<String, ScheduledTask> taskExecution = new HashMap<>();
+
+//     for (String jobId : sortedJobs) {
+//         Job job = taskMap.get(jobId);
+
+//         double bestEFT = Double.MAX_VALUE;
+//         VM bestVM = null;
+//         double bestStartTime = 0;
+
+//         for (VM vm : vms) {
+//             // Compute Earliest Start Time (EST)
+//             double est = vm.availableAt;
+
+//             for (String parentId : job.parents) {
+//                 ScheduledTask parentTask = taskExecution.get(parentId);
+//                 double commTime = parentTask.vmId.equals(vm.id) ? 0.0 : 1.0;
+//                 est = Math.max(est, parentTask.endTime + commTime);
+//             }
+
+//             double eft = est + job.runtime;
+
+//             if (eft < bestEFT) {
+//                 bestEFT = eft;
+//                 bestStartTime = est;
+//                 bestVM = vm;
+//             }
+//         }
+
+//         // Assign task to best VM
+//         ScheduledTask scheduled = new ScheduledTask(jobId, bestVM.id, bestStartTime, bestEFT);
+//         taskExecution.put(jobId, scheduled);
+//         schedule.add(scheduled);
+
+//         // Update VM availability
+//         bestVM.availableAt = bestEFT;
+//     }
+
+//     return schedule;
+// }
 
 
 

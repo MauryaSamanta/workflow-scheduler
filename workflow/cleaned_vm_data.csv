@@ -1,0 +1,944 @@
+Name,API Name,Instance Memory,vCPUs,Instance Storage,Network Performance,On Demand
+R6IDN 12xlarge,r6idn.12xlarge,384,48,2850 GB (2×1425 GB NVMe SSD),75 Gigabit,4.6894
+C5N 18xlarge,c5n.18xlarge,192,72,EBS only,100 Gigabit,3.888
+R6ID Eight Extra Large,r6id.8xlarge,256,32,1900 GB NVMe SSD,12.5 Gigabit,2.4192
+I3EN 12xlarge,i3en.12xlarge,384,48,30000 GB (4×7500 GB NVMe SSD),50 Gigabit,5.424
+M6IN Extra Large,m6in.xlarge,16,4,EBS only,Up to 30 Gigabit,0.2785
+X2IEDN 32xlarge,x2iedn.32xlarge,4096,128,3800 GB (2×1900 GB NVMe SSD),100 Gigabit,26.676
+C5 High-CPU 18xlarge,c5.18xlarge,144,72,EBS only,25 Gigabit,3.06
+C6IN Metal,c6in.metal,256,128,EBS only,200 Gigabit,7.2576
+C7A Eight Extra Large,c7a.8xlarge,64,32,EBS only,12.5 Gigabit,1.6422
+C5N 9xlarge,c5n.9xlarge,96,36,EBS only,50 Gigabit,1.944
+X1E 16xlarge,x1e.16xlarge,1952,64,1920 GB SSD,10 Gigabit,13.344
+R7IZ Eight Extra Large,r7iz.8xlarge,256,32,EBS only,12.5 Gigabit,2.976
+R6IDN Metal,r6idn.metal,1024,128,7600 GB (4×1900 GB NVMe SSD),200 Gigabit,12.505
+R4 High-Memory Quadruple Extra Large,r4.4xlarge,122,16,EBS only,Up to 10 Gigabit,1.064
+M6ID Double Extra Large,m6id.2xlarge,32,8,474 GB NVMe SSD,Up to 12.5 Gigabit,0.4746
+M5 General Purpose Eight Extra Large,m5d.8xlarge,128,32,1200 GB (2×600 GB NVMe SSD),10 Gigabit,1.808
+X2IDN Metal,x2idn.metal,2048,128,3800 GB (2×1900 GB NVMe SSD),100 Gigabit,13.338
+M8G Eight Extra Large,m8g.8xlarge,128,32,EBS only,15 Gigabit,1.4362
+C5 High-CPU 24xlarge,c5d.24xlarge,192,96,3600 GB (4×900 GB NVMe SSD),25 Gigabit,4.608
+C5 High-CPU Metal,c5d.metal,192,96,3600 GB (4×900 GB NVMe SSD),25 Gigabit,4.608
+M5 General Purpose 12xlarge,m5.12xlarge,192,48,EBS only,12 Gigabit,2.304
+I7I 24xlarge,i7i.24xlarge,768,96,22500 GB (6×3750 GB NVMe SSD),Up to 56.25 Gigabit,9.0605
+R4 High-Memory Double Extra Large,r4.2xlarge,61,8,EBS only,Up to 10 Gigabit,0.532
+C5N Metal,c5n.metal,192,72,EBS only,100 Gigabit,3.888
+R7GD Metal,r7gd.metal,512,64,3800 GB (2×1900 GB NVMe SSD),30 Gigabit,4.3546
+R7IZ 12xlarge,r7iz.12xlarge,384,48,EBS only,25 Gigabit,4.464
+R5N Metal,r5n.metal,768,96,EBS only,100 Gigabit,7.152
+I3EN Large,i3en.large,16,2,1250 GB NVMe SSD,Up to 25 Gigabit,0.226
+C8G Metal-48xl,c8g.metal-48xl,384,192,EBS only,50 Gigabit,7.657
+M7I 16xlarge,m7i.16xlarge,256,64,EBS only,25 Gigabit,3.2256
+M6I Eight Extra Large,m6i.8xlarge,128,32,EBS only,12.5 Gigabit,1.536
+R5 Double Extra Large,r5.2xlarge,64,8,EBS only,Up to 10 Gigabit,0.504
+M5A Extra Large,m5a.xlarge,16,4,EBS only,Up to 10 Gigabit,0.172
+C5 High-CPU 9xlarge,c5d.9xlarge,72,36,900 GB NVMe SSD,12 Gigabit,1.728
+I7IE 24xlarge,i7ie.24xlarge,768,96,60000 GB (8×7500 GB NVMe SSD),Up to 100 Gigabit,12.4752
+M7I Extra Large,m7i.xlarge,16,4,EBS only,Up to 12.5 Gigabit,0.2016
+M8G 16xlarge,m8g.16xlarge,256,64,EBS only,30 Gigabit,2.8723
+R6ID 16xlarge,r6id.16xlarge,512,64,3800 GB (2×1900 GB NVMe SSD),25 Gigabit,4.8384
+M7A Eight Extra Large,m7a.8xlarge,128,32,EBS only,12.5 Gigabit,1.8547
+I4I Double Extra Large,i4i.2xlarge,64,8,1875 GB NVMe SSD,Up to 12 Gigabit,0.686
+R5D 24xlarge,r5d.24xlarge,768,96,3600 GB (4×900 GB NVMe SSD),25 Gigabit,6.912
+M5AD 16xlarge,m5ad.16xlarge,256,64,2400 GB (4×600 GB NVMe SSD),12 Gigabit,3.296
+G6e Graphics and Machine Learning GPU Double Extra Large,g6e.2xlarge,64,8,450 GB NVMe SSD,Up to 20 Gigabit,2.2421
+C6ID 12xlarge,c6id.12xlarge,96,48,2850 GB (2×1425 GB NVMe SSD),18.75 Gigabit,2.4192
+M6ID 32xlarge,m6id.32xlarge,512,128,7600 GB (4×1900 GB NVMe SSD),50 Gigabit,7.5936
+M7A Extra Large,m7a.xlarge,16,4,EBS only,Up to 12.5 Gigabit,0.2318
+R7I Extra Large,r7i.xlarge,32,4,EBS only,Up to 12.5 Gigabit,0.2646
+M6ID 12xlarge,m6id.12xlarge,192,48,2850 GB (2×1425 GB NVMe SSD),18.75 Gigabit,2.8476
+R6A 24xlarge,r6a.24xlarge,768,96,EBS only,37.5 Gigabit,5.4432
+C7G Eight Extra Large,c7g.8xlarge,64,32,EBS only,15 Gigabit,1.16
+M5 General Purpose Eight Extra Large,m5.8xlarge,128,32,EBS only,10 Gigabit,1.536
+I4I Extra Large,i4i.xlarge,32,4,937 GB NVMe SSD,Up to 10 Gigabit,0.343
+C6ID 32xlarge,c6id.32xlarge,256,128,7600 GB (4×1900 GB NVMe SSD),50 Gigabit,6.4512
+R5D 16xlarge,r5d.16xlarge,512,64,2400 GB (4×600 GB NVMe SSD),20 Gigabit,4.608
+M5 General Purpose Double Extra Large,m5d.2xlarge,32,8,300 GB NVMe SSD,Up to 10 Gigabit,0.452
+G6e Graphics and Machine Learning GPU 12xlarge,g6e.12xlarge,384,48,3800 GB (2×1900 GB NVMe SSD),100 Gigabit,10.4926
+M8G Extra Large,m8g.xlarge,16,4,EBS only,Up to 12.5 Gigabit,0.1795
+Z1D Double Extra Large,z1d.2xlarge,64,8,300 GB NVMe SSD,Up to 10 Gigabit,0.744
+M5 General Purpose 24xlarge,m5d.24xlarge,384,96,3600 GB (4×900 GB NVMe SSD),25 Gigabit,5.424
+R5AD Quadruple Extra Large,r5ad.4xlarge,128,16,600 GB (2×300 GB NVMe SSD),Up to 10 Gigabit,1.048
+M5 General Purpose Quadruple Extra Large,m5.4xlarge,64,16,EBS only,Up to 10 Gigabit,0.768
+M5DN 24xlarge,m5dn.24xlarge,384,96,3600 GB (4×900 GB NVMe SSD),100 Gigabit,6.528
+M5DN 16xlarge,m5dn.16xlarge,256,64,2400 GB (4×600 GB NVMe SSD),75 Gigabit,4.352
+R5DN Eight Extra Large,r5dn.8xlarge,256,32,1200 GB (2×600 GB NVMe SSD),25 Gigabit,2.672
+C6I Large,c6i.large,4,2,EBS only,Up to 12.5 Gigabit,0.085
+R6IDN Eight Extra Large,r6idn.8xlarge,256,32,1900 GB NVMe SSD,50 Gigabit,3.1262
+R6IDN Quadruple Extra Large,r6idn.4xlarge,128,16,950 GB NVMe SSD,Up to 50 Gigabit,1.5631
+C6IN Double Extra Large,c6in.2xlarge,16,8,EBS only,Up to 40 Gigabit,0.4536
+M5DN Eight Extra Large,m5dn.8xlarge,128,32,1200 GB (2×600 GB NVMe SSD),25 Gigabit,2.176
+D3 Extra Large,d3.xlarge,32,4,5940 GB (3×1980 GB NVMe HDD),Up to 15 Gigabit,0.499
+C4 High-CPU Extra Large,c4.xlarge,7,4,EBS only,High,0.199
+P6-B200 High Performance and Machine Learning GPU 48xlarge,p6-b200.48xlarge,2048,192,EBS only,3200 Gigabit,
+Z1D Large,z1d.large,16,2,75 GB NVMe SSD,Up to 10 Gigabit,0.186
+R5A Eight Extra Large,r5a.8xlarge,256,32,EBS only,Up to 10 Gigabit,1.808
+M5ZN 3xlarge,m5zn.3xlarge,48,12,EBS only,Up to 25 Gigabit,0.991
+R7GD Large,r7gd.large,16,2,118 GB NVMe SSD,Up to 12.5 Gigabit,0.1361
+R6ID 32xlarge,r6id.32xlarge,1024,128,7600 GB (4×1900 GB NVMe SSD),50 Gigabit,9.6768
+C6I 16xlarge,c6i.16xlarge,128,64,EBS only,25 Gigabit,2.72
+X1E 32xlarge,x1e.32xlarge,3904,128,3840 GB (2×1920 GB SSD),25 Gigabit,26.688
+I3EN 24xlarge,i3en.24xlarge,768,96,60000 GB (8×7500 GB NVMe SSD),100 Gigabit,10.848
+R5AD Double Extra Large,r5ad.2xlarge,64,8,300 GB NVMe SSD,Up to 10 Gigabit,0.524
+G5 Graphics and Machine Learning GPU Eight Extra Large,g5.8xlarge,128,32,900 GB NVMe SSD,25 Gigabit,2.448
+T4G Large,t4g.large,8,2,EBS only,Up to 5 Gigabit,0.0672
+R5B 12xlarge,r5b.12xlarge,384,48,EBS only,12 Gigabit,3.576
+R8GD 12xlarge,r8gd.12xlarge,384,48,2850 GB (3×950 GB NVMe SSD),22.5 Gigabit,3.527
+INF1 Double Extra Large,inf1.2xlarge,16,8,EBS only,Up to 25 Gigabit,0.362
+C5A 24xlarge,c5a.24xlarge,192,96,EBS only,20 Gigabit,3.696
+C5AD Large,c5ad.large,4,2,75 GB NVMe SSD,Up to 10 Gigabit,0.086
+M6ID 16xlarge,m6id.16xlarge,256,64,3800 GB (2×1900 GB NVMe SSD),25 Gigabit,3.7968
+R5A Extra Large,r5a.xlarge,32,4,EBS only,Up to 10 Gigabit,0.226
+X2IEDN 16xlarge,x2iedn.16xlarge,2048,64,1900 GB NVMe SSD,50 Gigabit,13.338
+M6GD Extra Large,m6gd.xlarge,16,4,237 GB NVMe SSD,Up to 10 Gigabit,0.1808
+C6ID Metal,c6id.metal,256,128,7600 GB (4×1900 GB NVMe SSD),50 Gigabit,6.4512
+R7A 12xlarge,r7a.12xlarge,384,48,EBS only,18.75 Gigabit,3.6516
+R5B Large,r5b.large,16,2,EBS only,Up to 10 Gigabit,0.149
+C7I Metal-24xl,c7i.metal-24xl,192,96,EBS only,37.5 Gigabit,4.284
+R5A 24xlarge,r5a.24xlarge,768,96,EBS only,20 Gigabit,5.424
+T3 Extra Large,t3.xlarge,16,4,EBS only,Up to 5 Gigabit,0.1664
+I4I 12xlarge,i4i.12xlarge,384,48,11250 GB (3×3750 GB NVMe SSD),28.12 Gigabit,4.118
+I3EN 6xlarge,i3en.6xlarge,192,24,15000 GB (2×7500 GB NVMe SSD),25 Gigabit,2.712
+T4G Micro,t4g.micro,1,2,EBS only,Up to 5 Gigabit,0.0084
+M5DN 12xlarge,m5dn.12xlarge,192,48,1800 GB (2×900 GB NVMe SSD),50 Gigabit,3.264
+U-6TB1 112xlarge,u-6tb1.112xlarge,6144,448,EBS only,100 Gigabit,54.6
+M6I 12xlarge,m6i.12xlarge,192,48,EBS only,18.75 Gigabit,2.304
+R6A Quadruple Extra Large,r6a.4xlarge,128,16,EBS only,Up to 12.5 Gigabit,0.9072
+R6A Double Extra Large,r6a.2xlarge,64,8,EBS only,Up to 12.5 Gigabit,0.4536
+M5 General Purpose Extra Large,m5.xlarge,16,4,EBS only,Up to 10 Gigabit,0.192
+R5AD 16xlarge,r5ad.16xlarge,512,64,2400 GB (4×600 GB NVMe SSD),12 Gigabit,4.192
+U-6TB1 56xlarge,u-6tb1.56xlarge,6144,224,EBS only,100 Gigabit,46.4039
+R6A Extra Large,r6a.xlarge,32,4,EBS only,Up to 12.5 Gigabit,0.2268
+M6IN Metal,m6in.metal,512,128,EBS only,200 Gigabit,8.9107
+R6ID Metal,r6id.metal,1024,128,7600 GB (4×1900 GB NVMe SSD),50 Gigabit,9.6768
+M6IN 16xlarge,m6in.16xlarge,256,64,EBS only,100 Gigabit,4.4554
+IM4GN Quadruple Extra Large,im4gn.4xlarge,64,16,7500 GB NVMe SSD,25 Gigabit,1.4552
+R3 High-Memory Eight Extra Large,r3.8xlarge,244,32,640 GB (2×320 GB SSD),10 Gigabit,2.66
+R3 High-Memory Large,r3.large,15,2,32 GB SSD,Moderate,0.166
+C7I-FLEX 12xlarge,c7i-flex.12xlarge,96,48,EBS only,Up to 18.75 Gigabit,2.0349
+C7A Metal-48xl,c7a.metal-48xl,384,192,EBS only,50 Gigabit,9.8534
+C7I 12xlarge,c7i.12xlarge,96,48,EBS only,18.75 Gigabit,2.142
+INF1 Extra Large,inf1.xlarge,8,4,EBS only,Up to 25 Gigabit,0.228
+R5N Large,r5n.large,16,2,EBS only,Up to 25 Gigabit,0.149
+C5 High-CPU Extra Large,c5.xlarge,8,4,EBS only,Up to 10 Gigabit,0.17
+M4 General Purpose Deca Extra Large,m4.10xlarge,160,40,EBS only,10 Gigabit,2.0
+C5 High-CPU Metal,c5.metal,192,96,EBS only,25 Gigabit,4.08
+M5N 12xlarge,m5n.12xlarge,192,48,EBS only,50 Gigabit,2.856
+T3A Double Extra Large,t3a.2xlarge,32,8,EBS only,Up to 5 Gigabit,0.3008
+X2IEDN 24xlarge,x2iedn.24xlarge,3072,96,2850 GB (2×1425 GB NVMe SSD),75 Gigabit,20.007
+R6IN Metal,r6in.metal,1024,128,EBS only,200 Gigabit,11.1571
+M6ID Extra Large,m6id.xlarge,16,4,237 GB NVMe SSD,Up to 12.5 Gigabit,0.2373
+M7A 16xlarge,m7a.16xlarge,256,64,EBS only,25 Gigabit,3.7094
+M6IDN Metal,m6idn.metal,512,128,7600 GB (4×1900 GB NVMe SSD),200 Gigabit,10.1837
+X2IEDN Extra Large,x2iedn.xlarge,128,4,118 GB NVMe SSD,Up to 25 Gigabit,0.8336
+T3A Small,t3a.small,2,2,EBS only,Up to 5 Gigabit,0.0188
+M7GD 16xlarge,m7gd.16xlarge,256,64,3800 GB (2×1900 GB NVMe SSD),30 Gigabit,3.4171
+R6ID Double Extra Large,r6id.2xlarge,64,8,474 GB NVMe SSD,Up to 12.5 Gigabit,0.6048
+T3A Extra Large,t3a.xlarge,16,4,EBS only,Up to 5 Gigabit,0.1504
+R5N Extra Large,r5n.xlarge,32,4,EBS only,Up to 25 Gigabit,0.298
+M7GD Medium,m7gd.medium,4,1,59 GB NVMe SSD,Up to 12.5 Gigabit,0.0534
+C7A Medium,c7a.medium,2,1,EBS only,Up to 12.5 Gigabit,0.0513
+R6ID 24xlarge,r6id.24xlarge,768,96,5700 GB (4×1425 GB NVMe SSD),37.5 Gigabit,7.2576
+M6I Double Extra Large,m6i.2xlarge,32,8,EBS only,Up to 12.5 Gigabit,0.384
+R8GD 16xlarge,r8gd.16xlarge,512,64,3800 GB (2×1900 GB NVMe SSD),30 Gigabit,4.7027
+R7I 16xlarge,r7i.16xlarge,512,64,EBS only,25 Gigabit,4.2336
+C5 High-CPU 9xlarge,c5.9xlarge,72,36,EBS only,12 Gigabit,1.53
+R5DN Large,r5dn.large,16,2,75 GB NVMe SSD,Up to 25 Gigabit,0.167
+M5A 16xlarge,m5a.16xlarge,256,64,EBS only,12 Gigabit,2.752
+C6A 32xlarge,c6a.32xlarge,256,128,EBS only,50 Gigabit,4.896
+M7I Metal-48xl,m7i.metal-48xl,768,192,EBS only,50 Gigabit,9.6768
+M5 General Purpose Metal,m5d.metal,384,96,3600 GB (4×900 GB NVMe SSD),25 Gigabit,5.424
+R6G Medium,r6g.medium,8,1,EBS only,Up to 10 Gigabit,0.0504
+C7GN Extra Large,c7gn.xlarge,8,4,EBS only,Up to 40 Gigabit,0.2496
+C6A Large,c6a.large,4,2,EBS only,Up to 12.5 Gigabit,0.0765
+I7IE 12xlarge,i7ie.12xlarge,384,48,30000 GB (4×7500 GB NVMe SSD),Up to 50 Gigabit,6.2376
+R5AD 24xlarge,r5ad.24xlarge,768,96,3600 GB (4×900 GB NVMe SSD),20 Gigabit,6.288
+R5D 12xlarge,r5d.12xlarge,384,48,1800 GB (2×900 GB NVMe SSD),12 Gigabit,3.456
+R7A Medium,r7a.medium,8,1,EBS only,Up to 12.5 Gigabit,0.0761
+R6IN 24xlarge,r6in.24xlarge,768,96,EBS only,150 Gigabit,8.3678
+R7A Double Extra Large,r7a.2xlarge,64,8,EBS only,Up to 12.5 Gigabit,0.6086
+C5AD Eight Extra Large,c5ad.8xlarge,64,32,1200 GB (2×600 GB NVMe SSD),10 Gigabit,1.376
+R5N Eight Extra Large,r5n.8xlarge,256,32,EBS only,25 Gigabit,2.384
+M5A Eight Extra Large,m5a.8xlarge,128,32,EBS only,Up to 10 Gigabit,1.376
+C6I Extra Large,c6i.xlarge,8,4,EBS only,Up to 12.5 Gigabit,0.17
+C5 High-CPU Double Extra Large,c5.2xlarge,16,8,EBS only,Up to 10 Gigabit,0.34
+R6G 16xlarge,r6g.16xlarge,512,64,EBS only,25 Gigabit,3.2256
+T4G Medium,t4g.medium,4,2,EBS only,Up to 5 Gigabit,0.0336
+M5DN Double Extra Large,m5dn.2xlarge,32,8,300 GB NVMe SSD,Up to 25 Gigabit,0.544
+R5A Large,r5a.large,16,2,EBS only,Up to 10 Gigabit,0.113
+R5B Eight Extra Large,r5b.8xlarge,256,32,EBS only,10 Gigabit,2.384
+M6A 24xlarge,m6a.24xlarge,384,96,EBS only,37.5 Gigabit,4.1472
+C6ID Large,c6id.large,4,2,118 GB NVMe SSD,Up to 12.5 Gigabit,0.1008
+M6IN 32xlarge,m6in.32xlarge,512,128,EBS only,200 Gigabit,8.9107
+R5D Eight Extra Large,r5d.8xlarge,256,32,1200 GB (2×600 GB NVMe SSD),10 Gigabit,2.304
+T3 Nano,t3.nano,0,2,EBS only,Up to 5 Gigabit,0.0052
+M6A Double Extra Large,m6a.2xlarge,32,8,EBS only,Up to 12.5 Gigabit,0.3456
+R7I Metal-24xl,r7i.metal-24xl,768,96,EBS only,37.5 Gigabit,6.3504
+R5B Double Extra Large,r5b.2xlarge,64,8,EBS only,Up to 10 Gigabit,0.596
+R8G Metal-48xl,r8g.metal-48xl,1536,192,EBS only,50 Gigabit,11.3107
+X2IEDN Metal,x2iedn.metal,4096,128,3800 GB (2×1900 GB NVMe SSD),100 Gigabit,26.676
+M6ID Metal,m6id.metal,512,128,7600 GB (4×1900 GB NVMe SSD),50 Gigabit,7.5936
+R3 High-Memory Quadruple Extra Large,r3.4xlarge,122,16,320 GB SSD,High,1.33
+C7A 32xlarge,c7a.32xlarge,256,128,EBS only,50 Gigabit,6.569
+Z1D 12xlarge,z1d.12xlarge,384,48,1800 GB (2×900 GB NVMe SSD),25 Gigabit,4.464
+T3 Large,t3.large,8,2,EBS only,Up to 5 Gigabit,0.0832
+G5 Graphics and Machine Learning GPU 48xlarge,g5.48xlarge,768,192,7600 GB (2×3800 GB NVMe SSD),100 Gigabit,16.288
+M7A 12xlarge,m7a.12xlarge,192,48,EBS only,18.75 Gigabit,2.7821
+M6A Large,m6a.large,8,2,EBS only,Up to 12.5 Gigabit,0.0864
+G5 Graphics and Machine Learning GPU 12xlarge,g5.12xlarge,192,48,3800 GB NVMe SSD,40 Gigabit,5.672
+C6ID Quadruple Extra Large,c6id.4xlarge,32,16,950 GB NVMe SSD,Up to 12.5 Gigabit,0.8064
+P2 General Purpose GPU Eight Extra Large,p2.8xlarge,488,32,EBS only,10 Gigabit,7.2
+C5N Double Extra Large,c5n.2xlarge,21,8,EBS only,Up to 25 Gigabit,0.432
+M6ID 24xlarge,m6id.24xlarge,384,96,5700 GB (4×1425 GB NVMe SSD),37.5 Gigabit,5.6952
+M5ZN Metal,m5zn.metal,192,48,EBS only,100 Gigabit,3.9641
+C5N Extra Large,c5n.xlarge,10,4,EBS only,Up to 25 Gigabit,0.216
+I2 Double Extra Large,i2.2xlarge,61,8,1600 GB (2×800 GB SSD),High,1.705
+R6A 32xlarge,r6a.32xlarge,1024,128,EBS only,50 Gigabit,7.2576
+M6IN 12xlarge,m6in.12xlarge,192,48,EBS only,75 Gigabit,3.3415
+R7A Eight Extra Large,r7a.8xlarge,256,32,EBS only,12.5 Gigabit,2.4344
+M6I Large,m6i.large,8,2,EBS only,Up to 12.5 Gigabit,0.096
+M4 General Purpose Double Extra Large,m4.2xlarge,32,8,EBS only,High,0.4
+M6I 32xlarge,m6i.32xlarge,512,128,EBS only,50 Gigabit,6.144
+R5D Quadruple Extra Large,r5d.4xlarge,128,16,600 GB (2×300 GB NVMe SSD),Up to 10 Gigabit,1.152
+M7A 32xlarge,m7a.32xlarge,512,128,EBS only,50 Gigabit,7.4189
+I4I Quadruple Extra Large,i4i.4xlarge,128,16,3750 GB NVMe SSD,Up to 25 Gigabit,1.373
+M7I Large,m7i.large,8,2,EBS only,Up to 12.5 Gigabit,0.1008
+R6IN Quadruple Extra Large,r6in.4xlarge,128,16,EBS only,Up to 50 Gigabit,1.3946
+R6IDN 16xlarge,r6idn.16xlarge,512,64,3800 GB (2×1900 GB NVMe SSD),100 Gigabit,6.2525
+R6I Double Extra Large,r6i.2xlarge,64,8,EBS only,Up to 12.5 Gigabit,0.504
+R7I Eight Extra Large,r7i.8xlarge,256,32,EBS only,12.5 Gigabit,2.1168
+R6IDN 32xlarge,r6idn.32xlarge,1024,128,7600 GB (4×1900 GB NVMe SSD),200 Gigabit,12.505
+IM4GN Large,im4gn.large,8,2,937 GB NVMe SSD,Up to 25 Gigabit,0.1819
+R7A 16xlarge,r7a.16xlarge,512,64,EBS only,25 Gigabit,4.8688
+HPC7A 96xlarge,hpc7a.96xlarge,768,192,EBS only,300 Gigabit,
+R6I Metal,r6i.metal,1024,128,EBS only,50 Gigabit,8.064
+R7G Extra Large,r7g.xlarge,32,4,EBS only,Up to 12.5 Gigabit,0.2142
+M7I Eight Extra Large,m7i.8xlarge,128,32,EBS only,12.5 Gigabit,1.6128
+M6IDN Extra Large,m6idn.xlarge,16,4,237 GB NVMe SSD,Up to 30 Gigabit,0.3182
+I7I Double Extra Large,i7i.2xlarge,64,8,1875 GB NVMe SSD,Up to 12 Gigabit,0.755
+D3 Double Extra Large,d3.2xlarge,64,8,11880 GB (6×1980 GB NVMe HDD),Up to 15 Gigabit,0.999
+C7I-FLEX Double Extra Large,c7i-flex.2xlarge,16,8,EBS only,Up to 12.5 Gigabit,0.3392
+M5ZN 6xlarge,m5zn.6xlarge,96,24,EBS only,50 Gigabit,1.982
+C7GD Extra Large,c7gd.xlarge,8,4,237 GB NVMe SSD,Up to 12.5 Gigabit,0.1814
+R7A Extra Large,r7a.xlarge,32,4,EBS only,Up to 12.5 Gigabit,0.3043
+H1 Quadruple Extra Large,h1.4xlarge,64,16,4000 GB (2×2000 GB HDD),Up to 10 Gigabit,0.936
+R8G 12xlarge,r8g.12xlarge,384,48,EBS only,22.5 Gigabit,2.8277
+C7I Extra Large,c7i.xlarge,8,4,EBS only,Up to 12.5 Gigabit,0.1785
+M8GD Quadruple Extra Large,m8gd.4xlarge,64,16,950 GB NVMe SSD,Up to 15 Gigabit,0.9226
+R6I Large,r6i.large,16,2,EBS only,Up to 12.5 Gigabit,0.126
+M6A Eight Extra Large,m6a.8xlarge,128,32,EBS only,12.5 Gigabit,1.3824
+M5N Large,m5n.large,8,2,EBS only,Up to 25 Gigabit,0.119
+C5 High-CPU Large,c5d.large,4,2,50 GB NVMe SSD,Up to 10 Gigabit,0.096
+R5 16xlarge,r5.16xlarge,512,64,EBS only,20 Gigabit,4.032
+R6GD Quadruple Extra Large,r6gd.4xlarge,128,16,950 GB NVMe SSD,Up to 10 Gigabit,0.9216
+R6A Large,r6a.large,16,2,EBS only,Up to 12.5 Gigabit,0.1134
+A1 Medium,a1.medium,2,1,EBS only,Up to 10 Gigabit,0.0255
+I3EN Double Extra Large,i3en.2xlarge,64,8,5000 GB (2×2500 GB NVMe SSD),Up to 25 Gigabit,0.904
+C6I 24xlarge,c6i.24xlarge,192,96,EBS only,37.5 Gigabit,4.08
+C5 High-CPU Quadruple Extra Large,c5.4xlarge,32,16,EBS only,Up to 10 Gigabit,0.68
+R3 High-Memory Double Extra Large,r3.2xlarge,61,8,160 GB SSD,High,0.665
+R8G Medium,r8g.medium,8,1,EBS only,Up to 12.5 Gigabit,0.0589
+R5 Metal,r5.metal,768,96,EBS only,25 Gigabit,6.048
+C8G 12xlarge,c8g.12xlarge,96,48,EBS only,22.5 Gigabit,1.9142
+R8GD 48xlarge,r8gd.48xlarge,1536,192,11400 GB (6×1900 GB NVMe SSD),50 Gigabit,14.1082
+C5A 12xlarge,c5a.12xlarge,96,48,EBS only,12 Gigabit,1.848
+R6A 16xlarge,r6a.16xlarge,512,64,EBS only,25 Gigabit,3.6288
+M6I 16xlarge,m6i.16xlarge,256,64,EBS only,25 Gigabit,3.072
+C8G Extra Large,c8g.xlarge,8,4,EBS only,Up to 12.5 Gigabit,0.1595
+G6 Graphics and Machine Learning GPU Extra Large,g6.xlarge,16,4,250 GB NVMe SSD,Up to 10 Gigabit,0.8048
+I4I Metal,i4i.metal,1024,128,30000 GB (8×3750 GB NVMe SSD),75 Gigabit,10.982
+I7IE Large,i7ie.large,16,2,1250 GB NVMe SSD,Up to 25 Gigabit,0.2599
+T2 Micro,t2.micro,1,1,EBS only,Low to Moderate,0.0116
+R5AD Extra Large,r5ad.xlarge,32,4,150 GB NVMe SSD,Up to 10 Gigabit,0.262
+C6IN Large,c6in.large,4,2,EBS only,Up to 25 Gigabit,0.1134
+M8GD 16xlarge,m8gd.16xlarge,256,64,3800 GB (2×1900 GB NVMe SSD),30 Gigabit,3.6902
+C6ID 24xlarge,c6id.24xlarge,192,96,5700 GB (4×1425 GB NVMe SSD),37.5 Gigabit,4.8384
+C6I Metal,c6i.metal,256,128,EBS only,50 Gigabit,5.44
+C6ID Double Extra Large,c6id.2xlarge,16,8,474 GB NVMe SSD,Up to 12.5 Gigabit,0.4032
+R7A Quadruple Extra Large,r7a.4xlarge,128,16,EBS only,Up to 12.5 Gigabit,1.2172
+C6GN 12xlarge,c6gn.12xlarge,96,48,EBS only,75 Gigabit,2.0736
+C7GD Large,c7gd.large,4,2,118 GB NVMe SSD,Up to 12.5 Gigabit,0.0907
+U-18TB1 112xlarge,u-18tb1.112xlarge,18432,448,EBS only,100 Gigabit,163.8
+G6e Graphics and Machine Learning GPU Eight Extra Large,g6e.8xlarge,256,32,900 GB (2×450 GB NVMe SSD),25 Gigabit,4.5286
+M6ID Eight Extra Large,m6id.8xlarge,128,32,1900 GB NVMe SSD,12.5 Gigabit,1.8984
+G6e Graphics and Machine Learning GPU Extra Large,g6e.xlarge,32,4,250 GB NVMe SSD,Up to 20 Gigabit,1.861
+M5 General Purpose Large,m5.large,8,2,EBS only,Up to 10 Gigabit,0.096
+C6A 16xlarge,c6a.16xlarge,128,64,EBS only,25 Gigabit,2.448
+M5AD Eight Extra Large,m5ad.8xlarge,128,32,1200 GB (2×600 GB NVMe SSD),Up to 10 Gigabit,1.648
+R7I 48xlarge,r7i.48xlarge,1536,192,EBS only,50 Gigabit,12.7008
+R7I Quadruple Extra Large,r7i.4xlarge,128,16,EBS only,Up to 12.5 Gigabit,1.0584
+R5AD Eight Extra Large,r5ad.8xlarge,256,32,1200 GB (2×600 GB NVMe SSD),Up to 10 Gigabit,2.096
+M7A 48xlarge,m7a.48xlarge,768,192,EBS only,50 Gigabit,11.1283
+C5 High-CPU 18xlarge,c5d.18xlarge,144,72,1800 GB (2×900 GB NVMe SSD),25 Gigabit,3.456
+C6GN Large,c6gn.large,4,2,EBS only,Up to 25 Gigabit,0.0864
+C7A Large,c7a.large,4,2,EBS only,Up to 12.5 Gigabit,0.1026
+C6A Extra Large,c6a.xlarge,8,4,EBS only,Up to 12.5 Gigabit,0.153
+C4 High-CPU Quadruple Extra Large,c4.4xlarge,30,16,EBS only,High,0.796
+P4D Highest Performance GPU 24xlarge,p4d.24xlarge,1152,96,8000 GB (8×1000 GB NVMe SSD),4x 100 Gigabit,
+C7GN Large,c7gn.large,4,2,EBS only,Up to 30 Gigabit,0.1248
+C7A Quadruple Extra Large,c7a.4xlarge,32,16,EBS only,Up to 12.5 Gigabit,0.8211
+I7IE Extra Large,i7ie.xlarge,32,4,2500 GB NVMe SSD,Up to 25 Gigabit,0.5198
+R6ID Quadruple Extra Large,r6id.4xlarge,128,16,950 GB NVMe SSD,Up to 12.5 Gigabit,1.2096
+C7A 24xlarge,c7a.24xlarge,192,96,EBS only,37.5 Gigabit,4.9267
+M5N 16xlarge,m5n.16xlarge,256,64,EBS only,75 Gigabit,3.808
+T3A Medium,t3a.medium,4,2,EBS only,Up to 5 Gigabit,0.0376
+C6GN Quadruple Extra Large,c6gn.4xlarge,32,16,EBS only,25 Gigabit,0.6912
+M5A Large,m5a.large,8,2,EBS only,Up to 10 Gigabit,0.086
+M6A 48xlarge,m6a.48xlarge,768,192,EBS only,50 Gigabit,8.2944
+I4I 16xlarge,i4i.16xlarge,512,64,15000 GB (4×3750 GB NVMe SSD),37.5 Gigabit,5.491
+M7I 48xlarge,m7i.48xlarge,768,192,EBS only,50 Gigabit,9.6768
+G4DN Eight Extra Large,g4dn.8xlarge,128,32,900 GB NVMe SSD,50 Gigabit,2.176
+M5AD Large,m5ad.large,8,2,75 GB NVMe SSD,Up to 10 Gigabit,0.103
+R5 Quadruple Extra Large,r5.4xlarge,128,16,EBS only,Up to 10 Gigabit,1.008
+R7IZ 16xlarge,r7iz.16xlarge,512,64,EBS only,25 Gigabit,5.952
+C7I Eight Extra Large,c7i.8xlarge,64,32,EBS only,12.5 Gigabit,1.428
+I7I Eight Extra Large,i7i.8xlarge,256,32,7500 GB (2×3750 GB NVMe SSD),Up to 25 Gigabit,3.0202
+M5ZN Large,m5zn.large,8,2,EBS only,Up to 25 Gigabit,0.1652
+M7I-FLEX Eight Extra Large,m7i-flex.8xlarge,128,32,EBS only,Up to 12.5 Gigabit,1.5322
+C8G 48xlarge,c8g.48xlarge,384,192,EBS only,50 Gigabit,7.657
+M6I 24xlarge,m6i.24xlarge,384,96,EBS only,37.5 Gigabit,4.608
+C6IN Quadruple Extra Large,c6in.4xlarge,32,16,EBS only,Up to 50 Gigabit,0.9072
+I7I Quadruple Extra Large,i7i.4xlarge,128,16,3750 GB NVMe SSD,Up to 25 Gigabit,1.5101
+R5B Metal,r5b.metal,768,96,EBS only,25 Gigabit,7.152
+M7G Metal,m7g.metal,256,64,EBS only,30 Gigabit,2.6112
+X2IEDN Double Extra Large,x2iedn.2xlarge,256,8,237 GB NVMe SSD,Up to 25 Gigabit,1.6672
+C6A Eight Extra Large,c6a.8xlarge,64,32,EBS only,12.5 Gigabit,1.224
+M6IN Large,m6in.large,8,2,EBS only,Up to 25 Gigabit,0.1392
+C6I Double Extra Large,c6i.2xlarge,16,8,EBS only,Up to 12.5 Gigabit,0.34
+R6IDN 24xlarge,r6idn.24xlarge,768,96,5700 GB (4×1425 GB NVMe SSD),150 Gigabit,9.3787
+C7I Double Extra Large,c7i.2xlarge,16,8,EBS only,Up to 12.5 Gigabit,0.357
+R7IZ Extra Large,r7iz.xlarge,32,4,EBS only,Up to 12.5 Gigabit,0.372
+R6ID Large,r6id.large,16,2,118 GB NVMe SSD,Up to 12.5 Gigabit,0.1512
+R6A 12xlarge,r6a.12xlarge,384,48,EBS only,18.75 Gigabit,2.7216
+P3 High Performance GPU Double Extra Large,p3.2xlarge,61,8,EBS only,Up to 10 Gigabit,3.06
+M5 General Purpose 16xlarge,m5d.16xlarge,256,64,2400 GB (4×600 GB NVMe SSD),20 Gigabit,3.616
+D2 Quadruple Extra Large,d2.4xlarge,122,16,24576 GB (12×2048 GB HDD),High,2.76
+C5 High-CPU Double Extra Large,c5d.2xlarge,16,8,200 GB NVMe SSD,Up to 10 Gigabit,0.384
+Z1D 3xlarge,z1d.3xlarge,96,12,450 GB NVMe SSD,Up to 10 Gigabit,1.116
+M5A 24xlarge,m5a.24xlarge,384,96,EBS only,20 Gigabit,4.128
+M6IN Double Extra Large,m6in.2xlarge,32,8,EBS only,Up to 40 Gigabit,0.5569
+M7I-FLEX Extra Large,m7i-flex.xlarge,16,4,EBS only,Up to 12.5 Gigabit,0.1915
+R6IN 12xlarge,r6in.12xlarge,384,48,EBS only,75 Gigabit,4.1839
+M6ID Large,m6id.large,8,2,118 GB NVMe SSD,Up to 12.5 Gigabit,0.1187
+I3 High I/O Eight Extra Large,i3.8xlarge,244,32,7600 GB (4×1900 GB NVMe SSD),10 Gigabit,2.496
+C7I 16xlarge,c7i.16xlarge,128,64,EBS only,25 Gigabit,2.856
+C5A Extra Large,c5a.xlarge,8,4,EBS only,Up to 10 Gigabit,0.154
+C6IN 12xlarge,c6in.12xlarge,96,48,EBS only,75 Gigabit,2.7216
+M5 General Purpose 24xlarge,m5.24xlarge,384,96,EBS only,25 Gigabit,4.608
+H1 16xlarge,h1.16xlarge,256,64,16000 GB (8×2000 GB HDD),25 Gigabit,3.744
+M6GD Medium,m6gd.medium,4,1,59 GB NVMe SSD,Up to 10 Gigabit,0.0452
+I4G Quadruple Extra Large,i4g.4xlarge,128,16,3750 GB NVMe SSD,Up to 25 Gigabit,1.2355
+M5N 24xlarge,m5n.24xlarge,384,96,EBS only,100 Gigabit,5.712
+C6I Eight Extra Large,c6i.8xlarge,64,32,EBS only,12.5 Gigabit,1.36
+R5 24xlarge,r5.24xlarge,768,96,EBS only,25 Gigabit,6.048
+M8GD Metal-48xl,m8gd.metal-48xl,768,192,11400 GB (6×1900 GB NVMe SSD),50 Gigabit,11.0707
+I7I Metal-24xl,i7i.metal-24xl,768,96,22500 GB (6×3750 GB NVMe SSD),Up to 56.25 Gigabit,9.0605
+C6ID Extra Large,c6id.xlarge,8,4,237 GB NVMe SSD,Up to 12.5 Gigabit,0.2016
+D2 Extra Large,d2.xlarge,30,4,6144 GB (3×2048 GB HDD),Moderate,0.69
+R5B Quadruple Extra Large,r5b.4xlarge,128,16,EBS only,Up to 10 Gigabit,1.192
+C6I 12xlarge,c6i.12xlarge,96,48,EBS only,18.75 Gigabit,2.04
+C6A 48xlarge,c6a.48xlarge,384,192,EBS only,50 Gigabit,7.344
+R6IN 16xlarge,r6in.16xlarge,512,64,EBS only,100 Gigabit,5.5786
+R5DN Extra Large,r5dn.xlarge,32,4,150 GB NVMe SSD,Up to 25 Gigabit,0.334
+M8G Medium,m8g.medium,4,1,EBS only,Up to 12.5 Gigabit,0.0449
+R7I Large,r7i.large,16,2,EBS only,Up to 12.5 Gigabit,0.1323
+M5DN Extra Large,m5dn.xlarge,16,4,150 GB NVMe SSD,Up to 25 Gigabit,0.272
+R5DN 16xlarge,r5dn.16xlarge,512,64,2400 GB (4×600 GB NVMe SSD),75 Gigabit,5.344
+I3EN Extra Large,i3en.xlarge,32,4,2500 GB NVMe SSD,Up to 25 Gigabit,0.452
+C6A Quadruple Extra Large,c6a.4xlarge,32,16,EBS only,Up to 12.5 Gigabit,0.612
+C7GD Quadruple Extra Large,c7gd.4xlarge,32,16,950 GB NVMe SSD,Up to 15 Gigabit,0.7258
+C8GD Medium,c8gd.medium,2,1,59 GB NVMe SSD,Up to 12.5 Gigabit,0.049
+C7A 12xlarge,c7a.12xlarge,96,48,EBS only,18.75 Gigabit,2.4634
+M7I Quadruple Extra Large,m7i.4xlarge,64,16,EBS only,Up to 12.5 Gigabit,0.8064
+C6G Extra Large,c6g.xlarge,8,4,EBS only,Up to 10 Gigabit,0.136
+R6ID Extra Large,r6id.xlarge,32,4,237 GB NVMe SSD,Up to 12.5 Gigabit,0.3024
+R5A 16xlarge,r5a.16xlarge,512,64,EBS only,12 Gigabit,3.616
+R6I Extra Large,r6i.xlarge,32,4,EBS only,Up to 12.5 Gigabit,0.252
+X2GD Metal,x2gd.metal,1024,64,3800 GB (2×1900 GB NVMe SSD),25 Gigabit,5.344
+R8GD Quadruple Extra Large,r8gd.4xlarge,128,16,950 GB NVMe SSD,Up to 15 Gigabit,1.1757
+R7IZ Quadruple Extra Large,r7iz.4xlarge,128,16,EBS only,Up to 12.5 Gigabit,1.488
+M5N Double Extra Large,m5n.2xlarge,32,8,EBS only,Up to 25 Gigabit,0.476
+R6G Extra Large,r6g.xlarge,32,4,EBS only,Up to 10 Gigabit,0.2016
+C5AD Quadruple Extra Large,c5ad.4xlarge,32,16,600 GB (2×300 GB NVMe SSD),Up to 10 Gigabit,0.688
+M6IDN 24xlarge,m6idn.24xlarge,384,96,5700 GB (4×1425 GB NVMe SSD),150 Gigabit,7.6378
+C5N Large,c5n.large,5,2,EBS only,Up to 25 Gigabit,0.108
+I3 High I/O Double Extra Large,i3.2xlarge,61,8,1900 GB NVMe SSD,Up to 10 Gigabit,0.624
+C6A Metal,c6a.metal,384,192,EBS only,50 Gigabit,7.344
+I3EN 3xlarge,i3en.3xlarge,96,12,7500 GB NVMe SSD,Up to 25 Gigabit,1.356
+M6ID Quadruple Extra Large,m6id.4xlarge,64,16,950 GB NVMe SSD,Up to 12.5 Gigabit,0.9492
+G3 Graphics GPU Eight Extra Large,g3.8xlarge,244,32,EBS only,10 Gigabit,2.28
+C5AD Double Extra Large,c5ad.2xlarge,16,8,300 GB NVMe SSD,Up to 10 Gigabit,0.344
+M5A Double Extra Large,m5a.2xlarge,32,8,EBS only,Up to 10 Gigabit,0.344
+I7IE Metal-48xl,i7ie.metal-48xl,1536,192,120000 GB (16×7500 GB NVMe SSD),100 Gigabit,24.9504
+M5 General Purpose Double Extra Large,m5.2xlarge,32,8,EBS only,Up to 10 Gigabit,0.384
+C7I 48xlarge,c7i.48xlarge,384,192,EBS only,50 Gigabit,8.568
+R6IDN Large,r6idn.large,16,2,118 GB NVMe SSD,Up to 25 Gigabit,0.1954
+M7I-FLEX Large,m7i-flex.large,8,2,EBS only,Up to 12.5 Gigabit,0.0958
+R5N 16xlarge,r5n.16xlarge,512,64,EBS only,75 Gigabit,4.768
+M7A Metal-48xl,m7a.metal-48xl,768,192,EBS only,50 Gigabit,11.1283
+M7A Large,m7a.large,8,2,EBS only,Up to 12.5 Gigabit,0.1159
+M6IDN Double Extra Large,m6idn.2xlarge,32,8,474 GB NVMe SSD,Up to 40 Gigabit,0.6365
+M6GD 16xlarge,m6gd.16xlarge,256,64,3800 GB (2×1900 GB NVMe SSD),25 Gigabit,2.8928
+R7A 48xlarge,r7a.48xlarge,1536,192,EBS only,50 Gigabit,14.6064
+M7A Quadruple Extra Large,m7a.4xlarge,64,16,EBS only,Up to 12.5 Gigabit,0.9274
+G5 Graphics and Machine Learning GPU Quadruple Extra Large,g5.4xlarge,64,16,600 GB NVMe SSD,Up to 25 Gigabit,1.624
+I7I 16xlarge,i7i.16xlarge,512,64,15000 GB (4×3750 GB NVMe SSD),Up to 37.5 Gigabit,6.0403
+M6GD 12xlarge,m6gd.12xlarge,192,48,2850 GB (2×1425 GB NVMe SSD),20 Gigabit,2.1696
+X1E Extra Large,x1e.xlarge,122,4,120 GB SSD,Up to 10 Gigabit,0.834
+T3 Double Extra Large,t3.2xlarge,32,8,EBS only,Up to 5 Gigabit,0.3328
+R6G Quadruple Extra Large,r6g.4xlarge,128,16,EBS only,Up to 10 Gigabit,0.8064
+H1 Double Extra Large,h1.2xlarge,32,8,2000 GB HDD,Up to 10 Gigabit,0.468
+M6A Extra Large,m6a.xlarge,16,4,EBS only,Up to 12.5 Gigabit,0.1728
+C6IN 24xlarge,c6in.24xlarge,192,96,EBS only,150 Gigabit,5.4432
+I7I 12xlarge,i7i.12xlarge,384,48,11250 GB (3×3750 GB NVMe SSD),Up to 28 Gigabit,4.5302
+R5DN 12xlarge,r5dn.12xlarge,384,48,1800 GB (2×900 GB NVMe SSD),50 Gigabit,4.008
+C5 High-CPU 12xlarge,c5.12xlarge,96,48,EBS only,12 Gigabit,2.04
+D2 Double Extra Large,d2.2xlarge,61,8,12288 GB (6×2048 GB HDD),High,1.38
+M5N Metal,m5n.metal,384,96,EBS only,100 Gigabit,5.712
+M7I Metal-24xl,m7i.metal-24xl,384,96,EBS only,37.5 Gigabit,4.8384
+C7I-FLEX Eight Extra Large,c7i-flex.8xlarge,64,32,EBS only,Up to 12.5 Gigabit,1.3566
+M6IDN 32xlarge,m6idn.32xlarge,512,128,7600 GB (4×1900 GB NVMe SSD),200 Gigabit,10.1837
+M7I 24xlarge,m7i.24xlarge,384,96,EBS only,37.5 Gigabit,4.8384
+I7I 48xlarge,i7i.48xlarge,1536,192,45000 GB (12×3750 GB NVMe SSD),Up to 100 Gigabit,18.121
+M5 General Purpose Large,m5d.large,8,2,75 GB NVMe SSD,Up to 10 Gigabit,0.113
+R6I 24xlarge,r6i.24xlarge,768,96,EBS only,37.5 Gigabit,6.048
+X2IDN 16xlarge,x2idn.16xlarge,1024,64,1900 GB NVMe SSD,50 Gigabit,6.669
+C6IN Eight Extra Large,c6in.8xlarge,64,32,EBS only,50 Gigabit,1.8144
+M6G Large,m6g.large,8,2,EBS only,Up to 10 Gigabit,0.077
+X1E Double Extra Large,x1e.2xlarge,244,8,240 GB SSD,Up to 10 Gigabit,1.668
+I2 Quadruple Extra Large,i2.4xlarge,122,16,3200 GB (4×800 GB SSD),High,3.41
+I4I Eight Extra Large,i4i.8xlarge,256,32,7500 GB (2×3750 GB NVMe SSD),18.75 Gigabit,2.746
+M5AD Extra Large,m5ad.xlarge,16,4,150 GB NVMe SSD,Up to 10 Gigabit,0.206
+C6IN 16xlarge,c6in.16xlarge,128,64,EBS only,100 Gigabit,3.6288
+I7IE 3xlarge,i7ie.3xlarge,96,12,7500 GB NVMe SSD,Up to 25 Gigabit,1.5594
+R7G Quadruple Extra Large,r7g.4xlarge,128,16,EBS only,Up to 15 Gigabit,0.8568
+I7I Large,i7i.large,16,2,468 GB NVMe SSD,Up to 10 Gigabit,0.1888
+C6GN Eight Extra Large,c6gn.8xlarge,64,32,EBS only,50 Gigabit,1.3824
+R5D Large,r5d.large,16,2,75 GB NVMe SSD,Up to 10 Gigabit,0.144
+C5 High-CPU Large,c5.large,4,2,EBS only,Up to 10 Gigabit,0.085
+R5AD Large,r5ad.large,16,2,75 GB NVMe SSD,Up to 10 Gigabit,0.131
+M6GD Quadruple Extra Large,m6gd.4xlarge,64,16,950 GB NVMe SSD,Up to 10 Gigabit,0.7232
+C6ID Eight Extra Large,c6id.8xlarge,64,32,1900 GB NVMe SSD,12.5 Gigabit,1.6128
+P5 48xlarge,p5.48xlarge,2048,192,30400 GB (8×3800 GB NVMe SSD),3200 Gigabit,
+G4DN Double Extra Large,g4dn.2xlarge,32,8,225 GB NVMe SSD,Up to 25 Gigabit,0.752
+R5DN 24xlarge,r5dn.24xlarge,768,96,3600 GB (4×900 GB NVMe SSD),100 Gigabit,8.016
+M7GD Large,m7gd.large,8,2,118 GB NVMe SSD,Up to 12.5 Gigabit,0.1068
+M6I Extra Large,m6i.xlarge,16,4,EBS only,Up to 12.5 Gigabit,0.192
+G6 Graphics and Machine Learning GPU Quadruple Extra Large,g6.4xlarge,64,16,600 GB NVMe SSD,Up to 25 Gigabit,1.3232
+R7A 24xlarge,r7a.24xlarge,768,96,EBS only,37.5 Gigabit,7.3032
+R4 High-Memory Eight Extra Large,r4.8xlarge,244,32,EBS only,10 Gigabit,2.128
+I7IE 6xlarge,i7ie.6xlarge,192,24,15000 GB (2×7500 GB NVMe SSD),Up to 25 Gigabit,3.1188
+R7IZ 32xlarge,r7iz.32xlarge,1024,128,EBS only,50 Gigabit,11.904
+M5A 12xlarge,m5a.12xlarge,192,48,EBS only,10 Gigabit,2.064
+R5A Quadruple Extra Large,r5a.4xlarge,128,16,EBS only,Up to 10 Gigabit,0.904
+C8GD Large,c8gd.large,4,2,118 GB NVMe SSD,Up to 12.5 Gigabit,0.098
+R4 High-Memory 16xlarge,r4.16xlarge,488,64,EBS only,25 Gigabit,4.256
+M5AD 24xlarge,m5ad.24xlarge,384,96,3600 GB (4×900 GB NVMe SSD),20 Gigabit,4.944
+M5DN Quadruple Extra Large,m5dn.4xlarge,64,16,600 GB (2×300 GB NVMe SSD),Up to 25 Gigabit,1.088
+M7A Double Extra Large,m7a.2xlarge,32,8,EBS only,Up to 12.5 Gigabit,0.4637
+R6IN Double Extra Large,r6in.2xlarge,64,8,EBS only,Up to 40 Gigabit,0.6973
+C5AD 24xlarge,c5ad.24xlarge,192,96,3800 GB (2×1900 GB NVMe SSD),20 Gigabit,4.128
+C6ID 16xlarge,c6id.16xlarge,128,64,3800 GB (2×1900 GB NVMe SSD),25 Gigabit,3.2256
+U-3TB1 56xlarge,u-3tb1.56xlarge,3072,224,EBS only,50 Gigabit,27.3
+M5ZN 12xlarge,m5zn.12xlarge,192,48,EBS only,100 Gigabit,3.9641
+M6G Extra Large,m6g.xlarge,16,4,EBS only,Up to 10 Gigabit,0.154
+G6 Graphics and Machine Learning GPU Double Extra Large,g6.2xlarge,32,8,450 GB NVMe SSD,Up to 10 Gigabit,0.9776
+M7GD Metal,m7gd.metal,256,64,3800 GB (2×1900 GB NVMe SSD),30 Gigabit,3.4171
+R8GD 24xlarge,r8gd.24xlarge,768,96,5700 GB (3×1900 GB NVMe SSD),40 Gigabit,7.0541
+C5 High-CPU Quadruple Extra Large,c5d.4xlarge,32,16,400 GB NVMe SSD,Up to 10 Gigabit,0.768
+C8GD Metal-24xl,c8gd.metal-24xl,192,96,5700 GB (3×1900 GB NVMe SSD),40 Gigabit,4.703
+R7G Metal,r7g.metal,512,64,EBS only,30 Gigabit,3.4272
+I4G Large,i4g.large,16,2,468 GB NVMe SSD,Up to 10 Gigabit,0.1544
+M6IDN Quadruple Extra Large,m6idn.4xlarge,64,16,950 GB NVMe SSD,Up to 50 Gigabit,1.273
+M8G Metal-48xl,m8g.metal-48xl,768,192,EBS only,50 Gigabit,8.617
+M6IDN 12xlarge,m6idn.12xlarge,192,48,2850 GB (2×1425 GB NVMe SSD),75 Gigabit,3.8189
+M6G Double Extra Large,m6g.2xlarge,32,8,EBS only,Up to 10 Gigabit,0.308
+C6I 32xlarge,c6i.32xlarge,256,128,EBS only,50 Gigabit,5.44
+T2 Double Extra Large,t2.2xlarge,32,8,EBS only,Moderate,0.3712
+R6A 48xlarge,r6a.48xlarge,1536,192,EBS only,50 Gigabit,10.8864
+X1E Eight Extra Large,x1e.8xlarge,976,32,960 GB SSD,Up to 10 Gigabit,6.672
+R5N Double Extra Large,r5n.2xlarge,64,8,EBS only,Up to 25 Gigabit,0.596
+I3 High I/O 16xlarge,i3.16xlarge,488,64,15200 GB (8×1900 GB NVMe SSD),25 Gigabit,4.992
+R5 Eight Extra Large,r5.8xlarge,256,32,EBS only,10 Gigabit,2.016
+I3EN Metal,i3en.metal,768,96,60000 GB (8×7500 GB NVMe SSD),100 Gigabit,10.848
+G4AD Extra Large,g4ad.xlarge,16,4,150 GB NVMe SSD,Up to 10 Gigabit,0.3785
+M6A 32xlarge,m6a.32xlarge,512,128,EBS only,50 Gigabit,5.5296
+R6I 12xlarge,r6i.12xlarge,384,48,EBS only,18.75 Gigabit,3.024
+R7IZ Double Extra Large,r7iz.2xlarge,64,8,EBS only,Up to 12.5 Gigabit,0.744
+I2 Eight Extra Large,i2.8xlarge,244,32,6400 GB (8×800 GB SSD),10 Gigabit,6.82
+D3 Quadruple Extra Large,d3.4xlarge,128,16,23760 GB (12×1980 GB NVMe HDD),Up to 15 Gigabit,1.998
+C5AD Extra Large,c5ad.xlarge,8,4,150 GB NVMe SSD,Up to 10 Gigabit,0.172
+U-24TB1 112xlarge,u-24tb1.112xlarge,24576,448,EBS only,100 Gigabit,218.4
+R5 Large,r5.large,16,2,EBS only,Up to 10 Gigabit,0.126
+I7IE Double Extra Large,i7ie.2xlarge,64,8,5000 GB (2×2500 GB NVMe SSD),Up to 25 Gigabit,1.0396
+C7G Quadruple Extra Large,c7g.4xlarge,32,16,EBS only,Up to 15 Gigabit,0.58
+R5N 12xlarge,r5n.12xlarge,384,48,EBS only,50 Gigabit,3.576
+M7GD Double Extra Large,m7gd.2xlarge,32,8,474 GB NVMe SSD,Up to 15 Gigabit,0.4271
+I7IE Metal-24xl,i7ie.metal-24xl,768,96,60000 GB (8×7500 GB NVMe SSD),Up to 100 Gigabit,12.4752
+M5 General Purpose Quadruple Extra Large,m5d.4xlarge,64,16,600 GB (2×300 GB NVMe SSD),Up to 10 Gigabit,0.904
+M5 General Purpose 12xlarge,m5d.12xlarge,192,48,1800 GB (2×900 GB NVMe SSD),12 Gigabit,2.712
+G6e Graphics and Machine Learning GPU Quadruple Extra Large,g6e.4xlarge,128,16,600 GB NVMe SSD,20 Gigabit,3.0042
+C7GD 12xlarge,c7gd.12xlarge,96,48,2850 GB (2×1425 GB NVMe SSD),22.5 Gigabit,2.1773
+M6GD Metal,m6gd.metal,256,64,3800 GB (2×1900 GB NVMe SSD),25 Gigabit,2.8928
+G4DN 12xlarge,g4dn.12xlarge,192,48,900 GB NVMe SSD,50 Gigabit,3.912
+M4 General Purpose Extra Large,m4.xlarge,16,4,EBS only,High,0.2
+M6IDN Large,m6idn.large,8,2,118 GB NVMe SSD,Up to 25 Gigabit,0.1591
+M5A Quadruple Extra Large,m5a.4xlarge,64,16,EBS only,Up to 10 Gigabit,0.688
+C7I Quadruple Extra Large,c7i.4xlarge,32,16,EBS only,Up to 12.5 Gigabit,0.714
+INF1 6xlarge,inf1.6xlarge,48,24,EBS only,25 Gigabit,1.18
+M5AD Double Extra Large,m5ad.2xlarge,32,8,300 GB NVMe SSD,Up to 10 Gigabit,0.412
+G3S Extra Large,g3s.xlarge,30,4,EBS only,10 Gigabit,0.75
+M6G Quadruple Extra Large,m6g.4xlarge,64,16,EBS only,Up to 10 Gigabit,0.616
+R7I Metal-48xl,r7i.metal-48xl,1536,192,EBS only,50 Gigabit,12.7008
+X2IDN 24xlarge,x2idn.24xlarge,1536,96,2850 GB (2×1425 GB NVMe SSD),75 Gigabit,10.0035
+R6ID 12xlarge,r6id.12xlarge,384,48,2850 GB (2×1425 GB NVMe SSD),18.75 Gigabit,3.6288
+G6 Graphics and Machine Learning GPU 12xlarge,g6.12xlarge,192,48,3760 GB (4×940 GB NVMe SSD),40 Gigabit,4.6016
+X2IEDN Quadruple Extra Large,x2iedn.4xlarge,512,16,475 GB NVMe SSD,Up to 25 Gigabit,3.3345
+Z1D 6xlarge,z1d.6xlarge,192,24,900 GB NVMe SSD,12 Gigabit,2.232
+R8GD Eight Extra Large,r8gd.8xlarge,256,32,1900 GB NVMe SSD,15 Gigabit,2.3514
+M6I Metal,m6i.metal,512,128,EBS only,50 Gigabit,6.144
+T3 Small,t3.small,2,2,EBS only,Up to 5 Gigabit,0.0208
+C7GD Double Extra Large,c7gd.2xlarge,16,8,474 GB NVMe SSD,Up to 15 Gigabit,0.3629
+T4G Small,t4g.small,2,2,EBS only,Up to 5 Gigabit,0.0168
+C5 High-CPU 12xlarge,c5d.12xlarge,96,48,1800 GB (2×900 GB NVMe SSD),12 Gigabit,2.304
+C4 High-CPU Double Extra Large,c4.2xlarge,15,8,EBS only,High,0.398
+C7GD Metal,c7gd.metal,128,64,3800 GB (2×1900 GB NVMe SSD),30 Gigabit,2.903
+R7A Metal-48xl,r7a.metal-48xl,1536,192,EBS only,50 Gigabit,14.6064
+R5N 24xlarge,r5n.24xlarge,768,96,EBS only,100 Gigabit,7.152
+G5 Graphics and Machine Learning GPU 16xlarge,g5.16xlarge,256,64,1900 GB NVMe SSD,25 Gigabit,4.096
+T3 Medium,t3.medium,4,2,EBS only,Up to 5 Gigabit,0.0416
+C6IN Extra Large,c6in.xlarge,8,4,EBS only,Up to 30 Gigabit,0.2268
+R6IN 32xlarge,r6in.32xlarge,1024,128,EBS only,200 Gigabit,11.1571
+T4G Double Extra Large,t4g.2xlarge,32,8,EBS only,Up to 5 Gigabit,0.2688
+Gr6 Graphics and Machine Learning GPU High RAM ratio Eight Extra Large,gr6.8xlarge,256,32,900 GB (2×450 GB NVMe SSD),25 Gigabit,2.4464
+C6G Medium,c6g.medium,2,1,EBS only,Up to 10 Gigabit,0.034
+T3A Large,t3a.large,8,2,EBS only,Up to 5 Gigabit,0.0752
+T3A Micro,t3a.micro,1,2,EBS only,Up to 5 Gigabit,0.0094
+R6GD 12xlarge,r6gd.12xlarge,384,48,2850 GB (2×1425 GB NVMe SSD),20 Gigabit,2.7648
+M4 General Purpose Quadruple Extra Large,m4.4xlarge,64,16,EBS only,High,0.8
+C5A Eight Extra Large,c5a.8xlarge,64,32,EBS only,10 Gigabit,1.232
+D3 Eight Extra Large,d3.8xlarge,256,32,47520 GB (24×1980 GB NVMe HDD),25 Gigabit,3.9955
+C5A Double Extra Large,c5a.2xlarge,16,8,EBS only,Up to 10 Gigabit,0.308
+C6GD Extra Large,c6gd.xlarge,8,4,237 GB NVMe SSD,Up to 10 Gigabit,0.1536
+R7GD Double Extra Large,r7gd.2xlarge,64,8,474 GB NVMe SSD,Up to 15 Gigabit,0.5443
+R5DN Double Extra Large,r5dn.2xlarge,64,8,300 GB NVMe SSD,Up to 25 Gigabit,0.668
+R7IZ Large,r7iz.large,16,2,EBS only,Up to 12.5 Gigabit,0.186
+R7GD 16xlarge,r7gd.16xlarge,512,64,3800 GB (2×1900 GB NVMe SSD),30 Gigabit,4.3546
+I3 High I/O Extra Large,i3.xlarge,30,4,950 GB NVMe SSD,Up to 10 Gigabit,0.312
+M5ZN Double Extra Large,m5zn.2xlarge,32,8,EBS only,Up to 25 Gigabit,0.6607
+M6IN Eight Extra Large,m6in.8xlarge,128,32,EBS only,50 Gigabit,2.2277
+M6IN 24xlarge,m6in.24xlarge,384,96,EBS only,150 Gigabit,6.683
+R5DN Metal,r5dn.metal,768,96,3600 GB (4×900 GB NVMe SSD),100 Gigabit,8.016
+I4I 32xlarge,i4i.32xlarge,1024,128,30000 GB (8×3750 GB NVMe SSD),75 Gigabit,10.9824
+C5AD 12xlarge,c5ad.12xlarge,96,48,1800 GB (2×900 GB NVMe SSD),12 Gigabit,2.064
+R7IZ Metal-32xl,r7iz.metal-32xl,1024,128,EBS only,50 Gigabit,11.904
+M5DN Metal,m5dn.metal,384,96,3600 GB (4×900 GB NVMe SSD),100 Gigabit,6.528
+R6GD Eight Extra Large,r6gd.8xlarge,256,32,1900 GB NVMe SSD,12 Gigabit,1.8432
+M5 General Purpose Metal,m5.metal,384,96,EBS only,25 Gigabit,4.608
+C4 High-CPU Eight Extra Large,c4.8xlarge,60,36,EBS only,10 Gigabit,1.591
+C7I 24xlarge,c7i.24xlarge,192,96,EBS only,37.5 Gigabit,4.284
+M6IDN 16xlarge,m6idn.16xlarge,256,64,3800 GB (2×1900 GB NVMe SSD),100 Gigabit,5.0918
+C5AD 16xlarge,c5ad.16xlarge,128,64,2400 GB (2×1200 GB NVMe SSD),20 Gigabit,2.752
+U-9TB1 112xlarge,u-9tb1.112xlarge,9216,448,EBS only,100 Gigabit,81.9
+M5N Extra Large,m5n.xlarge,16,4,EBS only,Up to 25 Gigabit,0.238
+X1E Quadruple Extra Large,x1e.4xlarge,488,16,480 GB SSD,Up to 10 Gigabit,3.336
+C6I Quadruple Extra Large,c6i.4xlarge,32,16,EBS only,Up to 12.5 Gigabit,0.68
+C6A Double Extra Large,c6a.2xlarge,16,8,EBS only,Up to 12.5 Gigabit,0.306
+R7GD 12xlarge,r7gd.12xlarge,384,48,2850 GB (2×1425 GB NVMe SSD),22.5 Gigabit,3.2659
+C5 High-CPU Extra Large,c5d.xlarge,8,4,100 GB NVMe SSD,Up to 10 Gigabit,0.192
+M6GD Eight Extra Large,m6gd.8xlarge,128,32,1900 GB NVMe SSD,12 Gigabit,1.4464
+TRN1 32xlarge,trn1.32xlarge,512,128,7600 GB (4×1900 GB NVMe SSD),8x 100 Gigabit,21.5
+X1 Extra High-Memory 32xlarge,x1.32xlarge,1952,128,3840 GB (2×1920 GB SSD),25 Gigabit,13.338
+G4DN Extra Large,g4dn.xlarge,16,4,125 GB NVMe SSD,Up to 25 Gigabit,0.526
+G3 Graphics GPU 16xlarge,g3.16xlarge,488,64,EBS only,20 Gigabit,4.56
+C7A 48xlarge,c7a.48xlarge,384,192,EBS only,50 Gigabit,9.8534
+M7I Double Extra Large,m7i.2xlarge,32,8,EBS only,Up to 12.5 Gigabit,0.4032
+R5D Metal,r5d.metal,768,96,3600 GB (4×900 GB NVMe SSD),25 Gigabit,6.912
+R8G 16xlarge,r8g.16xlarge,512,64,EBS only,30 Gigabit,3.7702
+C7GD 16xlarge,c7gd.16xlarge,128,64,3800 GB (2×1900 GB NVMe SSD),30 Gigabit,2.903
+R6G Large,r6g.large,16,2,EBS only,Up to 10 Gigabit,0.1008
+R8GD Large,r8gd.large,16,2,118 GB NVMe SSD,Up to 12.5 Gigabit,0.147
+A1 Quadruple Extra Large,a1.4xlarge,32,16,EBS only,Up to 10 Gigabit,0.408
+R7IZ Metal-16xl,r7iz.metal-16xl,512,64,EBS only,25 Gigabit,5.952
+IM4GN 16xlarge,im4gn.16xlarge,256,64,30000 GB (4×7500 GB NVMe SSD),100 Gigabit,5.8207
+R6IN Eight Extra Large,r6in.8xlarge,256,32,EBS only,50 Gigabit,2.7893
+G6e Graphics and Machine Learning GPU 24xlarge,g6e.24xlarge,768,96,3800 GB (2×1900 GB NVMe SSD),200 Gigabit,15.0656
+C6A 12xlarge,c6a.12xlarge,96,48,EBS only,18.75 Gigabit,1.836
+R7I Double Extra Large,r7i.2xlarge,64,8,EBS only,Up to 12.5 Gigabit,0.5292
+M6A 16xlarge,m6a.16xlarge,256,64,EBS only,25 Gigabit,2.7648
+R6A Eight Extra Large,r6a.8xlarge,256,32,EBS only,12.5 Gigabit,1.8144
+I7I Metal-48xl,i7i.metal-48xl,1536,192,45000 GB (12×3750 GB NVMe SSD),Up to 100 Gigabit,18.121
+R8GD Medium,r8gd.medium,8,1,59 GB NVMe SSD,Up to 12.5 Gigabit,0.0735
+R6I Eight Extra Large,r6i.8xlarge,256,32,EBS only,12.5 Gigabit,2.016
+C7I Metal-48xl,c7i.metal-48xl,384,192,EBS only,50 Gigabit,8.568
+G4DN 16xlarge,g4dn.16xlarge,256,64,900 GB NVMe SSD,50 Gigabit,4.352
+X2GD Double Extra Large,x2gd.2xlarge,128,8,475 GB NVMe SSD,Up to 10 Gigabit,0.668
+C8G Quadruple Extra Large,c8g.4xlarge,32,16,EBS only,Up to 15 Gigabit,0.6381
+I7IE 18xlarge,i7ie.18xlarge,576,72,45000 GB (6×7500 GB NVMe SSD),Up to 75 Gigabit,9.3564
+R7A Large,r7a.large,16,2,EBS only,Up to 12.5 Gigabit,0.1522
+M5 General Purpose Extra Large,m5d.xlarge,16,4,150 GB NVMe SSD,Up to 10 Gigabit,0.226
+C8G Double Extra Large,c8g.2xlarge,16,8,EBS only,Up to 15 Gigabit,0.319
+T4G Nano,t4g.nano,0,2,EBS only,Up to 5 Gigabit,0.0042
+C7GN Metal,c7gn.metal,128,64,EBS only,200 Gigabit,3.9936
+M5N Eight Extra Large,m5n.8xlarge,128,32,EBS only,25 Gigabit,1.904
+R6I 16xlarge,r6i.16xlarge,512,64,EBS only,25 Gigabit,4.032
+M8G 24xlarge,m8g.24xlarge,384,96,EBS only,40 Gigabit,4.3085
+R3 High-Memory Extra Large,r3.xlarge,30,4,80 GB SSD,Moderate,0.333
+X1 Extra High-Memory 16xlarge,x1.16xlarge,976,64,1920 GB SSD,10 Gigabit,6.669
+C7GN Double Extra Large,c7gn.2xlarge,16,8,EBS only,Up to 50 Gigabit,0.4992
+HPC7A 24xlarge,hpc7a.24xlarge,768,48,EBS only,300 Gigabit,
+C6A 24xlarge,c6a.24xlarge,192,96,EBS only,37.5 Gigabit,3.672
+C5A Large,c5a.large,4,2,EBS only,Up to 10 Gigabit,0.077
+C6G 12xlarge,c6g.12xlarge,96,48,EBS only,20 Gigabit,1.632
+P3 High Performance GPU 16xlarge,p3.16xlarge,488,64,EBS only,25 Gigabit,24.48
+R5B 24xlarge,r5b.24xlarge,768,96,EBS only,25 Gigabit,7.152
+R8GD Metal-24xl,r8gd.metal-24xl,768,96,5700 GB (3×1900 GB NVMe SSD),40 Gigabit,7.0541
+C7A Double Extra Large,c7a.2xlarge,16,8,EBS only,Up to 12.5 Gigabit,0.4106
+M8G Large,m8g.large,8,2,EBS only,Up to 12.5 Gigabit,0.0898
+M6A 12xlarge,m6a.12xlarge,192,48,EBS only,18.75 Gigabit,2.0736
+C7GN Medium,c7gn.medium,2,1,EBS only,Up to 25 Gigabit,0.0624
+R7GD Quadruple Extra Large,r7gd.4xlarge,128,16,950 GB NVMe SSD,Up to 15 Gigabit,1.0886
+M6IN Quadruple Extra Large,m6in.4xlarge,64,16,EBS only,Up to 50 Gigabit,1.1138
+M6A Quadruple Extra Large,m6a.4xlarge,64,16,EBS only,Up to 12.5 Gigabit,0.6912
+R6I Quadruple Extra Large,r6i.4xlarge,128,16,EBS only,Up to 12.5 Gigabit,1.008
+R5 12xlarge,r5.12xlarge,384,48,EBS only,12 Gigabit,3.024
+R5D Double Extra Large,r5d.2xlarge,64,8,300 GB NVMe SSD,Up to 10 Gigabit,0.576
+INF1 24xlarge,inf1.24xlarge,192,96,EBS only,100 Gigabit,4.721
+R7A 32xlarge,r7a.32xlarge,1024,128,EBS only,50 Gigabit,9.7376
+C7A 16xlarge,c7a.16xlarge,128,64,EBS only,25 Gigabit,3.2845
+C8GD Metal-48xl,c8gd.metal-48xl,384,192,11400 GB (6×1900 GB NVMe SSD),50 Gigabit,9.4061
+C6GD Large,c6gd.large,4,2,118 GB NVMe SSD,Up to 10 Gigabit,0.0768
+C5 High-CPU 24xlarge,c5.24xlarge,192,96,EBS only,25 Gigabit,4.08
+M5ZN Extra Large,m5zn.xlarge,16,4,EBS only,Up to 25 Gigabit,0.3303
+C7GN 16xlarge,c7gn.16xlarge,128,64,EBS only,200 Gigabit,3.9936
+C5A 16xlarge,c5a.16xlarge,128,64,EBS only,20 Gigabit,2.464
+M7I 12xlarge,m7i.12xlarge,192,48,EBS only,18.75 Gigabit,2.4192
+H1 Eight Extra Large,h1.8xlarge,128,32,8000 GB (4×2000 GB HDD),10 Gigabit,1.872
+P2 General Purpose GPU Extra Large,p2.xlarge,61,4,EBS only,High,0.9
+C7G Medium,c7g.medium,2,1,EBS only,Up to 12.5 Gigabit,0.0363
+U-12TB1 112xlarge,u-12tb1.112xlarge,12288,448,EBS only,100 Gigabit,109.2
+R8GD Extra Large,r8gd.xlarge,32,4,237 GB NVMe SSD,Up to 12.5 Gigabit,0.2939
+R5 Extra Large,r5.xlarge,32,4,EBS only,Up to 10 Gigabit,0.252
+G4DN Metal,g4dn.metal,384,96,1800 GB (2×900 GB NVMe SSD),100 Gigabit,7.824
+C7GN 12xlarge,c7gn.12xlarge,96,48,EBS only,150 Gigabit,2.9952
+M8G Double Extra Large,m8g.2xlarge,32,8,EBS only,Up to 15 Gigabit,0.359
+P5e High Performance Computing GPU 48xlarge,p5e.48xlarge,2048,192,EBS only,3200 Gigabit,
+C7I Large,c7i.large,4,2,EBS only,Up to 12.5 Gigabit,0.0892
+R7GD Extra Large,r7gd.xlarge,32,4,237 GB NVMe SSD,Up to 12.5 Gigabit,0.2722
+R6I 32xlarge,r6i.32xlarge,1024,128,EBS only,50 Gigabit,8.064
+M7G Medium,m7g.medium,4,1,EBS only,Up to 12.5 Gigabit,0.0408
+T2 Extra Large,t2.xlarge,16,4,EBS only,Moderate,0.1856
+C4 High-CPU Large,c4.large,3,2,EBS only,Moderate,0.1
+P5en High Performance Computing GPU 48xlarge,p5en.48xlarge,2048,192,30400 GB (8×3800 GB NVMe SSD),3200 Gigabit,63.296
+M7GD Extra Large,m7gd.xlarge,16,4,237 GB NVMe SSD,Up to 12.5 Gigabit,0.2136
+C5N Quadruple Extra Large,c5n.4xlarge,42,16,EBS only,Up to 25 Gigabit,0.864
+M6I Quadruple Extra Large,m6i.4xlarge,64,16,EBS only,Up to 12.5 Gigabit,0.768
+R5A Double Extra Large,r5a.2xlarge,64,8,EBS only,Up to 10 Gigabit,0.452
+R8G Double Extra Large,r8g.2xlarge,64,8,EBS only,Up to 15 Gigabit,0.4713
+C8GD 24xlarge,c8gd.24xlarge,192,96,5700 GB (3×1900 GB NVMe SSD),40 Gigabit,4.703
+M7I-FLEX 16xlarge,m7i-flex.16xlarge,256,64,EBS only,Up to 25 Gigabit,3.0643
+R5N Quadruple Extra Large,r5n.4xlarge,128,16,EBS only,Up to 25 Gigabit,1.192
+T2 Medium,t2.medium,4,2,EBS only,Low to Moderate,0.0464
+R6IN Extra Large,r6in.xlarge,32,4,EBS only,Up to 30 Gigabit,0.3487
+M5AD Quadruple Extra Large,m5ad.4xlarge,64,16,600 GB (2×300 GB NVMe SSD),Up to 10 Gigabit,0.824
+M7A Medium,m7a.medium,4,1,EBS only,Up to 12.5 Gigabit,0.058
+C6GD 16xlarge,c6gd.16xlarge,128,64,3800 GB (2×1900 GB NVMe SSD),25 Gigabit,2.4576
+R7GD Medium,r7gd.medium,8,1,59 GB NVMe SSD,Up to 12.5 Gigabit,0.068
+R7I 12xlarge,r7i.12xlarge,384,48,EBS only,18.75 Gigabit,3.1752
+M7I-FLEX Double Extra Large,m7i-flex.2xlarge,32,8,EBS only,Up to 12.5 Gigabit,0.383
+M5AD 12xlarge,m5ad.12xlarge,192,48,1800 GB (2×900 GB NVMe SSD),10 Gigabit,2.472
+R6GD Double Extra Large,r6gd.2xlarge,64,8,474 GB NVMe SSD,Up to 10 Gigabit,0.4608
+M6A Metal,m6a.metal,768,192,EBS only,50 Gigabit,8.2944
+T2 Large,t2.large,8,2,EBS only,Low to Moderate,0.0928
+X2IDN 32xlarge,x2idn.32xlarge,2048,128,3800 GB (2×1900 GB NVMe SSD),100 Gigabit,13.338
+C6GD Eight Extra Large,c6gd.8xlarge,64,32,1900 GB NVMe SSD,12 Gigabit,1.2288
+C7A Extra Large,c7a.xlarge,8,4,EBS only,Up to 12.5 Gigabit,0.2053
+I7I Extra Large,i7i.xlarge,32,4,937 GB NVMe SSD,Up to 10 Gigabit,0.3775
+G5 Graphics and Machine Learning GPU 24xlarge,g5.24xlarge,384,96,3800 GB NVMe SSD,50 Gigabit,8.144
+M7G Extra Large,m7g.xlarge,16,4,EBS only,Up to 12.5 Gigabit,0.1632
+C5A Quadruple Extra Large,c5a.4xlarge,32,16,EBS only,Up to 10 Gigabit,0.616
+M7G Quadruple Extra Large,m7g.4xlarge,64,16,EBS only,Up to 15 Gigabit,0.6528
+M6GD Double Extra Large,m6gd.2xlarge,32,8,474 GB NVMe SSD,Up to 10 Gigabit,0.3616
+I3 High I/O Quadruple Extra Large,i3.4xlarge,122,16,3800 GB (2×1900 GB NVMe SSD),Up to 10 Gigabit,1.248
+M6G Medium,m6g.medium,4,1,EBS only,Up to 10 Gigabit,0.0385
+M6IDN Eight Extra Large,m6idn.8xlarge,128,32,1900 GB NVMe SSD,50 Gigabit,2.5459
+R5DN Quadruple Extra Large,r5dn.4xlarge,128,16,600 GB (2×300 GB NVMe SSD),Up to 25 Gigabit,1.336
+M7G 16xlarge,m7g.16xlarge,256,64,EBS only,30 Gigabit,2.6112
+M5 General Purpose 16xlarge,m5.16xlarge,256,64,EBS only,20 Gigabit,3.072
+R7G Medium,r7g.medium,8,1,EBS only,Up to 12.5 Gigabit,0.0536
+C8G Medium,c8g.medium,2,1,EBS only,Up to 12.5 Gigabit,0.0399
+R5D Extra Large,r5d.xlarge,32,4,150 GB NVMe SSD,Up to 10 Gigabit,0.288
+R8G Metal-24xl,r8g.metal-24xl,768,96,EBS only,40 Gigabit,5.6554
+R5A 12xlarge,r5a.12xlarge,384,48,EBS only,10 Gigabit,2.712
+M7A 24xlarge,m7a.24xlarge,384,96,EBS only,37.5 Gigabit,5.5642
+M4 General Purpose Large,m4.large,8,2,EBS only,Moderate,0.1
+R8GD Metal-48xl,r8gd.metal-48xl,1536,192,11400 GB (6×1900 GB NVMe SSD),50 Gigabit,14.1082
+C8G 16xlarge,c8g.16xlarge,128,64,EBS only,30 Gigabit,2.5523
+C8GD 16xlarge,c8gd.16xlarge,128,64,3800 GB (2×1900 GB NVMe SSD),30 Gigabit,3.1354
+C8GD Eight Extra Large,c8gd.8xlarge,64,32,1900 GB NVMe SSD,15 Gigabit,1.5677
+R7I 24xlarge,r7i.24xlarge,768,96,EBS only,37.5 Gigabit,6.3504
+U-12TB1 Metal,u-12tb1.metal,12288,448,EBS only,100 Gigabit,
+R4 High-Memory Large,r4.large,15,2,EBS only,Up to 10 Gigabit,0.133
+I4I Large,i4i.large,16,2,468 GB NVMe SSD,Up to 10 Gigabit,0.172
+X2GD Large,x2gd.large,32,2,118 GB NVMe SSD,Up to 10 Gigabit,0.167
+M8GD 48xlarge,m8gd.48xlarge,768,192,11400 GB (6×1900 GB NVMe SSD),50 Gigabit,11.0707
+C8GD Extra Large,c8gd.xlarge,8,4,237 GB NVMe SSD,Up to 12.5 Gigabit,0.196
+R7G 16xlarge,r7g.16xlarge,512,64,EBS only,30 Gigabit,3.4272
+R5B 16xlarge,r5b.16xlarge,512,64,EBS only,20 Gigabit,4.768
+R5AD 12xlarge,r5ad.12xlarge,384,48,1800 GB (2×900 GB NVMe SSD),10 Gigabit,3.144
+G6 Graphics and Machine Learning GPU 24xlarge,g6.24xlarge,384,96,3760 GB (4×940 GB NVMe SSD),50 Gigabit,6.6752
+G6 Graphics and Machine Learning GPU Eight Extra Large,g6.8xlarge,128,32,900 GB (2×450 GB NVMe SSD),25 Gigabit,2.0144
+C6GD Double Extra Large,c6gd.2xlarge,16,8,474 GB NVMe SSD,Up to 10 Gigabit,0.3072
+C7G 12xlarge,c7g.12xlarge,96,48,EBS only,22.5 Gigabit,1.74
+G4AD Double Extra Large,g4ad.2xlarge,32,8,300 GB NVMe SSD,Up to 10 Gigabit,0.5412
+M7G Large,m7g.large,8,2,EBS only,Up to 12.5 Gigabit,0.0816
+C6IN 32xlarge,c6in.32xlarge,256,128,EBS only,200 Gigabit,7.2576
+T2 Small,t2.small,2,1,EBS only,Low to Moderate,0.023
+R8G Large,r8g.large,16,2,EBS only,Up to 12.5 Gigabit,0.1178
+C6G Eight Extra Large,c6g.8xlarge,64,32,EBS only,12 Gigabit,1.088
+X2GD Eight Extra Large,x2gd.8xlarge,512,32,1900 GB NVMe SSD,12 Gigabit,2.672
+C7I-FLEX Large,c7i-flex.large,4,2,EBS only,Up to 12.5 Gigabit,0.0848
+R6IDN Double Extra Large,r6idn.2xlarge,64,8,474 GB NVMe SSD,Up to 40 Gigabit,0.7816
+C6GD 12xlarge,c6gd.12xlarge,96,48,2850 GB (2×1425 GB NVMe SSD),20 Gigabit,1.8432
+IM4GN Extra Large,im4gn.xlarge,16,4,1875 GB NVMe SSD,Up to 25 Gigabit,0.3638
+G4AD 16xlarge,g4ad.16xlarge,256,64,2400 GB (2×1200 GB NVMe SSD),25 Gigabit,3.468
+M5DN Large,m5dn.large,8,2,75 GB NVMe SSD,Up to 25 Gigabit,0.136
+C7GN Eight Extra Large,c7gn.8xlarge,64,32,EBS only,100 Gigabit,1.9968
+R6A Metal,r6a.metal,1536,192,EBS only,50 Gigabit,10.8864
+A1 Double Extra Large,a1.2xlarge,16,8,EBS only,Up to 10 Gigabit,0.204
+HPC6ID 32xlarge,hpc6id.32xlarge,1024,64,EBS only,200 Gigabit,
+R5B Extra Large,r5b.xlarge,32,4,EBS only,Up to 10 Gigabit,0.298
+M6G 12xlarge,m6g.12xlarge,192,48,EBS only,20 Gigabit,1.848
+C7I-FLEX Quadruple Extra Large,c7i-flex.4xlarge,32,16,EBS only,Up to 12.5 Gigabit,0.6783
+P3 High Performance GPU Eight Extra Large,p3.8xlarge,244,32,EBS only,10 Gigabit,12.24
+G3 Graphics GPU Quadruple Extra Large,g3.4xlarge,122,16,EBS only,Up to 10 Gigabit,1.14
+G4DN Quadruple Extra Large,g4dn.4xlarge,64,16,225 GB NVMe SSD,Up to 25 Gigabit,1.204
+M8G Quadruple Extra Large,m8g.4xlarge,64,16,EBS only,Up to 15 Gigabit,0.7181
+HPC7A 12xlarge,hpc7a.12xlarge,768,24,EBS only,300 Gigabit,
+R7G 12xlarge,r7g.12xlarge,384,48,EBS only,22.5 Gigabit,2.5704
+I3 High I/O Metal,i3.metal,512,72,15200 GB (8×1900 GB NVMe SSD),25 Gigabit,4.992
+R6GD Extra Large,r6gd.xlarge,32,4,237 GB NVMe SSD,Up to 10 Gigabit,0.2304
+R6IDN Extra Large,r6idn.xlarge,32,4,237 GB NVMe SSD,Up to 30 Gigabit,0.3908
+M7GD 12xlarge,m7gd.12xlarge,192,48,2850 GB (2×1425 GB NVMe SSD),22.5 Gigabit,2.5628
+C7I-FLEX 16xlarge,c7i-flex.16xlarge,128,64,EBS only,Up to 25 Gigabit,2.7132
+C8GD Double Extra Large,c8gd.2xlarge,16,8,474 GB NVMe SSD,Up to 15 Gigabit,0.3919
+C6GN Medium,c6gn.medium,2,1,EBS only,Up to 16 Gigabit,0.0432
+T3 Micro,t3.micro,1,2,EBS only,Up to 5 Gigabit,0.0104
+Z1D Metal,z1d.metal,384,48,1800 GB (2×900 GB NVMe SSD),25 Gigabit,4.464
+X2GD 16xlarge,x2gd.16xlarge,1024,64,3800 GB (2×1900 GB NVMe SSD),25 Gigabit,5.344
+C8G Eight Extra Large,c8g.8xlarge,64,32,EBS only,15 Gigabit,1.2762
+R6GD 16xlarge,r6gd.16xlarge,512,64,3800 GB (2×1900 GB NVMe SSD),25 Gigabit,3.6864
+M5N Quadruple Extra Large,m5n.4xlarge,64,16,EBS only,Up to 25 Gigabit,0.952
+G6 Graphics and Machine Learning GPU 16xlarge,g6.16xlarge,256,64,1880 GB (2×940 GB NVMe SSD),25 Gigabit,3.3968
+M8G 12xlarge,m8g.12xlarge,192,48,EBS only,22.5 Gigabit,2.1542
+M8G 48xlarge,m8g.48xlarge,768,192,EBS only,50 Gigabit,8.617
+M8GD Extra Large,m8gd.xlarge,16,4,237 GB NVMe SSD,Up to 12.5 Gigabit,0.2306
+D2 Eight Extra Large,d2.8xlarge,244,36,49152 GB (24×2048 GB HDD),10 Gigabit,5.52
+M7I-FLEX Quadruple Extra Large,m7i-flex.4xlarge,64,16,EBS only,Up to 12.5 Gigabit,0.7661
+C6G 16xlarge,c6g.16xlarge,128,64,EBS only,25 Gigabit,2.176
+I2 Extra Large,i2.xlarge,30,4,800 GB SSD,Moderate,0.853
+R7GD Eight Extra Large,r7gd.8xlarge,256,32,1900 GB NVMe SSD,15 Gigabit,2.1773
+M7I-FLEX 12xlarge,m7i-flex.12xlarge,192,48,EBS only,Up to 18.75 Gigabit,2.2982
+I4G Extra Large,i4g.xlarge,32,4,937 GB NVMe SSD,Up to 10 Gigabit,0.3089
+C8G Large,c8g.large,4,2,EBS only,Up to 12.5 Gigabit,0.0798
+C8G 24xlarge,c8g.24xlarge,192,96,EBS only,40 Gigabit,3.8285
+M7G Eight Extra Large,m7g.8xlarge,128,32,EBS only,15 Gigabit,1.3056
+A1 Extra Large,a1.xlarge,8,4,EBS only,Up to 10 Gigabit,0.102
+M8GD Large,m8gd.large,8,2,118 GB NVMe SSD,Up to 12.5 Gigabit,0.1153
+I4I 24xlarge,i4i.24xlarge,768,96,22500 GB (6×3750 GB NVMe SSD),56.25 Gigabit,8.2368
+C7G Large,c7g.large,4,2,EBS only,Up to 12.5 Gigabit,0.0725
+X2IEDN Eight Extra Large,x2iedn.8xlarge,1024,32,950 GB NVMe SSD,25 Gigabit,6.669
+G4AD Eight Extra Large,g4ad.8xlarge,128,32,1200 GB NVMe SSD,15 Gigabit,1.734
+INF2 Eight Extra Large,inf2.8xlarge,128,32,EBS only,Up to 25 Gigabit,1.9679
+M4 General Purpose 16xlarge,m4.16xlarge,256,64,EBS only,25 Gigabit,3.2
+R6G Eight Extra Large,r6g.8xlarge,256,32,EBS only,12 Gigabit,1.6128
+C7G Extra Large,c7g.xlarge,8,4,EBS only,Up to 12.5 Gigabit,0.145
+R7G Large,r7g.large,16,2,EBS only,Up to 12.5 Gigabit,0.1071
+A1 Large,a1.large,4,2,EBS only,Up to 10 Gigabit,0.051
+G5 Graphics and Machine Learning GPU Double Extra Large,g5.2xlarge,32,8,450 GB NVMe SSD,Up to 10 Gigabit,1.212
+Z1D Extra Large,z1d.xlarge,32,4,150 GB NVMe SSD,Up to 10 Gigabit,0.372
+I3 High I/O Large,i3.large,15,2,475 GB NVMe SSD,Up to 10 Gigabit,0.156
+R8G Eight Extra Large,r8g.8xlarge,256,32,EBS only,15 Gigabit,1.8851
+C8GD 48xlarge,c8gd.48xlarge,384,192,11400 GB (6×1900 GB NVMe SSD),50 Gigabit,9.4061
+M8GD Eight Extra Large,m8gd.8xlarge,128,32,1900 GB NVMe SSD,15 Gigabit,1.8451
+G6e Graphics and Machine Learning GPU 16xlarge,g6e.16xlarge,512,64,1900 GB (2×950 GB NVMe SSD),35 Gigabit,7.5772
+I7IE 48xlarge,i7ie.48xlarge,1536,192,120000 GB (16×7500 GB NVMe SSD),100 Gigabit,24.9504
+R6IN Large,r6in.large,16,2,EBS only,Up to 25 Gigabit,0.1743
+M6G Eight Extra Large,m6g.8xlarge,128,32,EBS only,12 Gigabit,1.232
+M6GD Large,m6gd.large,8,2,118 GB NVMe SSD,Up to 10 Gigabit,0.0904
+M7GD Eight Extra Large,m7gd.8xlarge,128,32,1900 GB NVMe SSD,15 Gigabit,1.7086
+R4 High-Memory Extra Large,r4.xlarge,30,4,EBS only,Up to 10 Gigabit,0.266
+R8GD Double Extra Large,r8gd.2xlarge,64,8,474 GB NVMe SSD,Up to 15 Gigabit,0.5878
+Gr6 Graphics and Machine Learning GPU High RAM ratio Quadruple Extra Large,gr6.4xlarge,128,16,600 GB NVMe SSD,Up to 25 Gigabit,1.5392
+C7I-FLEX Extra Large,c7i-flex.xlarge,8,4,EBS only,Up to 12.5 Gigabit,0.1696
+C6GN Double Extra Large,c6gn.2xlarge,16,8,EBS only,Up to 25 Gigabit,0.3456
+R6G Double Extra Large,r6g.2xlarge,64,8,EBS only,Up to 10 Gigabit,0.4032
+M8GD 12xlarge,m8gd.12xlarge,192,48,2850 GB (3×950 GB NVMe SSD),22.5 Gigabit,2.7677
+G6 Graphics and Machine Learning GPU 48xlarge,g6.48xlarge,768,192,7520 GB (8×940 GB NVMe SSD),100 Gigabit,13.3504
+M8GD Medium,m8gd.medium,4,1,59 GB NVMe SSD,Up to 12.5 Gigabit,0.0577
+X2GD Extra Large,x2gd.xlarge,64,4,237 GB NVMe SSD,Up to 10 Gigabit,0.334
+INF2 48xlarge,inf2.48xlarge,768,192,EBS only,100 Gigabit,12.9813
+HPC6A 48xlarge,hpc6a.48xlarge,384,96,EBS only,100 Gigabit,
+R6G Metal,r6g.metal,512,64,EBS only,25 Gigabit,3.2256
+M8GD 24xlarge,m8gd.24xlarge,384,96,5700 GB (3×1900 GB NVMe SSD),40 Gigabit,5.5354
+R7G Eight Extra Large,r7g.8xlarge,256,32,EBS only,15 Gigabit,1.7136
+HPC7A 48xlarge,hpc7a.48xlarge,768,96,EBS only,300 Gigabit,
+R6GD Large,r6gd.large,16,2,118 GB NVMe SSD,Up to 10 Gigabit,0.1152
+C7G Double Extra Large,c7g.2xlarge,16,8,EBS only,Up to 15 Gigabit,0.29
+M8GD Double Extra Large,m8gd.2xlarge,32,8,474 GB NVMe SSD,Up to 15 Gigabit,0.4613
+R8G Quadruple Extra Large,r8g.4xlarge,128,16,EBS only,Up to 15 Gigabit,0.9426
+G5 Graphics and Machine Learning GPU Extra Large,g5.xlarge,16,4,250 GB NVMe SSD,Up to 10 Gigabit,1.006
+T3A Nano,t3a.nano,0,2,EBS only,Up to 5 Gigabit,0.0047
+IS4GEN Eight Extra Large,is4gen.8xlarge,192,32,30000 GB (4×7500 GB NVMe SSD),50 Gigabit,4.6104
+R7G Double Extra Large,r7g.2xlarge,64,8,EBS only,Up to 15 Gigabit,0.4284
+C6G Large,c6g.large,4,2,EBS only,Up to 10 Gigabit,0.068
+C6GN Extra Large,c6gn.xlarge,8,4,EBS only,Up to 25 Gigabit,0.1728
+C6GN 16xlarge,c6gn.16xlarge,128,64,EBS only,100 Gigabit,2.7648
+R6GD Metal,r6gd.metal,512,64,3800 GB (2×1900 GB NVMe SSD),25 Gigabit,3.6864
+C7GN Quadruple Extra Large,c7gn.4xlarge,32,16,EBS only,50 Gigabit,0.9984
+C7GD Eight Extra Large,c7gd.8xlarge,64,32,1900 GB NVMe SSD,15 Gigabit,1.4515
+C6G Metal,c6g.metal,128,64,EBS only,25 Gigabit,2.176
+X2GD 12xlarge,x2gd.12xlarge,768,48,2850 GB (2×1425 GB NVMe SSD),20 Gigabit,4.008
+C6GD Medium,c6gd.medium,2,1,59 GB NVMe SSD,Up to 10 Gigabit,0.0384
+M8G Metal-24xl,m8g.metal-24xl,384,96,EBS only,40 Gigabit,4.3085
+TRN2 48xlarge,trn2.48xlarge,2048,192,EBS only,3200 Gigabit,
+R8G Extra Large,r8g.xlarge,32,4,EBS only,Up to 12.5 Gigabit,0.2356
+M6G Metal,m6g.metal,256,64,EBS only,25 Gigabit,2.464
+X2GD Medium,x2gd.medium,16,1,59 GB NVMe SSD,Up to 10 Gigabit,0.0835
+M6G 16xlarge,m6g.16xlarge,256,64,EBS only,25 Gigabit,2.464
+IM4GN Double Extra Large,im4gn.2xlarge,32,8,3750 GB NVMe SSD,Up to 25 Gigabit,0.7276
+C6GD Quadruple Extra Large,c6gd.4xlarge,32,16,950 GB NVMe SSD,Up to 10 Gigabit,0.6144
+M8GD Metal-24xl,m8gd.metal-24xl,384,96,5700 GB (3×1900 GB NVMe SSD),40 Gigabit,5.5354
+TRN1 Double Extra Large,trn1.2xlarge,32,8,474 GB NVMe SSD,Up to 12.5 Gigabit,1.3438
+I4G Double Extra Large,i4g.2xlarge,64,8,1875 GB NVMe SSD,Up to 12 Gigabit,0.6178
+INF2 24xlarge,inf2.24xlarge,384,96,EBS only,50 Gigabit,6.4906
+R8G 24xlarge,r8g.24xlarge,768,96,EBS only,40 Gigabit,5.6554
+R6G 12xlarge,r6g.12xlarge,384,48,EBS only,20 Gigabit,2.4192
+G6e Graphics and Machine Learning GPU 48xlarge,g6e.48xlarge,1536,192,7600 GB (4×1900 GB NVMe SSD),400 Gigabit,30.1312
+M7G Double Extra Large,m7g.2xlarge,32,8,EBS only,Up to 15 Gigabit,0.3264
+TRN1N 32xlarge,trn1n.32xlarge,512,128,7600 GB (4×1900 GB NVMe SSD),16x 100 Gigabit,24.78
+IS4GEN Large,is4gen.large,12,2,1875 GB NVMe SSD,Up to 25 Gigabit,0.2882
+R6GD Medium,r6gd.medium,8,1,59 GB NVMe SSD,Up to 10 Gigabit,0.0576
+M7G 12xlarge,m7g.12xlarge,192,48,EBS only,22.5 Gigabit,1.9584
+IS4GEN Quadruple Extra Large,is4gen.4xlarge,96,16,15000 GB (2×7500 GB NVMe SSD),25 Gigabit,2.3052
+C7G 16xlarge,c7g.16xlarge,128,64,EBS only,30 Gigabit,2.32
+C6G Quadruple Extra Large,c6g.4xlarge,32,16,EBS only,Up to 10 Gigabit,0.544
+IS4GEN Extra Large,is4gen.xlarge,24,4,3750 GB NVMe SSD,Up to 25 Gigabit,0.5763
+G4AD Quadruple Extra Large,g4ad.4xlarge,64,16,600 GB NVMe SSD,Up to 10 Gigabit,0.867
+I4G Eight Extra Large,i4g.8xlarge,256,32,7500 GB (2×3750 GB NVMe SSD),18.75 Gigabit,2.471
+C6G Double Extra Large,c6g.2xlarge,16,8,EBS only,Up to 10 Gigabit,0.272
+IS4GEN Double Extra Large,is4gen.2xlarge,48,8,7500 GB NVMe SSD,Up to 25 Gigabit,1.1526
+C6GD Metal,c6gd.metal,128,64,3800 GB (2×1900 GB NVMe SSD),25 Gigabit,2.4576
+U-9TB1 Metal,u-9tb1.metal,9216,448,EBS only,100 Gigabit,
+U-6TB1 Metal,u-6tb1.metal,6144,448,EBS only,100 Gigabit,
+C7GD Medium,c7gd.medium,2,1,59 GB NVMe SSD,Up to 12.5 Gigabit,0.0454
+P2 General Purpose GPU 16xlarge,p2.16xlarge,732,64,EBS only,20 Gigabit,14.4
+C8GD 12xlarge,c8gd.12xlarge,96,48,2850 GB (3×950 GB NVMe SSD),22.5 Gigabit,2.3515
+T4G Extra Large,t4g.xlarge,16,4,EBS only,Up to 5 Gigabit,0.1344
+T2 Nano,t2.nano,0,1,EBS only,Low to Moderate,0.0058
+C7G Metal,c7g.metal,128,64,EBS only,30 Gigabit,2.32
+M7GD Quadruple Extra Large,m7gd.4xlarge,64,16,950 GB NVMe SSD,Up to 15 Gigabit,0.8543
+R8G 48xlarge,r8g.48xlarge,1536,192,EBS only,50 Gigabit,11.3107
+I4G 16xlarge,i4g.16xlarge,512,64,15000 GB (4×3750 GB NVMe SSD),37.5 Gigabit,4.9421
+C8G Metal-24xl,c8g.metal-24xl,192,96,EBS only,40 Gigabit,3.8285
+C8GD Quadruple Extra Large,c8gd.4xlarge,32,16,950 GB NVMe SSD,Up to 15 Gigabit,0.7838
+INF2 Extra Large,inf2.xlarge,16,4,EBS only,Up to 15 Gigabit,0.7582
+I2 Large,i2.large,15,2,EBS only,Moderate,
+IM4GN Eight Extra Large,im4gn.8xlarge,128,32,15000 GB (2×7500 GB NVMe SSD),50 Gigabit,2.9103
+X2GD Quadruple Extra Large,x2gd.4xlarge,256,16,950 GB NVMe SSD,Up to 10 Gigabit,1.336
+A1 Metal,a1.metal,32,16,EBS only,Up to 10 Gigabit,0.408
+IS4GEN Medium,is4gen.medium,6,1,937 GB NVMe SSD,Up to 25 Gigabit,0.1441
+MAC1 Metal,mac1.metal,32,12,EBS only,25 Gigabit,
+MAC2-M2 Metal,mac2-m2.metal,24,8,EBS only,10 Gigabit,
+MAC2 Metal,mac2.metal,16,8,EBS only,10 Gigabit,
+MAC2-M2PRO Metal,mac2-m2pro.metal,32,12,EBS only,10 Gigabit,
+D3EN 12xlarge,d3en.12xlarge,192,48,335520 GB (24×13980 GB NVMe HDD),75 Gigabit,6.3086
+D3EN Eight Extra Large,d3en.8xlarge,128,32,223680 GB (16×13980 GB NVMe HDD),50 Gigabit,4.2058
+X2IEZN 12xlarge,x2iezn.12xlarge,1536,48,EBS only,100 Gigabit,10.008
+U7I-8TB 112xlarge,u7i-8tb.112xlarge,8192,448,EBS only,100 Gigabit,83.72
+U7IN-24TB 224xlarge,u7in-24tb.224xlarge,24576,896,EBS only,200 Gigabit,270.7313
+DL1 24xlarge,dl1.24xlarge,768,96,4000 GB (4×1000 GB NVMe SSD),4x 100 Gigabit,13.109
+X8G 48xlarge,x8g.48xlarge,3072,192,EBS only,50 Gigabit,18.7584
+U7I-6TB 112xlarge,u7i-6tb.112xlarge,6144,448,EBS only,100 Gigabit,62.79
+I8G Double Extra Large,i8g.2xlarge,64,8,1875 GB NVMe SSD,Up to 12 Gigabit,0.6864
+C3 High-CPU Quadruple Extra Large,c3.4xlarge,30,16,320 GB (2×160 GB SSD),High,0.84
+X8G Extra Large,x8g.xlarge,64,4,EBS only,Up to 12.5 Gigabit,0.3908
+C3 High-CPU Large,c3.large,3,2,32 GB (2×16 GB SSD),Moderate,0.105
+X2IEZN 6xlarge,x2iezn.6xlarge,768,24,EBS only,50 Gigabit,5.004
+X8G Large,x8g.large,32,2,EBS only,Up to 12.5 Gigabit,0.1954
+U7IN-32TB 224xlarge,u7in-32tb.224xlarge,32768,896,EBS only,200 Gigabit,360.9869
+X2IEZN Double Extra Large,x2iezn.2xlarge,256,8,EBS only,Up to 25 Gigabit,1.668
+M3 General Purpose Double Extra Large,m3.2xlarge,30,8,160 GB (2×80 GB SSD),High,0.532
+C3 High-CPU Double Extra Large,c3.2xlarge,15,8,160 GB (2×80 GB SSD),High,0.42
+X2IEZN Quadruple Extra Large,x2iezn.4xlarge,512,16,EBS only,Up to 25 Gigabit,3.336
+D3EN Extra Large,d3en.xlarge,16,4,27960 GB (2×13980 GB NVMe HDD),Up to 25 Gigabit,0.526
+F2 6xlarge,f2.6xlarge,256,24,940 GB NVMe SSD,12.5 Gigabit,1.98
+M3 General Purpose Large,m3.large,7,2,32 GB SSD,Moderate,0.133
+F2 12xlarge,f2.12xlarge,512,48,1880 GB (2×940 GB NVMe SSD),25 Gigabit,3.96
+D3EN Double Extra Large,d3en.2xlarge,32,8,55920 GB (4×13980 GB NVMe HDD),Up to 25 Gigabit,1.051
+VT1 24xlarge,vt1.24xlarge,192,96,EBS only,25 Gigabit,5.2
+X2IEZN Metal,x2iezn.metal,1536,48,EBS only,100 Gigabit,10.008
+P3DN 24xlarge,p3dn.24xlarge,768,96,1800 GB (2×900 GB NVMe SSD),100 Gigabit,31.212
+C3 High-CPU Eight Extra Large,c3.8xlarge,60,32,640 GB (2×320 GB SSD),10 Gigabit,1.68
+I8G Large,i8g.large,16,2,468 GB NVMe SSD,Up to 10 Gigabit,0.1716
+X8G Eight Extra Large,x8g.8xlarge,512,32,EBS only,15 Gigabit,3.1264
+M3 General Purpose Medium,m3.medium,3,1,4 GB SSD,Moderate,0.067
+I8G 16xlarge,i8g.16xlarge,512,64,15000 GB (4×3750 GB NVMe SSD),Up to 37.5 Gigabit,5.4912
+X8G Metal-24xl,x8g.metal-24xl,1536,96,EBS only,40 Gigabit,9.3792
+C3 High-CPU Extra Large,c3.xlarge,7,4,80 GB (2×40 GB SSD),Moderate,0.21
+D3EN 6xlarge,d3en.6xlarge,96,24,167760 GB (12×13980 GB NVMe HDD),40 Gigabit,3.154
+U7I-12TB 224xlarge,u7i-12tb.224xlarge,12288,896,EBS only,100 Gigabit,135.2277
+M1 General Purpose Extra Large,m1.xlarge,15,4,1680 GB (4×420 GB HDD),High,0.35
+HPC7G Eight Extra Large,hpc7g.8xlarge,128,32,EBS only,200 Gigabit,1.6832
+M3 General Purpose Extra Large,m3.xlarge,15,4,80 GB (2×40 GB SSD),High,0.266
+M1 General Purpose Medium,m1.medium,3,1,410 GB HDD,Moderate,0.087
+U7IN-16TB 224xlarge,u7in-16tb.224xlarge,16384,896,EBS only,200 Gigabit,180.4756
+X2IEZN Eight Extra Large,x2iezn.8xlarge,1024,32,EBS only,75 Gigabit,6.672
+M1 General Purpose Small,m1.small,1,1,160 GB HDD,Low,0.044
+M1 General Purpose Large,m1.large,7,2,840 GB (2×420 GB HDD),Moderate,0.175
+I8G 24xlarge,i8g.24xlarge,768,96,22500 GB (6×3750 GB NVMe SSD),Up to 56.25 Gigabit,8.2368
+F2 48xlarge,f2.48xlarge,2048,192,7520 GB (8×940 GB NVMe SSD),100 Gigabit,15.84
+I8G Extra Large,i8g.xlarge,32,4,937 GB NVMe SSD,Up to 10 Gigabit,0.3432
+D3EN Quadruple Extra Large,d3en.4xlarge,64,16,111840 GB (8×13980 GB NVMe HDD),25 Gigabit,2.103
+F1 Quadruple Extra Large,f1.4xlarge,244,16,940 GB NVMe SSD,Up to 10 Gigabit,3.3
+F1 Double Extra Large,f1.2xlarge,122,8,470 GB NVMe SSD,Up to 10 Gigabit,1.65
+G2 Double Extra Large,g2.2xlarge,15,8,EBS only,Moderate,0.65
+HPC7G 16xlarge,hpc7g.16xlarge,128,64,EBS only,200 Gigabit,1.6832
+U-18TB1 Metal,u-18tb1.metal,18432,448,EBS only,100 Gigabit,
+G5G Metal,g5g.metal,128,64,EBS only,25 Gigabit,2.744
+X8G 24xlarge,x8g.24xlarge,1536,96,EBS only,40 Gigabit,9.3792
+VT1 3xlarge,vt1.3xlarge,24,12,EBS only,3.12 Gigabit,0.65
+X8G 12xlarge,x8g.12xlarge,768,48,EBS only,22.5 Gigabit,4.6896
+I8G 48xlarge,i8g.48xlarge,1536,192,45000 GB (12×3750 GB NVMe SSD),Up to 100 Gigabit,16.4736
+X8G Medium,x8g.medium,16,1,EBS only,Up to 12.5 Gigabit,0.0977
+X8G 16xlarge,x8g.16xlarge,1024,64,EBS only,30 Gigabit,6.2528
+P4DE 24xlarge,p4de.24xlarge,1152,96,8000 GB (8×1000 GB NVMe SSD),4x 100 Gigabit,27.4471
+X8G Double Extra Large,x8g.2xlarge,128,8,EBS only,Up to 15 Gigabit,0.7816
+HPC7G Quadruple Extra Large,hpc7g.4xlarge,128,16,EBS only,200 Gigabit,1.6832
+I8G Quadruple Extra Large,i8g.4xlarge,128,16,3750 GB NVMe SSD,Up to 25 Gigabit,1.3728
+G2 Eight Extra Large,g2.8xlarge,60,32,EBS only,High,2.6
+X8G Metal-48xl,x8g.metal-48xl,3072,192,EBS only,50 Gigabit,18.7584
+M2 High Memory Quadruple Extra Large,m2.4xlarge,68,8,1680 GB (2×840 GB HDD),High,0.98
+G5G 16xlarge,g5g.16xlarge,128,64,EBS only,25 Gigabit,2.744
+M2 High Memory Extra Large,m2.xlarge,17,2,420 GB HDD,Moderate,0.245
+C1 High-CPU Medium,c1.medium,1,2,350 GB HDD,Moderate,0.13
+I8G Eight Extra Large,i8g.8xlarge,256,32,7500 GB (2×3750 GB NVMe SSD),Up to 25 Gigabit,2.7456
+I8G Metal-24xl,i8g.metal-24xl,768,96,22500 GB (6×3750 GB NVMe SSD),Up to 56.25 Gigabit,8.2368
+C1 High-CPU Extra Large,c1.xlarge,7,8,1680 GB (4×420 GB HDD),High,0.52
+G5G Double Extra Large,g5g.2xlarge,16,8,EBS only,Up to 10 Gigabit,0.556
+X8G Quadruple Extra Large,x8g.4xlarge,256,16,EBS only,Up to 15 Gigabit,1.5632
+M2 High Memory Double Extra Large,m2.2xlarge,34,4,850 GB HDD,Moderate,0.49
+MAC2-M1ULTRA Metal,mac2-m1ultra.metal,128,20,EBS only,10 Gigabit,
+G5G Quadruple Extra Large,g5g.4xlarge,32,16,EBS only,Up to 10 Gigabit,0.828
+High Memory Cluster Eight Extra Large,cr1.8xlarge,244,32,EBS only,10 Gigabit,3.5
+I8G 12xlarge,i8g.12xlarge,384,48,11250 GB (3×3750 GB NVMe SSD),Up to 28.12 Gigabit,4.1184
+F1 16xlarge,f1.16xlarge,976,64,3760 GB (4×940 GB NVMe SSD),25 Gigabit,13.2
+G5G Extra Large,g5g.xlarge,8,4,EBS only,Up to 10 Gigabit,0.42
+VT1 6xlarge,vt1.6xlarge,48,24,EBS only,6.25 Gigabit,1.3
+U-24TB1 Metal,u-24tb1.metal,24576,448,EBS only,100 Gigabit,
+G5G Eight Extra Large,g5g.8xlarge,64,32,EBS only,12 Gigabit,1.372
+High Storage Eight Extra Large,hs1.8xlarge,117,16,EBS only,10 Gigabit,
+T1 Micro,t1.micro,0,1,EBS only,Very Low,0.02
+Cluster Compute Eight Extra Large,cc2.8xlarge,60,32,EBS only,10 Gigabit,
+DL2Q 24xlarge,dl2q.24xlarge,768,96,EBS only,100 Gigabit,
+C6GN Metal,c6gn.metal,128,64,EBS only,100 Gigabit,
