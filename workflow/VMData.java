@@ -6,11 +6,12 @@ public class VMData {
     public String id;
     public double mips;
     public double cost;
-
-    public VMData(String id, double mips, double cost) {
+    public double costperMIPS;
+    public VMData(String id, double mips, double cost, double costperMIPS) {
         this.id = id;
         this.mips = mips;
         this.cost = cost;
+        this.costperMIPS=costperMIPS;
     }
 
     public static List<VMData> parseCSV(String filePath) {
@@ -42,8 +43,8 @@ public class VMData {
                     double cost = Double.parseDouble(costStr);
                     double ghz = 2.5; // You can adjust per instance family
                     double mips = vcpus * ghz * 1000;
-                    //System.out.println(vcpus);
-                    vmList.add(new VMData(apiName, mips, cost));
+                    double costpermips=cost/mips;
+                    vmList.add(new VMData(apiName, mips, cost,costpermips));
                 } catch (NumberFormatException e) {
                     // Skip lines with invalid numbers
                     System.out.println(e);
