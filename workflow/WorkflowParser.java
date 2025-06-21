@@ -17,13 +17,16 @@ public class WorkflowParser {
      double startTime;
     double endTime;
     VMData assignedVM;
-
-    public Job(String id, double runtime, double mi) {
+    List<String>inputFiles;
+    List<String>outputFiles;
+    public Job(String id, double runtime, double mi,List<String>inputFiles,List<String>outputFiles) {
         this.id = id;
         this.runtime = runtime;
         this.mi=mi;
         subDeadline=0.0;
         slack=0.0;
+        this.inputFiles=inputFiles;
+        this.outputFiles=outputFiles;
     }
 
     @Override
@@ -73,10 +76,12 @@ static class ScheduledJob {
             factory.setNamespaceAware(true);
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(xmlFile);
-
+   
             doc.getDocumentElement().normalize();
 
             Map<String, Job> taskMap = new HashMap<>();
+            Map<String,String>fileToProducerTaskMap=new HashMap<>();
+            Map<String,Double>fileSizeMap=new HashMap<>();
             List<VMData>vms=VMData.parseCSV("cleaned_vm_data.csv"); 
             double median_mips=getMedianMIPS(vms); //finding the mean MIPS to estimate the MI for each task in the taskMap
             //System.out.println(median_mips);
@@ -96,8 +101,32 @@ static class ScheduledJob {
     // case "mConcatFit": mi = 12000; break;
     // case "mBgModel": mi = 12000; break;
     // default: mi = 12000;}
-                //System.out.println(mi);
-                Job newJob = new Job(jobId, runtime,mi);
+                //Now getting the input and output file lists
+                NodeList usesList = job.getElementsByTagName("uses");
+                List<String>inputFiles=new ArrayList<>();
+                List<String>outputFiles=new ArrayList<>();
+                  for (int j = 0; j < usesList.getLength(); j++) {
+        Element usesElement = (Element) usesList.item(j);
+
+        String fileName = usesElement.getAttribute("file");
+        String linkType = usesElement.getAttribute("link"); // "input" or "output"
+        String sizeStr = usesElement.getAttribute("size");
+        double size = sizeStr.isEmpty() ? 0.0 : Double.parseDouble(sizeStr);
+
+        // For output → build file → producer mapping
+        if (linkType.equalsIgnoreCase("output")) {
+            fileToProducerTaskMap.put(fileName, jobId);
+            fileSizeMap.put(fileName, size);
+            outputFiles.add(fileName);
+        }
+
+        // For input → add to task’s inputFiles
+        else if (linkType.equalsIgnoreCase("input")) {
+          inputFiles.add(fileName);
+        }
+    }
+
+                Job newJob = new Job(jobId, runtime,mi,inputFiles,outputFiles);
                 taskMap.put(jobId, newJob);
             }
 
@@ -152,16 +181,16 @@ static class ScheduledJob {
                 vmAvail.put(vm,0.0);
             }
             List<Job>scheduledjob=scheduledJobs( UpwardRankSortedJobs,vms,cheapVMs,slackThreshold,
-                                     vmAvail, taskMap);
+                                     vmAvail, taskMap, fileSizeMap,fileToProducerTaskMap);
 
-            for (Job scheduled : scheduledjob) {
-    System.out.println("Task ID: " + scheduled.id);
-    System.out.println("Parents: " + scheduled.parents);
-    System.out.println("Start Time: " + scheduled.startTime);
-    System.out.println("End Time: " + scheduled.endTime);
-    System.out.println("Assigned VM: " + (scheduled.assignedVM != null ? scheduled.assignedVM.id : "None"));
-    System.out.println("-----------");
-}
+//             for (Job scheduled : scheduledjob) {
+//     System.out.println("Task ID: " + scheduled.id);
+//     System.out.println("Parents: " + scheduled.parents);
+//     System.out.println("Start Time: " + scheduled.startTime);
+//     System.out.println("End Time: " + scheduled.endTime);
+//     System.out.println("Assigned VM: " + (scheduled.assignedVM != null ? scheduled.assignedVM.id : "None"));
+//     System.out.println("-----------");
+// }
 
             
            
@@ -312,7 +341,9 @@ public static List<Job> scheduledJobs(
         List<VMData> cheapvms,
         double slackThreshold,
         HashMap<VMData, Double> vmAvailability,
-        Map<String, Job> taskMap
+        Map<String, Job> taskMap, 
+        Map<String,Double>fileSizeMap, 
+        Map<String,String>fileToProducerTaskMap
 ) {
     List<Job> schedule = new ArrayList<>();
     double totalCost = 0.0;
@@ -340,7 +371,12 @@ public static List<Job> scheduledJobs(
             for (String parentId : task.parents) {
                 Job parentJob = taskMap.get(parentId);
                 if (parentJob == null || parentJob.endTime == 0.0) continue;
-                double commTime = (parentJob.assignedVM == vm) ? 0.0 : 1.0;
+                double commTime = 0.0;
+                if (parentJob.assignedVM != vm) {
+                    double dataSizeMB = getDataSizeTransferred(parentJob, task,fileSizeMap,fileToProducerTaskMap);
+                    double bandwidthMBps = vm.networkPerformance * 125.0;
+                    commTime = dataSizeMB / bandwidthMBps;
+                }
                 est = Math.max(est, parentJob.endTime + commTime);
             }
 
@@ -395,6 +431,21 @@ public static List<Job> scheduledJobs(
     System.out.println("Total optimized cost: $" + totalCost);
     return schedule;
 }
+
+//function to get total data transfered from parent to child task
+public static double getDataSizeTransferred(Job producer, Job consumer, Map<String,Double>fileSizeMap, Map<String,String>fileToProducerTaskMap) {
+    List<String> outputFiles = producer.outputFiles;
+    List<String> inputFiles = consumer.inputFiles;
+
+    double totalTransferred = 0.0;
+    for (String file : inputFiles) {
+         if (fileToProducerTaskMap.containsKey(file))  {
+            totalTransferred += fileSizeMap.getOrDefault(file, 0.0);
+        }
+    }
+    return totalTransferred;
+}
+
 
 
 
