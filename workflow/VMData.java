@@ -43,6 +43,7 @@ public class VMData {
                     double cost = Double.parseDouble(costStr);
                     double ghz = 2.5; // You can adjust per instance family
                     double mips = vcpus * ghz * 1000;
+                    //System.out.println(mips);
                     double costpermips=cost/mips;
                     vmList.add(new VMData(apiName, mips, cost,costpermips));
                 } catch (NumberFormatException e) {
@@ -63,3 +64,9 @@ public class VMData {
         return "VMData{id='" + id + "', mips=" + mips + ", cost=" + cost + "}";
     }
 }
+
+
+
+
+
+

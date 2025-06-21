@@ -77,7 +77,9 @@ static class ScheduledJob {
             doc.getDocumentElement().normalize();
 
             Map<String, Job> taskMap = new HashMap<>();
-
+            List<VMData>vms=VMData.parseCSV("cleaned_vm_data.csv"); 
+            double median_mips=getMedianMIPS(vms); //finding the mean MIPS to estimate the MI for each task in the taskMap
+            //System.out.println(median_mips);
             // Extract all jobs
             NodeList jobList = doc.getElementsByTagNameNS("*", "job");
             Set<String> jobIds = new HashSet<>();
@@ -87,14 +89,14 @@ static class ScheduledJob {
                 String jobId = job.getAttribute("id");
                  double runtime = Double.parseDouble(job.getAttribute("runtime"));
                  double mi=0;
-                 switch (job.getAttribute("name")) {
-    case "mProject": mi = 5000; break;
-    case "mDiffFit": mi = 8000; break;
-    case "mConcatFit": mi = 2000; break;
-    case "mBgModel": mi = 3000; break;
-    default: mi = 8000;
-}
-
+                 mi=runtime*median_mips;
+    //              switch (job.getAttribute("name")) {
+    // case "mProject": mi = 12000; break;
+    // case "mDiffFit": mi = 12000; break;
+    // case "mConcatFit": mi = 12000; break;
+    // case "mBgModel": mi = 12000; break;
+    // default: mi = 12000;}
+                //System.out.println(mi);
                 Job newJob = new Job(jobId, runtime,mi);
                 taskMap.put(jobId, newJob);
             }
@@ -141,7 +143,7 @@ static class ScheduledJob {
 
            List<Job>UpwardRankSortedJobs=sortUpwardRanks(sortedJobs, UpwardRanks, taskMap);
            HashMap<VMData,Double>vmAvail=new HashMap<>();
-           List<VMData>vms=VMData.parseCSV("cleaned_vm_data.csv"); 
+           //List<VMData>vms=VMData.parseCSV("cleaned_vm_data.csv"); 
            List<VMData>cheapVMs = vms.stream()
                 .sorted((a, b) -> Double.compare(a.costperMIPS, b.costperMIPS))
                 .limit((int)(vms.size() * 0.5))
@@ -173,6 +175,13 @@ static class ScheduledJob {
             e.printStackTrace();
         }
     }
+
+    //writing a function to get the mean MIPS from a list of VMs data
+   public static double getMedianMIPS(List<VMData> vms) {
+    List<Double> mipsList = vms.stream().map(vm -> vm.mips).sorted().collect(Collectors.toList());
+    int n = mipsList.size();
+    return (n % 2 == 0) ? (mipsList.get(n / 2 - 1) + mipsList.get(n / 2)) / 2.0 : mipsList.get(n / 2);
+}
 
 //     //writing a function to convert it to topological sort
     public static List<String> topologicalSort(Map<String, Job> taskMap) {
