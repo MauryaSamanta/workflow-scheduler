@@ -83,17 +83,9 @@ static class ScheduleResult {
         // System.out.println("Enter deadline(in miliseconds):");
         // int userDeadline=sc.nextInt();
         try {
-            List<Double> deadlineList = generateDeadlines(8000, 100000, 1000);
-            List<Double> costs = new ArrayList<>();
-            List<String> files=Arrays.asList("CyberShake_30.xml", "Epigenomics_46.xml", "Inspiral_30.xml", "Inspiral_50.xml", "Inspiral_30.xml",
-            "Montage_50.xml","Sipht_30.xml");
-            double dfactors[]={1.0, 1.2, 1.5, 2.0, 2.5, 3.0, 3.5,4.0,4.5,5.0,5.5,6.0,6.5,7.0,7.5,8.0,8.5,9.0,9.5, 10.0};
-            List<String[]> rows = new ArrayList<>();
-
-            for(String file:files)
-           { for(double df:dfactors)
+            for(double userDeadline:deadlineList)
            {
-            File xmlFile = new File(file); // Replace with your file
+            File xmlFile = new File("Inspiral_50.xml"); // Replace with your file
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             factory.setNamespaceAware(true);
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -171,7 +163,6 @@ static class ScheduleResult {
             entryRank=Math.max(rank,entryRank);
            
            }
-           double userDeadline=df*entryRank;
            
            for( Map.Entry<String,Job>entry:taskMap.entrySet()){
             Job current=entry.getValue();
@@ -187,8 +178,14 @@ static class ScheduleResult {
             Collections.reverse(sortedJobs);
             computeSlackReverse(sortedJobs,  taskMap, userDeadline, fileSizeMap, 
         fileToProducerTaskMap, median_bw);
-        HashMap<VMData,Double>vmAvail=new HashMap<>();
-           
+
+           //System.out.println("entryRank="+entryRank);
+
+
+          
+          
+           HashMap<VMData,Double>vmAvail=new HashMap<>();
+           //List<VMData>vms=VMData.parseCSV("cleaned_vm_data.csv"); 
            List<VMData>cheapVMs = vms.stream()
                 .sorted((a, b) -> Double.compare(a.costperMIPS, b.costperMIPS))
                 .limit((int)(vms.size() * 0.5))
@@ -199,9 +196,7 @@ static class ScheduleResult {
             ScheduleResult scheduleDetails=scheduledJobs( UpwardRankSortedJobs,vms,cheapVMs,slackThreshold,
                                      vmAvail, taskMap, fileSizeMap,fileToProducerTaskMap);
             List<Job>scheduledjob=scheduleDetails.schedule;
-
-            rows.add(new String[]{file, String.valueOf(df), String.valueOf(scheduleDetails.totalCost)});
-
+            costs.add(scheduleDetails.totalCost);
            }
 //             for (Job scheduled : scheduledjob) {
 //     System.out.println("Task ID: " + scheduled.id);
@@ -211,26 +206,19 @@ static class ScheduleResult {
 //     System.out.println("Assigned VM: " + (scheduled.assignedVM != null ? scheduled.assignedVM.id : "None"));
 //     System.out.println("-----------");
 // }
-}
-            //saveDeadlineCostCSV(deadlineList, costs);
-            saveDeadlinesWorkflows("workflow-wise-costs.csv",rows);
-           } catch (Exception e) {
+
+            saveDeadlineCostCSV(deadlineList, costs);
+           
+
+           
+           
+
+            
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    public static void saveDeadlinesWorkflows(String fileName, List<String[]> rows) {
-    try (PrintWriter writer = new PrintWriter(new File(fileName))) {
-        writer.println("Workflow,Deadline,Cost"); // header
-        for (String[] row : rows) {
-            writer.println(String.join(",", row));
-        }
-        System.out.println("CSV written to: " + fileName);
-    } catch (FileNotFoundException e) {
-        System.err.println("Error writing CSV: " + e.getMessage());
-    }
-}
-
 
 public static List<Double> generateDeadlines(double start, double end, int points) {
     List<Double> deadlines = new ArrayList<>();
@@ -318,6 +306,64 @@ public static List<Double> generateDeadlines(double start, double end, int point
     return sortedJobObjects;
 }
 
+//scheduler function using IC-PCP algorithm
+
+//     public static List<Job> scheduledJobs(List<Job> UpwardRankSortedJobs, List<VMData> vms,List<VMData> cheapvms, double slackThreshold
+//                                       HashMap<VMData, Double> vmAvailability, Map<String, Job> taskMap) {
+//     List<Job> schedule = new ArrayList<>();
+//     double totalCost = 0.0;
+
+//     for (Job task : UpwardRankSortedJobs) {
+//         double minCost = Double.MAX_VALUE;
+//         VMData bestVM = null;
+//         double bestEST = 0.0;
+//         double bestEFT = 0.0;
+
+//         for (VMData vm : vms) {
+//             double avail = vmAvailability.getOrDefault(vm, 0.0);
+//             double est = avail;
+
+//             // Calculate EST based on parent dependencies
+//             for (String parentId : task.parents) {
+//                 Job parentJob = taskMap.get(parentId);
+//                 if (parentJob == null || parentJob.endTime == 0.0) continue;
+
+//                 double parentEnd = parentJob.endTime;
+//                 double commTime = (parentJob.assignedVM == vm) ? 0.0 : 1.0;
+//                 est = Math.max(est, parentEnd + commTime);
+//             }
+
+//             double runtime = task.mi / vm.mips;
+//             double eft = est + runtime;
+
+//             if (eft <= task.subDeadline) {
+//                 double cost = (runtime / 3600.0) * vm.cost;
+//                 if (cost < minCost) {
+//                     minCost = cost;
+//                     bestVM = vm;
+//                     bestEST = est;
+//                     bestEFT = eft;
+//                 }
+//             }
+//         }
+
+//         // Final assignment if any valid VM was found
+//         if (bestVM != null) {
+//             task.assignedVM = bestVM;
+//             task.startTime = bestEST;
+//             task.endTime = bestEFT;
+//             vmAvailability.put(bestVM, bestEFT);
+//             totalCost += minCost;
+//             schedule.add(task);
+//         } else {
+//             System.err.println("Deadline constraint cannot be met for task: " + task.id);
+//         }
+//     }
+
+//   System.out.println("Total optimized cost: $" + String.format("%.6f", totalCost));
+
+//     return schedule;
+// }
 //V3
 public static ScheduleResult scheduledJobs(
         List<Job> UpwardRankSortedJobs,
@@ -488,3 +534,122 @@ public static void computeEST_EFT(List<String> topoSortedTasks, Map<String, Job>
         }
     }
 
+
+
+
+
+
+
+//     //scheduler function
+//     public static List<ScheduledTask> scheduleJobs(List<String> sortedJobs, Map<String, Job> taskMap, List<VM> vms) {
+//     List<ScheduledTask> schedule = new ArrayList<>();
+//     Map<String, ScheduledTask> taskExecution = new HashMap<>();
+
+//     for (String jobId : sortedJobs) {
+//         Job job = taskMap.get(jobId);
+
+//         double bestEFT = Double.MAX_VALUE;
+//         VM bestVM = null;
+//         double bestStartTime = 0;
+
+//         for (VM vm : vms) {
+//             // Compute Earliest Start Time (EST)
+//             double est = vm.availableAt;
+
+//             for (String parentId : job.parents) {
+//                 ScheduledTask parentTask = taskExecution.get(parentId);
+//                 double commTime = parentTask.vmId.equals(vm.id) ? 0.0 : 1.0;
+//                 est = Math.max(est, parentTask.endTime + commTime);
+//             }
+
+//             double eft = est + job.runtime;
+
+//             if (eft < bestEFT) {
+//                 bestEFT = eft;
+//                 bestStartTime = est;
+//                 bestVM = vm;
+//             }
+//         }
+
+//         // Assign task to best VM
+//         ScheduledTask scheduled = new ScheduledTask(jobId, bestVM.id, bestStartTime, bestEFT);
+//         taskExecution.put(jobId, scheduled);
+//         schedule.add(scheduled);
+
+//         // Update VM availability
+//         bestVM.availableAt = bestEFT;
+//     }
+
+//     return schedule;
+// }
+
+//V4 OF SCHEDULER
+// public static List<Job> scheduledJobs(List<Job> UpwardRankSortedJobs, List<VMData> vms,
+//                                       List<VMData> cheapvms, double slackThreshold,
+//                                       HashMap<VMData, Double> vmAvailability, Map<String, Job> taskMap) {
+
+//     List<Job> schedule = new ArrayList<>();
+//     double totalCost = 0.0;
+
+//     for (Job task : UpwardRankSortedJobs) {
+//         double minCost = Double.MAX_VALUE;
+//         VMData bestVM = null;
+//         double bestEST = 0.0;
+//         double bestEFT = 0.0;
+
+//         List<VMData> prioritizedVMs = new ArrayList<>(vms);
+//         prioritizedVMs.sort(Comparator.comparingDouble(vmAvailability::get)); // Prioritize VMs with earlier availability
+
+//         for (VMData vm : prioritizedVMs) {
+//             double avail = vmAvailability.getOrDefault(vm, 0.0);
+//             double est = avail;
+
+//             for (String parentId : task.parents) {
+//                 Job parentJob = taskMap.get(parentId);
+//                 if (parentJob == null || parentJob.endTime == 0.0) continue;
+
+//                 double parentEnd = parentJob.endTime;
+//                 double commTime = (parentJob.assignedVM == vm) ? 0.0 : 1.0;
+//                 est = Math.max(est, parentEnd + commTime);
+//             }
+
+//             double runtime = task.mi / vm.mips;
+//             double eft = est + runtime;
+
+//             if (eft <= task.subDeadline) {
+//                 double cost = (runtime / 3600.0) * vm.cost;
+
+//                 // 🔥 Prioritize reusing idle VMs if cost difference is not drastic
+//                 if (vmAvailability.containsKey(vm)) {
+//                     cost *= 0.9; // Boost reused VM preference
+//                 }
+
+//                 if (cost < minCost) {
+//                     minCost = cost;
+//                     bestVM = vm;
+//                     bestEST = est;
+//                     bestEFT = eft;
+//                 }
+//             }
+//         }
+
+//         if (bestVM != null) {
+//             task.assignedVM = bestVM;
+//             task.startTime = bestEST;
+//             task.endTime = bestEFT;
+//             vmAvailability.put(bestVM, bestEFT);
+//             totalCost += minCost;
+//             schedule.add(task);
+//         } else {
+//             System.err.println("Deadline constraint cannot be met for task: " + task.id);
+//         }
+//     }
+
+//     System.out.println("Total optimized cost: $" +  totalCost);
+//     return schedule;
+// }
+
+
+
+
+}
