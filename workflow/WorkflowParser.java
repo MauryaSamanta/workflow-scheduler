@@ -1,12 +1,13 @@
-import javax.xml.parsers.*;
-import org.w3c.dom.*;
-import java.io.File;
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import javax.xml.parsers.*;
+import org.w3c.dom.*;
 
 public class WorkflowParser {
+    final  static double REQUIRED_RELIABILITY = 0.99;
+final static double LAMBDA = 0.001;  
+
     static class Job {
     String id;
     double runtime;
@@ -29,6 +30,21 @@ public class WorkflowParser {
         this.inputFiles=inputFiles;
         this.outputFiles=outputFiles;
     }
+
+    public Job(Job other) {
+    this.id = other.id;
+    this.mi = other.mi;
+    this.parents = new ArrayList<>(other.parents); // deep copy
+    this.subDeadline = other.subDeadline;
+    this.slack = other.slack;
+
+    // These will be re-set for replicas
+    this.startTime = 0.0;
+    this.endTime = 0.0;
+    this.assignedVM = null;
+
+    // this.isReplica = true; // mark it as replica
+}
 
     @Override
     public String toString() {
@@ -79,14 +95,12 @@ static class ScheduleResult {
 
     public static void main(String[] args) {
 
-        Scanner sc=new Scanner(System.in);
+        // Scanner sc=new Scanner(System.in);
         // System.out.println("Enter deadline(in miliseconds):");
         // int userDeadline=sc.nextInt();
         try {
-            List<Double> deadlineList = generateDeadlines(8000, 100000, 1000);
-            List<Double> costs = new ArrayList<>();
-            List<String> files=Arrays.asList("CyberShake_30.xml", "Epigenomics_46.xml", "Inspiral_30.xml", "Inspiral_50.xml", "Inspiral_30.xml",
-            "Montage_50.xml","Sipht_30.xml");
+           
+            List<String> files=Arrays.asList("CyberShake_1000.xml","Inspiral_1000.xml","Sipht_1000.xml");
             double dfactors[]={1.0,1.1,1,2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0};
             List<String[]> rows = new ArrayList<>();
 
@@ -176,12 +190,23 @@ static class ScheduleResult {
            for( Map.Entry<String,Job>entry:taskMap.entrySet()){
             Job current=entry.getValue();
             current.subDeadline = (UpwardRanks.get(current.id) / entryRank) * userDeadline;
+            // System.out.println(current.subDeadline);
             //current.slack = current.subDeadline - UpwardRanks.get(current.id);
            }
              double slackThreshold = userDeadline * 0.1; // 10% of deadline
 
             List<Job>UpwardRankSortedJobs=sortUpwardRanks(sortedJobs, UpwardRanks, taskMap);
-
+            double[] replicaCounts = optimizeReplicaCounts(
+    UpwardRankSortedJobs, 
+    vms, 
+    LAMBDA, 
+    userDeadline, 
+    0.99999
+    
+);
+        for(double replica:replicaCounts){
+            System.out.println(replica);
+        }
             computeEST_EFT(sortedJobs, taskMap, vms, median_bw, fileSizeMap, 
        fileToProducerTaskMap);
             Collections.reverse(sortedJobs);
@@ -198,23 +223,16 @@ static class ScheduleResult {
                 vmAvail.put(vm,0.0);
             }
             ScheduleResult scheduleDetails=scheduledJobs( UpwardRankSortedJobs,vms,cheapVMs,slackThreshold,
-                                     vmAvail, taskMap, fileSizeMap,fileToProducerTaskMap);
+                                     vmAvail, taskMap, fileSizeMap,fileToProducerTaskMap,replicaCounts);
             List<Job>scheduledjob=scheduleDetails.schedule;
 
             rows.add(new String[]{file, String.valueOf(df), String.valueOf(scheduleDetails.totalCost)});
 
            }
-//             for (Job scheduled : scheduledjob) {
-//     System.out.println("Task ID: " + scheduled.id);
-//     System.out.println("Parents: " + scheduled.parents);
-//     System.out.println("Start Time: " + scheduled.startTime);
-//     System.out.println("End Time: " + scheduled.endTime);
-//     System.out.println("Assigned VM: " + (scheduled.assignedVM != null ? scheduled.assignedVM.id : "None"));
-//     System.out.println("-----------");
-// }
+
 }
             //saveDeadlineCostCSV(deadlineList, costs);
-            saveDeadlinesWorkflows("workflow-wise-costs-V5-billingfix.csv",rows);
+            saveDeadlinesWorkflows("workflow-wise-costs-999_1000-Legrage_v1.csv",rows);
            } catch (Exception e) {
             e.printStackTrace();
         }
@@ -328,7 +346,8 @@ public static ScheduleResult scheduledJobs(
         HashMap<VMData, Double> vmAvailability,
         Map<String, Job> taskMap, 
         Map<String,Double>fileSizeMap, 
-        Map<String,String>fileToProducerTaskMap
+        Map<String,String>fileToProducerTaskMap,
+            double[] replicaCounts
 ) {
     List<Job> schedule = new ArrayList<>();
     double totalCost = 0.0;
@@ -341,7 +360,7 @@ public static ScheduleResult scheduledJobs(
     for (VMData vm : allVMs) {
         vmTaskMap.put(vm, new ArrayList<>());
     }
-
+    int taskIndex = 0;
     for (Job task : UpwardRankSortedJobs) {
         double minCost = Double.MAX_VALUE;
         VMData bestVM = null;
@@ -389,17 +408,60 @@ public static ScheduleResult scheduledJobs(
 
         }
 
-        if (bestVM != null) {
-            task.assignedVM = bestVM;
-            task.startTime = bestEST;
-            task.endTime = bestEFT;
+      if (bestVM != null) {
+    int numReplicas = (int) Math.round(replicaCounts[taskIndex]);  // x[i] from optimization
+    if (numReplicas < 1) numReplicas = 1; // at least 1 main instance
 
-            vmAvailability.put(bestVM, bestEFT);
-            vmTaskMap.get(bestVM).add(task);
-            schedule.add(task);
-        } else {
-            //System.err.println("Deadline constraint cannot be met for task: " + task.id);
-        }
+    List<VMData> selectedVMs = new ArrayList<>();
+    selectedVMs.add(bestVM);  // Main instance
+
+    // Update main task times
+    task.assignedVM = bestVM;
+    task.startTime = bestEST;
+    task.endTime = bestEFT;
+    vmAvailability.put(bestVM, bestEFT);
+    vmTaskMap.get(bestVM).add(task);  // add main task
+    schedule.add(task);               // add main to schedule
+
+    // Select replica VMs
+    List<VMData> candidateReplicas = new ArrayList<>(allVMs);
+    candidateReplicas.remove(bestVM);
+
+    candidateReplicas.sort(Comparator.comparingDouble(vm -> {
+        double runtime = task.mi / vm.mips;
+        double reliability = getReliability(runtime, LAMBDA);
+        double cost = (runtime / 3600.0) * vm.cost;
+        return cost / reliability;
+    }));
+
+    int replicasAdded = 1;
+    for (VMData replicaVM : candidateReplicas) {
+        if (replicasAdded >= numReplicas) break;
+
+        double est = vmAvailability.getOrDefault(replicaVM, 0.0);
+        double runtime = task.mi / replicaVM.mips;
+        double eft = est + runtime;
+
+        if (eft > task.subDeadline) continue;  // respect deadline
+
+        // Clone the task or mark as replica
+        Job replica = new Job(task);
+
+        replica.assignedVM = replicaVM;
+        replica.startTime = est;
+        replica.endTime = eft;
+        // replica.isReplica = true;  // optional field you can define
+
+        vmAvailability.put(replicaVM, eft);
+        vmTaskMap.get(replicaVM).add(replica);
+        schedule.add(replica);
+
+        replicasAdded++;
+    }
+}
+taskIndex++;
+
+
     }
 
        // ✅ Accurately compute total cost based on per-VM usage window
@@ -424,6 +486,11 @@ public static ScheduleResult scheduledJobs(
 
     System.out.println("Total optimized cost: $" + totalCost);
     return new ScheduleResult(schedule, totalCost);
+}
+
+public static double getReliability(double runtime, double lambda) {
+    // System.out.println(Math.exp(-lambda * runtime));
+    return Math.exp(-lambda * runtime);
 }
 
 //function to get total data transfered from parent to child task
@@ -497,6 +564,486 @@ public static void computeEST_EFT(List<String> topoSortedTasks, Map<String, Job>
             e.printStackTrace();
         }
     }
+
+//     public static double[] optimizeReplicaCounts(List<Job> jobs, List<VMData> vms, double lambda, double deadline, double requiredReliability) {
+//     int n = jobs.size();
+//     double[] x = new double[n];
+//     Arrays.fill(x, 1.0); // Start with one replica per job
+
+//     double learningRate = 0.1;
+//     int maxIters = 1000;
+
+//     for (int iter = 0; iter < maxIters; iter++) {
+//         double cost = 0;
+//         double logReliability = 0;
+
+//         for (int i = 0; i < n; i++) {
+//             Job job = jobs.get(i);
+//             double t_i = job.runtime;
+//             double c_i = getCheapestCost(vms);
+//             double f_i = 1.0 - getReliability(t_i, lambda);
+
+//             cost += c_i * t_i * x[i];
+//             logReliability += Math.log(1 - Math.pow(f_i, x[i]));
+//         }
+
+//         double constraint1 = logReliability - Math.log(requiredReliability);
+
+//         // Gradient descent with penalty
+//         for (int i = 0; i < n; i++) {
+//             Job job = jobs.get(i);
+//             double t_i = job.mi / getFastestMIPS(vms);
+//             double c_i = getCheapestCost(vms);
+//             double f_i = 1.0 - getReliability(t_i, lambda);
+
+//             double dReliability = -Math.pow(f_i, x[i]) * Math.log(f_i) / (1e-8 + 1 - Math.pow(f_i, x[i]));
+// double grad = c_i * t_i + 1000 * dReliability * constraint1;
+// x[i] -= learningRate * grad;
+
+// if (x[i] < 1.0) x[i] = 1.0;
+// if (x[i] > 10.0) x[i] = 10.0;
+
+//         }
+//     }
+
+//     return x;
+// }
+// public static double[] optimizeReplicaCounts(List<Job> jobs, List<VMData> vms, double lambda, double deadline, double requiredReliability) {
+//     int n = jobs.size();
+//     double[] x = new double[n];
+    
+//     // Initialize based on reliability requirement
+//     double baseReplicas = Math.max(1.0, -Math.log(requiredReliability) / Math.log(0.9));
+//     Arrays.fill(x, baseReplicas);
+    
+//     // Simple heuristic: more critical tasks (higher upward rank) get more replicas
+//     for (int i = 0; i < n; i++) {
+//         Job job = jobs.get(i);
+//         double reliability = getReliability(job.runtime, lambda);
+        
+//         // Calculate minimum replicas needed for this reliability
+//         double failureRate = 1.0 - reliability;
+//         double minReplicas = Math.log(1.0 - requiredReliability) / Math.log(failureRate);
+        
+//         x[i] = Math.max(1.0, Math.ceil(minReplicas));
+//     }
+    
+//     return x;
+// }
+
+public static double[] optimizeReplicaCounts(List<Job> jobs, List<VMData> vms, double lambda, double deadline, double requiredReliability) {
+    int n = jobs.size();
+    double[] x = new double[n];
+    
+    // Better initialization: estimate minimum replicas needed
+    for (int i = 0; i < n; i++) {
+        Job job = jobs.get(i);
+        double runtime = job.mi / getFastestMIPS(vms);
+        double singleTaskReliability = getReliability(runtime, lambda);
+        
+        // Calculate minimum replicas needed for individual task reliability
+        // For system reliability R_sys = product R_i, we need each R_i ≥ R_sys^(1/n)
+        double targetTaskReliability = Math.pow(requiredReliability, 1.0 / n);
+        
+        if (singleTaskReliability >= targetTaskReliability) {
+            x[i] = 1.0;
+        } else {
+            // Solve: 1 - (1-p)^k = targetTaskReliability
+            // k = ln(1 - targetTaskReliability) / ln(1 - p)
+            double failureRate = 1.0 - singleTaskReliability;
+            if (failureRate > 0 && failureRate < 1) {
+                x[i] = Math.max(1.0, Math.ceil(Math.log(1.0 - targetTaskReliability) / Math.log(failureRate)));
+            } else {
+                x[i] = 1.0;
+            }
+        }
+    }
+    
+    System.out.println("Initial replica counts based on target reliability:");
+    for (int i = 0; i < n; i++) {
+        System.out.printf("Job %s: %.2f replicas\n", jobs.get(i).id, x[i]);
+    }
+    
+    // Check if initial solution meets requirement
+    double initialReliability = calculateSystemReliability(x, jobs, lambda, vms);
+    System.out.printf("Initial system reliability: %.6f (required: %.6f)\n", initialReliability, requiredReliability);
+    
+    if (initialReliability >= requiredReliability) {
+        System.out.println("Initial solution already meets reliability requirement");
+        return x;
+    }
+    
+    // If not, use iterative improvement
+    double mu = 1.0;
+    double learningRate = 0.05;
+    double muLearningRate = 0.1;
+    int maxIters = 1000;
+    
+    // Pre-calculate VM characteristics
+    double[] cheapestCosts = new double[n];
+    double[] fastestMIPS = new double[n];
+    
+    for (int i = 0; i < n; i++) {
+        Job job = jobs.get(i);
+        double minCost = Double.MAX_VALUE;
+        double maxMIPS = 0;
+        
+        for (VMData vm : vms) {
+            double runtime = job.mi / vm.mips;
+            if (runtime <= job.subDeadline) {
+                minCost = Math.min(minCost, vm.cost);
+                maxMIPS = Math.max(maxMIPS, vm.mips);
+            }
+        }
+        
+        cheapestCosts[i] = minCost == Double.MAX_VALUE ? getCheapestCost(vms) : minCost;
+        fastestMIPS[i] = maxMIPS == 0 ? getFastestMIPS(vms) : maxMIPS;
+    }
+    
+    for (int iter = 0; iter < maxIters; iter++) {
+        // Calculate current system reliability
+        double systemReliability = 1.0;
+        double totalCost = 0.0;
+        
+        for (int i = 0; i < n; i++) {
+            Job job = jobs.get(i);
+            double runtime = job.mi / fastestMIPS[i];
+            double singleTaskReliability = getReliability(runtime, lambda);
+            double taskReliability = 1.0 - Math.pow(1.0 - singleTaskReliability, x[i]);
+            
+            systemReliability *= taskReliability;
+            totalCost += cheapestCosts[i] * runtime * x[i];
+        }
+        
+        // Constraint: systemReliability >= requiredReliability
+        double constraintViolation = requiredReliability - systemReliability;
+        
+        // Only update if constraint is violated
+        if (constraintViolation > 1e-6) {
+            // Update replica counts
+            for (int i = 0; i < n; i++) {
+                Job job = jobs.get(i);
+                double runtime = job.mi / fastestMIPS[i];
+                double singleTaskReliability = getReliability(runtime, lambda);
+                double failureRate = 1.0 - singleTaskReliability;
+                
+                if (failureRate > 1e-10 && failureRate < 1.0) {
+                    // Cost gradient
+                    double costGradient = cheapestCosts[i] * runtime;
+                    
+                    // Reliability gradient: d(systemReliability)/dx[i]
+                    double currentTaskReliability = 1.0 - Math.pow(failureRate, x[i]);
+                    double reliabilityGradient = 0.0;
+                    
+                    if (currentTaskReliability > 1e-10) {
+                        reliabilityGradient = systemReliability * Math.pow(failureRate, x[i]) * Math.log(failureRate) / currentTaskReliability;
+                    }
+                    
+                    // Update with penalty method
+                    double penalty = 1000.0 * constraintViolation;
+                    double totalGradient = costGradient - penalty * reliabilityGradient;
+                    
+                    x[i] -= learningRate * totalGradient;
+                    x[i] = Math.max(1.0, Math.min(10.0, x[i]));
+                }
+            }
+            
+            // Update penalty multiplier
+            mu = Math.max(0.0, mu + muLearningRate * constraintViolation);
+        } else {
+            // Constraint satisfied, try to minimize cost
+            break;
+        }
+        
+        // Print progress
+        if (iter % 100 == 0) {
+            System.out.printf("Iter %d: Cost=%.2f, Reliability=%.6f, Violation=%.6f\n", 
+                            iter, totalCost, systemReliability, constraintViolation);
+        }
+        
+        // Check convergence
+        if (Math.abs(constraintViolation) < 1e-6) {
+            System.out.println("Converged at iteration " + iter);
+            break;
+        }
+    }
+    
+    // Final verification
+    double finalReliability = calculateSystemReliability(x, jobs, lambda, vms);
+    System.out.printf("Final system reliability: %.6f (required: %.6f)\n", finalReliability, requiredReliability);
+    
+    return x;
+}
+
+// Helper method to calculate system reliability
+public static double calculateSystemReliability(double[] replicaCounts, List<Job> jobs, double lambda, List<VMData> vms) {
+    double systemReliability = 1.0;
+    
+    for (int i = 0; i < jobs.size(); i++) {
+        Job job = jobs.get(i);
+        double runtime = job.mi / getFastestMIPS(vms);
+        double singleTaskReliability = getReliability(runtime, lambda);
+        double taskReliability = 1.0 - Math.pow(1.0 - singleTaskReliability, replicaCounts[i]);
+        
+        systemReliability *= taskReliability;
+    }
+    
+    return systemReliability;
+}
+
+// Also add this debugging method to see what's happening
+public static void debugReliabilityCalculation(List<Job> jobs, List<VMData> vms, double lambda, double requiredReliability) {
+    System.out.println("=== Debugging Reliability Calculation ===");
+    System.out.printf("Lambda: %.3f, Required Reliability: %.6f\n", lambda, requiredReliability);
+    
+    for (int i = 0; i < jobs.size(); i++) {
+        Job job = jobs.get(i);
+        double runtime = job.mi / getFastestMIPS(vms);
+        double singleTaskReliability = getReliability(runtime, lambda);
+        
+        System.out.printf("Job %s: runtime=%.2f, single_reliability=%.6f\n", 
+                         job.id, runtime, singleTaskReliability);
+    }
+    
+    // Calculate what system reliability would be with all tasks having 1 replica
+    double systemReliabilityWith1Replica = 1.0;
+    for (Job job : jobs) {
+        double runtime = job.mi / getFastestMIPS(vms);
+        double singleTaskReliability = getReliability(runtime, lambda);
+        systemReliabilityWith1Replica *= singleTaskReliability;
+    }
+    
+    System.out.printf("System reliability with 1 replica each: %.6f\n", systemReliabilityWith1Replica);
+    System.out.printf("Gap to required reliability: %.6f\n", requiredReliability - systemReliabilityWith1Replica);
+}
+
+// public static double[] optimizeReplicaCountsWorkflowAware(List<Job> jobs, List<VMData> vms, double lambda, double deadline, double requiredReliability, String workflowName) {
+//     int n = jobs.size();
+//     double[] x = new double[n];
+    
+//     // First, analyze the workflow
+//     analyzeWorkflowCharacteristics(jobs, vms, lambda, requiredReliability, workflowName);
+    
+//     // Workflow-specific lambda adjustment
+//     double adjustedLambda = lambda;
+//     if (workflowName.toLowerCase().contains("sipht")) {
+//         adjustedLambda = lambda * 2.0; // Sipht might have different failure characteristics
+//         System.out.println("Adjusted lambda for Sipht workflow: " + adjustedLambda);
+//     } else if (workflowName.toLowerCase().contains("montage")) {
+//         adjustedLambda = lambda * 1.5; // Montage might have different failure characteristics
+//         System.out.println("Adjusted lambda for Montage workflow: " + adjustedLambda);
+//     }
+    
+//     // Initialize based on workflow characteristics
+//     double fastestMIPS = getFastestMIPS(vms);
+    
+//     // Calculate system reliability with single replicas first
+//     double systemReliabilityWith1 = 1.0;
+//     for (Job job : jobs) {
+//         double runtime = job.mi / fastestMIPS;
+//         double singleTaskReliability = getReliability(runtime, adjustedLambda);
+//         systemReliabilityWith1 *= singleTaskReliability;
+//     }
+    
+//     System.out.printf("System reliability with 1 replica each: %.6f\n", systemReliabilityWith1);
+    
+//     if (systemReliabilityWith1 >= requiredReliability) {
+//         System.out.println("Single replicas sufficient for " + workflowName);
+//         Arrays.fill(x, 1.0);
+//         return x;
+//     }
+    
+//     // Calculate how much improvement we need
+//     double reliabilityGap = requiredReliability - systemReliabilityWith1;
+//     System.out.printf("Reliability gap to fill: %.6f\n", reliabilityGap);
+    
+//     // Initialize with better estimates
+//     for (int i = 0; i < n; i++) {
+//         Job job = jobs.get(i);
+//         double runtime = job.mi / fastestMIPS;
+//         double singleTaskReliability = getReliability(runtime, adjustedLambda);
+        
+//         // For workflows with many tasks, we need higher per-task reliability
+//         double targetTaskReliability = Math.pow(requiredReliability, 1.0 / n);
+        
+//         if (singleTaskReliability >= targetTaskReliability) {
+//             x[i] = 1.0;
+//         } else {
+//             double failureRate = 1.0 - singleTaskReliability;
+//             if (failureRate > 0 && failureRate < 1) {
+//                 double minReplicas = Math.log(1.0 - targetTaskReliability) / Math.log(failureRate);
+//                 x[i] = Math.max(1.0, Math.ceil(minReplicas));
+                
+//                 // Cap replicas for large workflows
+//                 if (n > 50) {
+//                     x[i] = Math.min(x[i], 5.0); // Max 5 replicas for large workflows
+//                 } else if (n > 20) {
+//                     x[i] = Math.min(x[i], 8.0); // Max 8 replicas for medium workflows
+//                 }
+//             } else {
+//                 x[i] = 1.0;
+//             }
+//         }
+//     }
+    
+//     // Check if this initial solution works
+//     double initialReliability = calculateSystemReliabilityWithLambda(x, jobs, adjustedLambda, vms);
+//     System.out.printf("Initial system reliability: %.6f\n", initialReliability);
+    
+//     if (initialReliability >= requiredReliability) {
+//         System.out.println("Initial solution meets requirement for " + workflowName);
+//         return x;
+//     }
+    
+//     // If still not enough, use iterative optimization
+//     return optimizeWithIterativeRefinement(x, jobs, vms, adjustedLambda, requiredReliability, workflowName);
+// }
+
+// // Helper method for iterative refinement
+// private static double[] optimizeWithIterativeRefinement(double[] x, List<Job> jobs, List<VMData> vms, double lambda, double requiredReliability, String workflowName) {
+//     int n = jobs.size();
+//     int maxIters = 500;
+//     double tolerance = 1e-6;
+    
+//     for (int iter = 0; iter < maxIters; iter++) {
+//         double currentReliability = calculateSystemReliabilityWithLambda(x, jobs, lambda, vms);
+        
+//         if (currentReliability >= requiredReliability - tolerance) {
+//             System.out.printf("Converged at iteration %d for %s\n", iter, workflowName);
+//             break;
+//         }
+        
+//         // Find the task with lowest reliability and increase its replicas
+//         int worstTaskIndex = -1;
+//         double lowestReliability = Double.MAX_VALUE;
+        
+//         for (int i = 0; i < n; i++) {
+//             Job job = jobs.get(i);
+//             double runtime = job.mi / getFastestMIPS(vms);
+//             double singleTaskReliability = getReliability(runtime, lambda);
+//             double taskReliability = 1.0 - Math.pow(1.0 - singleTaskReliability, x[i]);
+            
+//             if (taskReliability < lowestReliability && x[i] < 10.0) {
+//                 lowestReliability = taskReliability;
+//                 worstTaskIndex = i;
+//             }
+//         }
+        
+//         if (worstTaskIndex != -1) {
+//             x[worstTaskIndex] += 1.0;
+//         } else {
+//             // If all tasks are at max replicas, break
+//             break;
+//         }
+        
+//         if (iter % 50 == 0) {
+//             System.out.printf("Iter %d: Reliability=%.6f, Gap=%.6f\n", 
+//                             iter, currentReliability, requiredReliability - currentReliability);
+//         }
+//     }
+    
+//     return x;
+// }
+
+// // Helper method to calculate system reliability with specific lambda
+// public static double calculateSystemReliabilityWithLambda(double[] replicaCounts, List<Job> jobs, double lambda, List<VMData> vms) {
+//     double systemReliability = 1.0;
+    
+//     for (int i = 0; i < jobs.size(); i++) {
+//         Job job = jobs.get(i);
+//         double runtime = job.mi / getFastestMIPS(vms);
+//         double singleTaskReliability = getReliability(runtime, lambda);
+//         double taskReliability = 1.0 - Math.pow(1.0 - singleTaskReliability, replicaCounts[i]);
+        
+//         systemReliability *= taskReliability;
+//     }
+    
+//     return systemReliability;
+// }
+
+// // Replace your current optimizeReplicaCounts call with this:
+// public static double[] optimizeReplicaCounts(List<Job> jobs, List<VMData> vms, double lambda, double deadline, double requiredReliability) {
+//     // Extract workflow name from the current file being processed
+//     String workflowName = "Unknown";
+//     // You can pass this as a parameter or determine it from the jobs
+    
+//     return optimizeReplicaCountsWorkflowAware(jobs, vms, lambda, deadline, requiredReliability, workflowName);
+// }
+private static double getFastestMIPS(List<VMData> vms) {
+    return vms.stream().mapToDouble(vm -> vm.mips).max().orElse(1000);
+}
+
+private static double getCheapestCost(List<VMData> vms) {
+    return vms.stream().mapToDouble(vm -> vm.cost).min().orElse(0.01);
+}
+
+public static void analyzeWorkflowCharacteristics(List<Job> jobs, List<VMData> vms, double lambda, double requiredReliability, String workflowName) {
+    System.out.println("=== Analyzing Workflow: " + workflowName + " ===");
+    System.out.printf("Lambda: %.3f, Required Reliability: %.6f\n", lambda, requiredReliability);
+    System.out.printf("Number of tasks: %d\n", jobs.size());
+    
+    // Analyze task characteristics
+    double totalMI = 0, minMI = Double.MAX_VALUE, maxMI = 0;
+    double totalRuntime = 0, minRuntime = Double.MAX_VALUE, maxRuntime = 0;
+    
+    for (Job job : jobs) {
+        totalMI += job.mi;
+        minMI = Math.min(minMI, job.mi);
+        maxMI = Math.max(maxMI, job.mi);
+        
+        totalRuntime += job.runtime;
+        minRuntime = Math.min(minRuntime, job.runtime);
+        maxRuntime = Math.max(maxRuntime, job.runtime);
+    }
+    
+    System.out.printf("MI Stats: min=%.2f, max=%.2f, avg=%.2f\n", minMI, maxMI, totalMI/jobs.size());
+    System.out.printf("Runtime Stats: min=%.2f, max=%.2f, avg=%.2f\n", minRuntime, maxRuntime, totalRuntime/jobs.size());
+    
+    // Analyze VM characteristics
+    double fastestMIPS = getFastestMIPS(vms);
+    double slowestMIPS = vms.stream().mapToDouble(vm -> vm.mips).min().orElse(1000);
+    System.out.printf("VM MIPS range: %.2f to %.2f\n", slowestMIPS, fastestMIPS);
+    
+    // Calculate reliability for each task with fastest VM
+    double systemReliabilityFastest = 1.0;
+    double systemReliabilitySlowest = 1.0;
+    
+    System.out.println("\nTask-by-task reliability analysis:");
+    for (int i = 0; i < Math.min(10, jobs.size()); i++) { // Show first 10 tasks
+        Job job = jobs.get(i);
+        double runtimeFastest = job.mi / fastestMIPS;
+        double runtimeSlowest = job.mi / slowestMIPS;
+        
+        double reliabilityFastest = getReliability(runtimeFastest, lambda);
+        double reliabilitySlowest = getReliability(runtimeSlowest, lambda);
+        
+        systemReliabilityFastest *= reliabilityFastest;
+        systemReliabilitySlowest *= reliabilitySlowest;
+        
+        System.out.printf("Task %s: runtime_fast=%.2f, rel_fast=%.6f, runtime_slow=%.2f, rel_slow=%.6f\n",
+                         job.id, runtimeFastest, reliabilityFastest, runtimeSlowest, reliabilitySlowest);
+    }
+    
+    System.out.printf("System reliability (fastest VMs): %.6f\n", systemReliabilityFastest);
+    System.out.printf("System reliability (slowest VMs): %.6f\n", systemReliabilitySlowest);
+    
+    // Calculate theoretical minimum replicas needed
+    double targetTaskReliability = Math.pow(requiredReliability, 1.0 / jobs.size());
+    System.out.printf("Target per-task reliability: %.6f\n", targetTaskReliability);
+    
+    int tasksNeedingReplicas = 0;
+    for (Job job : jobs) {
+        double runtime = job.mi / fastestMIPS;
+        double singleTaskReliability = getReliability(runtime, lambda);
+        if (singleTaskReliability < targetTaskReliability) {
+            tasksNeedingReplicas++;
+        }
+    }
+    
+    System.out.printf("Tasks needing replicas: %d out of %d\n", tasksNeedingReplicas, jobs.size());
+    System.out.println("==========================================\n");
+}
+
 
 
 }

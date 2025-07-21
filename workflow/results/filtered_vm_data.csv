@@ -1,0 +1,76 @@
+Name,API Name,Instance Memory,vCPUs,Instance Storage,Network Performance,On Demand,MIPS,CostPerMIPS,Family
+C5A Extra Large,c5a.xlarge,8,4,EBS only,10.0,0.154,10000.0,1.5399999999999998e-05,c5a
+C5A 16xlarge,c5a.16xlarge,128,64,EBS only,20.0,2.464,160000.0,1.5399999999999998e-05,c5a
+C5A Double Extra Large,c5a.2xlarge,16,8,EBS only,10.0,0.308,20000.0,1.5399999999999998e-05,c5a
+C5 High-CPU Large,c5.large,4,2,EBS only,10.0,0.085,5000.0,1.7e-05,c5
+C5 High-CPU Quadruple Extra Large,c5.4xlarge,32,16,EBS only,10.0,0.68,40000.0,1.7e-05,c5
+C5 High-CPU 12xlarge,c5.12xlarge,96,48,EBS only,12.0,2.04,120000.0,1.7e-05,c5
+C5AD Double Extra Large,c5ad.2xlarge,16,8,300 GB NVMe SSD,10.0,0.344,20000.0,1.7199999999999998e-05,c5ad
+M5A Large,m5a.large,8,2,EBS only,10.0,0.086,5000.0,1.7199999999999998e-05,m5a
+C5AD Quadruple Extra Large,c5ad.4xlarge,32,16,600 GB (2×300 GB NVMe SSD),10.0,0.688,40000.0,1.7199999999999998e-05,c5ad
+C5AD Large,c5ad.large,4,2,75 GB NVMe SSD,10.0,0.086,5000.0,1.7199999999999998e-05,c5ad
+M5A 16xlarge,m5a.16xlarge,256,64,EBS only,12.0,2.752,160000.0,1.7199999999999998e-05,m5a
+M5A Quadruple Extra Large,m5a.4xlarge,64,16,EBS only,10.0,0.688,40000.0,1.7199999999999998e-05,m5a
+C4 High-CPU Eight Extra Large,c4.8xlarge,60,36,EBS only,10.0,1.591,90000.0,1.7677777777777778e-05,c4
+M5 General Purpose Double Extra Large,m5.2xlarge,32,8,EBS only,10.0,0.384,20000.0,1.92e-05,m5
+M5 General Purpose Metal,m5.metal,384,96,EBS only,25.0,4.608,240000.0,1.92e-05,m5
+M5 General Purpose Large,m5.large,8,2,EBS only,10.0,0.096,5000.0,1.92e-05,m5
+C5 High-CPU Large,c5d.large,4,2,50 GB NVMe SSD,10.0,0.096,5000.0,1.92e-05,c5d
+C5 High-CPU Double Extra Large,c5d.2xlarge,16,8,200 GB NVMe SSD,10.0,0.384,20000.0,1.92e-05,c5d
+C5 High-CPU 18xlarge,c5d.18xlarge,144,72,1800 GB (2×900 GB NVMe SSD),25.0,3.456,180000.0,1.92e-05,c5d
+C4 High-CPU Quadruple Extra Large,c4.4xlarge,30,16,EBS only,51.96050223214286,0.796,40000.0,1.9900000000000003e-05,c4
+C4 High-CPU Extra Large,c4.xlarge,7,4,EBS only,51.96050223214286,0.199,10000.0,1.9900000000000003e-05,c4
+M4 General Purpose Double Extra Large,m4.2xlarge,32,8,EBS only,51.96050223214286,0.4,20000.0,2e-05,m4
+M4 General Purpose 16xlarge,m4.16xlarge,256,64,EBS only,25.0,3.2,160000.0,2e-05,m4
+M4 General Purpose Quadruple Extra Large,m4.4xlarge,64,16,EBS only,51.96050223214286,0.8,40000.0,2e-05,m4
+M5AD Extra Large,m5ad.xlarge,16,4,150 GB NVMe SSD,10.0,0.206,10000.0,2.06e-05,m5ad
+M5AD 16xlarge,m5ad.16xlarge,256,64,2400 GB (4×600 GB NVMe SSD),12.0,3.296,160000.0,2.06e-05,m5ad
+M5AD Quadruple Extra Large,m5ad.4xlarge,64,16,600 GB (2×300 GB NVMe SSD),10.0,0.824,40000.0,2.06e-05,m5ad
+C5N Quadruple Extra Large,c5n.4xlarge,42,16,EBS only,25.0,0.864,40000.0,2.16e-05,c5n
+C5N Extra Large,c5n.xlarge,10,4,EBS only,25.0,0.216,10000.0,2.16e-05,c5n
+C5N 18xlarge,c5n.18xlarge,192,72,EBS only,100.0,3.888,180000.0,2.16e-05,c5n
+R5A Double Extra Large,r5a.2xlarge,64,8,EBS only,10.0,0.452,20000.0,2.26e-05,r5a
+M5 General Purpose 12xlarge,m5d.12xlarge,192,48,1800 GB (2×900 GB NVMe SSD),12.0,2.712,120000.0,2.26e-05,m5d
+R5A 12xlarge,r5a.12xlarge,384,48,EBS only,10.0,2.712,120000.0,2.26e-05,r5a
+M5 General Purpose Quadruple Extra Large,m5d.4xlarge,64,16,600 GB (2×300 GB NVMe SSD),10.0,0.904,40000.0,2.26e-05,m5d
+R5A Eight Extra Large,r5a.8xlarge,256,32,EBS only,10.0,1.808,80000.0,2.26e-05,r5a
+M5 General Purpose Metal,m5d.metal,384,96,3600 GB (4×900 GB NVMe SSD),25.0,5.424,240000.0,2.26e-05,m5d
+M5N Extra Large,m5n.xlarge,16,4,EBS only,25.0,0.238,10000.0,2.38e-05,m5n
+M5N Quadruple Extra Large,m5n.4xlarge,64,16,EBS only,25.0,0.952,40000.0,2.38e-05,m5n
+M5N Double Extra Large,m5n.2xlarge,32,8,EBS only,25.0,0.476,20000.0,2.38e-05,m5n
+R5 Quadruple Extra Large,r5.4xlarge,128,16,EBS only,10.0,1.008,40000.0,2.52e-05,r5
+R5 12xlarge,r5.12xlarge,384,48,EBS only,12.0,3.024,120000.0,2.52e-05,r5
+R5 Extra Large,r5.xlarge,32,4,EBS only,10.0,0.252,10000.0,2.52e-05,r5
+R5AD Eight Extra Large,r5ad.8xlarge,256,32,1200 GB (2×600 GB NVMe SSD),10.0,2.096,80000.0,2.62e-05,r5ad
+R5AD 16xlarge,r5ad.16xlarge,512,64,2400 GB (4×600 GB NVMe SSD),12.0,4.192,160000.0,2.62e-05,r5ad
+R5AD Quadruple Extra Large,r5ad.4xlarge,128,16,600 GB (2×300 GB NVMe SSD),10.0,1.048,40000.0,2.62e-05,r5ad
+R4 High-Memory Double Extra Large,r4.2xlarge,61,8,EBS only,10.0,0.532,20000.0,2.6600000000000003e-05,r4
+R4 High-Memory Quadruple Extra Large,r4.4xlarge,122,16,EBS only,10.0,1.064,40000.0,2.6600000000000003e-05,r4
+R4 High-Memory 16xlarge,r4.16xlarge,488,64,EBS only,25.0,4.256,160000.0,2.6600000000000003e-05,r4
+M5DN 12xlarge,m5dn.12xlarge,192,48,1800 GB (2×900 GB NVMe SSD),50.0,3.264,120000.0,2.7199999999999997e-05,m5dn
+M5DN 24xlarge,m5dn.24xlarge,384,96,3600 GB (4×900 GB NVMe SSD),100.0,6.528,240000.0,2.7199999999999997e-05,m5dn
+M5DN Metal,m5dn.metal,384,96,3600 GB (4×900 GB NVMe SSD),100.0,6.528,240000.0,2.7199999999999997e-05,m5dn
+I3 High I/O Metal,i3.metal,512,72,15200 GB (8×1900 GB NVMe SSD),25.0,4.992,180000.0,2.7733333333333334e-05,i3
+R5D Metal,r5d.metal,768,96,3600 GB (4×900 GB NVMe SSD),25.0,6.912,240000.0,2.88e-05,r5d
+R5D 12xlarge,r5d.12xlarge,384,48,1800 GB (2×900 GB NVMe SSD),12.0,3.456,120000.0,2.88e-05,r5d
+R5D Quadruple Extra Large,r5d.4xlarge,128,16,600 GB (2×300 GB NVMe SSD),10.0,1.152,40000.0,2.88e-05,r5d
+R5N Large,r5n.large,16,2,EBS only,25.0,0.149,5000.0,2.98e-05,r5n
+R5N 12xlarge,r5n.12xlarge,384,48,EBS only,50.0,3.576,120000.0,2.98e-05,r5n
+R5N Quadruple Extra Large,r5n.4xlarge,128,16,EBS only,25.0,1.192,40000.0,2.98e-05,r5n
+R5B Extra Large,r5b.xlarge,32,4,EBS only,10.0,0.298,10000.0,2.98e-05,r5b
+R5B 24xlarge,r5b.24xlarge,768,96,EBS only,25.0,7.152,240000.0,2.98e-05,r5b
+R5B 12xlarge,r5b.12xlarge,384,48,EBS only,12.0,3.576,120000.0,2.98e-05,r5b
+I3 High I/O Quadruple Extra Large,i3.4xlarge,122,16,3800 GB (2×1900 GB NVMe SSD),10.0,1.248,40000.0,3.12e-05,i3
+I3 High I/O Eight Extra Large,i3.8xlarge,244,32,7600 GB (4×1900 GB NVMe SSD),10.0,2.496,80000.0,3.12e-05,i3
+M5ZN Extra Large,m5zn.xlarge,16,4,EBS only,25.0,0.3303,10000.0,3.303e-05,m5zn
+M5ZN 6xlarge,m5zn.6xlarge,96,24,EBS only,50.0,1.982,60000.0,3.3033333333333334e-05,m5zn
+M5ZN 3xlarge,m5zn.3xlarge,48,12,EBS only,25.0,0.991,30000.0,3.3033333333333334e-05,m5zn
+R5DN Metal,r5dn.metal,768,96,3600 GB (4×900 GB NVMe SSD),100.0,8.016,240000.0,3.34e-05,r5dn
+R5DN Quadruple Extra Large,r5dn.4xlarge,128,16,600 GB (2×300 GB NVMe SSD),25.0,1.336,40000.0,3.34e-05,r5dn
+R5DN Double Extra Large,r5dn.2xlarge,64,8,300 GB NVMe SSD,25.0,0.668,20000.0,3.34e-05,r5dn
+I3EN Large,i3en.large,16,2,1250 GB NVMe SSD,25.0,0.226,5000.0,4.52e-05,i3en
+I3EN 24xlarge,i3en.24xlarge,768,96,60000 GB (8×7500 GB NVMe SSD),100.0,10.848,240000.0,4.52e-05,i3en
+I3EN 3xlarge,i3en.3xlarge,96,12,7500 GB NVMe SSD,25.0,1.356,30000.0,4.52e-05,i3en
+D2 Eight Extra Large,d2.8xlarge,244,36,49152 GB (24×2048 GB HDD),10.0,5.52,90000.0,6.133333333333332e-05,d2
+D2 Quadruple Extra Large,d2.4xlarge,122,16,24576 GB (12×2048 GB HDD),51.96050223214286,2.76,40000.0,6.9e-05,d2
+D2 Extra Large,d2.xlarge,30,4,6144 GB (3×2048 GB HDD),51.96050223214286,0.69,10000.0,6.9e-05,d2

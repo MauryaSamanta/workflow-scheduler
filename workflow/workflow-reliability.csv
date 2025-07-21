@@ -1,0 +1,10 @@
+Workflow,Reliability,Cost
+CyberShake_30,0.90,31.40
+CyberShake_30,0.95,37.10
+CyberShake_30,0.99,41.90
+Epigenomics_46,0.90,29.80
+Epigenomics_46,0.95,39.30
+Epigenomics_46,0.99,42.70
+Sipht_30,0.90,27.90
+Sipht_30,0.95,34.10
+Sipht_30,0.99,41.20

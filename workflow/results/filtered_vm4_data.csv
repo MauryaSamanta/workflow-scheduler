@@ -1,0 +1,5 @@
+Name,API Name,Instance Memory,vCPUs,Instance Storage,Network Performance,On Demand
+T2 Double Extra Large,t2.2xlarge,32,8,EBS only,51.96050223214286,0.3712
+T2 Extra Large,t2.xlarge,16,4,EBS only,51.96050223214286,0.1856
+T2 Medium,t2.medium,4,2,EBS only,51.96050223214286,0.0464
+T2 Small,t2.small,2,1,EBS only,51.96050223214286,0.023

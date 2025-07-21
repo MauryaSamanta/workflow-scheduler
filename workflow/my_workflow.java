@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class PLS_algo {
+public class my_workflow {
     static class Job {
     String id;
     double runtime;
@@ -85,9 +85,9 @@ static class ScheduleResult {
         try {
             List<Double> deadlineList = generateDeadlines(8000, 100000, 1000);
             List<Double> costs = new ArrayList<>();
-            List<String> files=Arrays.asList("CyberShake_30.xml", "Epigenomics_46.xml", "Inspiral_30.xml", "Inspiral_50.xml", "Inspiral_30.xml",
-            "Montage_50.xml","Sipht_30.xml");
-            double dfactors[]={1.0, 1.1,1,2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0};
+            List<String> files=Arrays.asList("CyberShake_30.xml", "Epigenomics_46.xml", "Montage_50.xml", "Inspiral_30.xml",
+            "Sipht_30.xml");
+            double dfactors[]={1.0,1.1,1,2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0};
             List<String[]> rows = new ArrayList<>();
 
             for(String file:files)
@@ -164,10 +164,9 @@ static class ScheduleResult {
 
             List<String>sortedJobs = topologicalSort(taskMap);
 
-           Map<String,Double>ProbaUpwardRanks= calculateProbabilisticRanks(sortedJobs, taskMap, fileSizeMap, fileToProducerTaskMap,
-median_bw,median_mips);
+           Map<String,Double>UpwardRanks= calculateUpwardRanks(sortedJobs, taskMap);
             double entryRank=0.0;
-           for(Map.Entry<String,Double>entry:ProbaUpwardRanks.entrySet()){
+           for(Map.Entry<String,Double>entry:UpwardRanks.entrySet()){
             double rank=entry.getValue();
             entryRank=Math.max(rank,entryRank);
            
@@ -175,16 +174,19 @@ median_bw,median_mips);
            double userDeadline=df*entryRank;
            
            for( Map.Entry<String,Job>entry:taskMap.entrySet()){
-            Job current = entry.getValue();
-            double pr_i = ProbaUpwardRanks.get(current.id); // Use probabilistic ranks instead
-            double runtime = current.mi / median_mips;
-            current.subDeadline = userDeadline * ((entryRank - pr_i + runtime) / entryRank);
+            Job current=entry.getValue();
+            current.subDeadline = (UpwardRanks.get(current.id) / entryRank) * userDeadline;
+            //current.slack = current.subDeadline - UpwardRanks.get(current.id);
            }
              double slackThreshold = userDeadline * 0.1; // 10% of deadline
 
-            List<Job>UpwardRankSortedJobs=sortProbabilisticRanks(sortedJobs, ProbaUpwardRanks, taskMap);
+            List<Job>UpwardRankSortedJobs=sortUpwardRanks(sortedJobs, UpwardRanks, taskMap);
 
-
+            computeEST_EFT(sortedJobs, taskMap, vms, median_bw, fileSizeMap, 
+       fileToProducerTaskMap);
+            Collections.reverse(sortedJobs);
+            computeSlackReverse(sortedJobs,  taskMap, userDeadline, fileSizeMap, 
+        fileToProducerTaskMap, median_bw);
         HashMap<VMData,Double>vmAvail=new HashMap<>();
            
            List<VMData>cheapVMs = vms.stream()
@@ -195,7 +197,7 @@ median_bw,median_mips);
             for(VMData vm:vms){
                 vmAvail.put(vm,0.0);
             }
-            ScheduleResult scheduleDetails=scheduledJobs_PLS( UpwardRankSortedJobs,vms,cheapVMs,slackThreshold,
+            ScheduleResult scheduleDetails=scheduledJobs( UpwardRankSortedJobs,vms,cheapVMs,slackThreshold,
                                      vmAvail, taskMap, fileSizeMap,fileToProducerTaskMap);
             List<Job>scheduledjob=scheduleDetails.schedule;
 
@@ -205,7 +207,7 @@ median_bw,median_mips);
 
 }
             //saveDeadlineCostCSV(deadlineList, costs);
-            saveDeadlinesWorkflows("workflow-wise-costs-PLS-V3.csv",rows);
+            saveDeadlinesWorkflows("workflow-wise-costs-V6-billingfix.csv",rows);
            } catch (Exception e) {
             e.printStackTrace();
         }
@@ -276,49 +278,31 @@ public static List<Double> generateDeadlines(double start, double end, int point
         }
     }
 
-    public static Map<String, Double> calculateProbabilisticRanks(
-    List<String> topoSortedJobIds,
-    Map<String, Job> taskMap,
-    Map<String, Double> fileSizeMap,
-    Map<String, String> fileToProducerTaskMap,
-    double avgBandwidth,
-    double avgMIPS
-) {
-    Map<String, Double> priMap = new HashMap<>();
-    Random random = new Random();
-    double theta = 1.5;
+    public static Map<String, Double> calculateUpwardRanks(
+    List<String> topoSortedJobIds, Map<String, Job> taskMap) {
+
+    Map<String, Double> upwardRanks = new HashMap<>();
 
     // Process in reverse topological order (from exit to entry)
     for (int i = topoSortedJobIds.size() - 1; i >= 0; i--) {
         String jobId = topoSortedJobIds.get(i);
         Job job = taskMap.get(jobId);
 
-        double maxChildPri = 0.0;
+        double maxChildRank = 0;
         for (String childId : job.children) {
-            Job child = taskMap.get(childId);
-            double commTime = getDataSizeTransferred(job, child, fileSizeMap, fileToProducerTaskMap) / avgBandwidth;
-
-            double ccrj = child.mi / Math.max(commTime, 1e-6); // Avoid division by 0
-
-            double randVal = random.nextDouble(); // [0.0, 1.0)
-            boolean includeComm = randVal >= (1 - (1 / ccrj)) / theta;
-
-            double childRank = priMap.getOrDefault(childId, 0.0);
-            double total = childRank + (includeComm ? commTime : 0.0);
-            maxChildPri = Math.max(maxChildPri, total);
+            maxChildRank = Math.max(maxChildRank, upwardRanks.getOrDefault(childId, 0.0));
         }
 
-        double rank = (job.mi / avgMIPS) + maxChildPri;
-        priMap.put(jobId, rank);
+        double rank = job.runtime + maxChildRank;
+        upwardRanks.put(jobId, rank);
     }
 
-    return priMap;
+    return upwardRanks;
 }
 
-
-   public static List<Job> sortProbabilisticRanks(List<String> sortedJobs, Map<String, Double> ProbRanks, Map<String, Job> jobMap) {
-    // Sort job IDs by descending probabilistic rank
-    sortedJobs.sort((a, b) -> Double.compare(ProbRanks.get(b), ProbRanks.get(a)));
+    public static List<Job> sortUpwardRanks(List<String> sortedJobs, Map<String, Double> UpwardRanks, Map<String,Job>jobMap) {
+    // Sort job IDs by descending upward rank
+    sortedJobs.sort((a, b) -> Double.compare(UpwardRanks.get(b), UpwardRanks.get(a)));
 
     // Create and return list of Job objects in that order
     List<Job> sortedJobObjects = new ArrayList<>();
@@ -328,100 +312,74 @@ public static List<Double> generateDeadlines(double start, double end, int point
     return sortedJobObjects;
 }
 
-
-//ACCORDING TO PLS algo
-public static ScheduleResult scheduledJobs_PLS(
-        List<Job> ProbRankSortedJobs,
+//V3
+public static ScheduleResult scheduledJobs(
+        List<Job> UpwardRankSortedJobs,
         List<VMData> vms,
         List<VMData> cheapvms,
         double slackThreshold,
         HashMap<VMData, Double> vmAvailability,
-        Map<String, Job> taskMap,
-        Map<String, Double> fileSizeMap,
-        Map<String, String> fileToProducerTaskMap
+        Map<String, Job> taskMap, 
+        Map<String,Double>fileSizeMap, 
+        Map<String,String>fileToProducerTaskMap
 ) {
     List<Job> schedule = new ArrayList<>();
     double totalCost = 0.0;
-    final int billingUnit = 3600;
+    final int billingUnit = 3600; // seconds (1 hour)
 
     Map<VMData, List<Job>> vmTaskMap = new HashMap<>();
-    for (VMData vm : vms) vmTaskMap.put(vm, new ArrayList<>());
+    List<VMData> allVMs = new ArrayList<>();
+    allVMs.addAll(vms);
+    allVMs.addAll(cheapvms);
+    for (VMData vm : allVMs) {
+        vmTaskMap.put(vm, new ArrayList<>());
+    }
 
-    for (Job task : ProbRankSortedJobs) {
+    for (Job task : UpwardRankSortedJobs) {
+        double minCost = Double.MAX_VALUE;
         VMData bestVM = null;
-        double bestEST = 0.0, bestEFT = Double.MAX_VALUE;
-        double minCostIncrement = Double.MAX_VALUE;
+        double bestEST = 0.0;
+        double bestEFT = 0.0;
 
-        for (VMData vm : vms) {
+        List<VMData> candidateVMs = (task.slack > slackThreshold) ? cheapvms : vms;
+       
+        for (VMData vm : candidateVMs) {
             double est = vmAvailability.getOrDefault(vm, 0.0);
+            List<Job>existingJobs=vmTaskMap.get(vm);
             double dataReadyTime = 0.0;
-
             for (String parentId : task.parents) {
-                Job parent = taskMap.get(parentId);
-                if (parent == null || parent.endTime == 0.0) continue;
-
+                Job parentJob = taskMap.get(parentId);
+                if (parentJob == null || parentJob.endTime == 0.0) continue;
                 double commTime = 0.0;
-                if (parent.assignedVM != vm) {
-                    double dataSizeMB = getDataSizeTransferred(parent, task, fileSizeMap, fileToProducerTaskMap);
+                if (parentJob.assignedVM != vm) {
+                    double dataSizeMB = getDataSizeTransferred(parentJob, task,fileSizeMap,fileToProducerTaskMap);
                     double bandwidthMBps = vm.networkPerformance * 125.0;
                     commTime = dataSizeMB / bandwidthMBps;
                 }
-                est = Math.max(est, parent.endTime + commTime);
-                dataReadyTime = Math.max(dataReadyTime, parent.endTime + commTime);
+                est = Math.max(est, parentJob.endTime + commTime);
+                dataReadyTime = Math.max(dataReadyTime, parentJob.endTime + commTime);
             }
-
-            est = Math.max(est, dataReadyTime);
+             est = Math.max(dataReadyTime, est);
             double runtime = task.mi / vm.mips;
             double eft = est + runtime;
+            double bestDelayBias = Double.MAX_VALUE;
 
-            if (eft <= task.subDeadline) {
-                // Cost increment = new cost for this VM
-                List<Job> existing = vmTaskMap.get(vm);
-                double prevEnd = existing.isEmpty() ? 0.0 : existing.get(existing.size() - 1).endTime;
-                double prevBilling = Math.ceil((prevEnd - (existing.isEmpty() ? 0 : existing.get(0).startTime)) / billingUnit) * billingUnit;
-                double newBilling = Math.ceil((Math.max(prevEnd, eft) - (existing.isEmpty() ? est : existing.get(0).startTime)) / billingUnit) * billingUnit;
 
-                double costInc = ((newBilling - prevBilling) / 3600.0) * vm.cost;
+           if (eft <= task.subDeadline) {
+    double cost = (Math.ceil(runtime / billingUnit) * billingUnit / 3600.0) * vm.cost;
 
-                if (costInc < minCostIncrement || (costInc == minCostIncrement && eft < bestEFT)) {
-                    minCostIncrement = costInc;
-                    bestVM = vm;
-                    bestEST = est;
-                    bestEFT = eft;
-                }
-            }
-        }
+    double delayAfterDataReady = Math.max(0.0, est - dataReadyTime);
+    double normalizedDelay = delayAfterDataReady / task.subDeadline;
 
-        //  If no VM meets sub-deadline, fallback to VM with min EFT
-        if (bestVM == null) {
-            for (VMData vm : vms) {
-                double est = vmAvailability.getOrDefault(vm, 0.0);
-                double dataReadyTime = 0.0;
+    if (cost < minCost || (cost == minCost && normalizedDelay < bestDelayBias)) {
+        minCost = cost;
+        bestDelayBias = normalizedDelay;
+        bestVM = vm;
+        bestEST = est;
+        bestEFT = eft;
+    }
+}
 
-                for (String parentId : task.parents) {
-                    Job parent = taskMap.get(parentId);
-                    if (parent == null || parent.endTime == 0.0) continue;
-
-                    double commTime = 0.0;
-                    if (parent.assignedVM != vm) {
-                        double dataSizeMB = getDataSizeTransferred(parent, task, fileSizeMap, fileToProducerTaskMap);
-                        double bandwidthMBps = vm.networkPerformance * 125.0;
-                        commTime = dataSizeMB / bandwidthMBps;
-                    }
-                    est = Math.max(est, parent.endTime + commTime);
-                    dataReadyTime = Math.max(dataReadyTime, parent.endTime + commTime);
-                }
-
-                est = Math.max(est, dataReadyTime);
-                double runtime = task.mi / vm.mips;
-                double eft = est + runtime;
-
-                if (eft < bestEFT) {
-                    bestVM = vm;
-                    bestEST = est;
-                    bestEFT = eft;
-                }
-            }
         }
 
         if (bestVM != null) {
@@ -432,24 +390,32 @@ public static ScheduleResult scheduledJobs_PLS(
             vmAvailability.put(bestVM, bestEFT);
             vmTaskMap.get(bestVM).add(task);
             schedule.add(task);
+        } else {
+            //System.err.println("Deadline constraint cannot be met for task: " + task.id);
         }
     }
 
-    // Final cost computation per VM
-    for (Map.Entry<VMData, List<Job>> entry : vmTaskMap.entrySet()) {
-        List<Job> jobs = entry.getValue();
-        if (jobs.isEmpty()) continue;
+       // ✅ Accurately compute total cost based on per-VM usage window
+    // double totalCost = 0.0;
+   for (Map.Entry<VMData, List<Job>> entry : vmTaskMap.entrySet()) {
+    VMData vm = entry.getKey();
+    List<Job> jobsOnVM = entry.getValue();
+    if (jobsOnVM.isEmpty()) continue;
 
-        jobs.sort(Comparator.comparingDouble(j -> j.startTime));
-        double start = jobs.get(0).startTime;
-        double end = jobs.get(jobs.size() - 1).endTime;
-        double billedDuration = Math.ceil((end - start) / billingUnit) * billingUnit;
+    double vmStart = jobsOnVM.stream().mapToDouble(j -> j.startTime).min().getAsDouble();
+    double vmEnd = jobsOnVM.stream().mapToDouble(j -> j.endTime).max().getAsDouble();
+    double usageTimeInSeconds = vmEnd - vmStart;
 
-        double billedCost = (billedDuration / 3600.0) * entry.getKey().cost;
-        totalCost += billedCost;
-    }
+    double perSecondRate = vm.cost / 3600.0;
+    double vmCost = usageTimeInSeconds * perSecondRate;
 
-    System.out.println("PLS cost: $" + totalCost);
+    totalCost += vmCost;
+}
+
+
+
+
+    System.out.println("Total optimized cost: $" + totalCost);
     return new ScheduleResult(schedule, totalCost);
 }
 
@@ -467,7 +433,48 @@ public static double getDataSizeTransferred(Job producer, Job consumer, Map<Stri
     return totalTransferred;
 }
 
+public static void computeSlackReverse(List<String> reverseTopologicalTasks, Map<String, Job> taskMap, double globalDeadline, Map<String,Double>fileSizeMap, 
+        Map<String,String>fileToProducerTaskMap, double AvgBandwidth) {
+    for (String taskId : reverseTopologicalTasks) {
+        double lft = globalDeadline;
+        Job task=taskMap.get(taskId);
+        for (String childId : task.children) {
+            Job child = taskMap.get(childId);
+            double commTime = 0.0;
 
+            if (child != null) {
+                double dataSize = getDataSizeTransferred(task, child,fileSizeMap,fileToProducerTaskMap);
+                commTime = dataSize / AvgBandwidth;
+                lft = Math.min(lft, child.startTime - commTime);
+            }
+        }
+
+        task.endTime = (task.children.isEmpty()) ? globalDeadline : lft;
+        task.slack = task.endTime - task.startTime;
+    }
+}
+
+public static void computeEST_EFT(List<String> topoSortedTasks, Map<String, Job> taskMap, List<VMData> vms, double meanBandwidthMBps, Map<String,Double>fileSizeMap, 
+        Map<String,String>fileToProducerTaskMap) {
+    for (String taskId : topoSortedTasks) {
+        double est = 0.0;
+        Job task=taskMap.get(taskId);
+        for (String parentId : task.parents) {
+            Job parent = taskMap.get(parentId);
+            double commTime = 0.0;
+
+            if (parent != null) {
+                double dataSize = getDataSizeTransferred(parent, task,fileSizeMap,fileToProducerTaskMap);
+                commTime = dataSize / meanBandwidthMBps;
+                est = Math.max(est, parent.endTime + commTime);
+            }
+        }
+
+        double runtime = task.mi / getMedianMIPS(vms);
+        task.startTime = est;
+        task.endTime = est + runtime;
+    }
+}
 
 
     public static void saveDeadlineCostCSV(List<Double> deadlines, List<Double> costs) {
