@@ -1,6 +1,6 @@
 import java.io.*;
-import java.util.*;
 import java.nio.file.*;
+import java.util.*;
 
 public class VMData {
     public String id;
@@ -8,12 +8,14 @@ public class VMData {
     public double cost;
     public double costperMIPS;
     public double networkPerformance;
-    public VMData(String id, double mips, double cost, double costperMIPS, double networkPerformance) {
+    public double storage;
+    public VMData(String id, double mips, double cost, double costperMIPS, double networkPerformance, double storage) {
         this.id = id;
         this.mips = mips;
         this.cost = cost;
         this.costperMIPS=costperMIPS;
         this.networkPerformance=networkPerformance;
+        this.storage=storage;
     }
 
     public static List<VMData> parseCSV(String filePath) {
@@ -38,7 +40,7 @@ public class VMData {
                 String vcpuStr = cols[3].trim(); // "vCPUs"
                 String networkPerf=cols[5].trim();
                 String costStr = cols[6].trim(); // "On Demand"
-
+                String storage=cols[5].trim();
                 if (apiName.isEmpty() || vcpuStr.isEmpty() || costStr.isEmpty()) continue;
 
                 try {
@@ -47,13 +49,14 @@ public class VMData {
                     double ghz = 2.5; // You can adjust per instance family
                     double mips = vcpus * ghz * 1000;
                     double nP=Double.parseDouble(networkPerf);
+                    double store=Double.parseDouble(storage);
                     //System.out.println(mips);
                     double costpermips=cost/mips;
-                    vmList.add(new VMData(apiName, mips, cost,costpermips, nP));
+                    vmList.add(new VMData(apiName, mips, cost,costpermips, nP,store));
                 } catch (NumberFormatException e) {
                     // Skip lines with invalid numbers
                     System.out.println(e);
-                    continue;
+                    // continue;
                 }
             }
         } catch (IOException e) {
